@@ -143,7 +143,7 @@
       const sig = d.assinatura.map(norm);
       const hits = sig.filter(s => [...nomes].some(n => n === s || n.startsWith(s)));
       return { deck: d, score: hits.length / sig.length, hits };
-    }).sort((a, b) => b.score - a.score);
+    }).sort((a, b) => b.score - a.score || b.hits.length - a.hits.length);
     return res;
   }
 
