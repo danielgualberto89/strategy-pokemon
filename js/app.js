@@ -35,7 +35,8 @@
   }
 
   function cardDeck(d) {
-    return `<button class="cartao" data-deck="${d.id}"><div class="chips"><span class="chip ${d.status === "meta" ? "meta" : ""}">${STATUS[d.status]}</span><span class="chip">Dificuldade ${"●".repeat(d.dificuldade)}${"○".repeat(5 - d.dificuldade)}</span></div>
+    const arte = [...new Set(d.pecasChave.map(p => p[0].split(" / ").pop()).concat(d.assinatura))].filter(n => urlCarta(n)).slice(0, 3);
+    return `<button class="cartao" data-deck="${d.id}">${arte.length ? `<div class="deck-arte">${arte.map((n, i) => `<img loading="lazy" src="${urlCarta(n)}" alt="" style="--i:${i}">`).join("")}</div>` : ""}<div class="chips"><span class="chip ${d.status === "meta" ? "meta" : ""}">${STATUS[d.status]}</span><span class="chip">Dificuldade ${d.dificuldade}/5</span>${guiasDoDeck(d.id).length ? `<span class="chip">Guia completo</span>` : ""}</div>
       <h3>${esc(d.nome)}</h3><p class="nota">${esc(d.estilo)}</p><p>${esc(d.resumo)}</p></button>`;
   }
   function ligarCardsDeck() { app.querySelectorAll("[data-deck]").forEach(b => b.addEventListener("click", () => location.hash = "deck-" + b.dataset.deck)); }
@@ -49,50 +50,167 @@
       <div class="barra"><label for="f-status">Mostrar <select id="f-status">
         <option value="todos">Todos</option><option value="meta">Meta atual</option><option value="rogue">Rogue / nicho</option><option value="formato-anterior">Formato anterior</option></select></label></div>
       <div class="grade">${lista.map(cardDeck).join("")}</div>
-      <div class="cartao"><span class="rotulo">Formato Expanded</span><h3>Guia de introdução ao Expanded</h3><p>${esc(EXPANDED.resumo)}</p><p><a href="#regras">Ver resumo do Expanded na aba Regras</a></p></div>
+      <div class="cartao"><span class="rotulo">Formato Expanded</span><h3>Guia de introdução ao Expanded</h3><p>${esc(EXPANDED.resumo)}</p><p><a href="#guia-g05">Ler o guia completo (27 capítulos)</a> · <a href="#regras">Resumo na aba Regras</a></p></div>
     </section>`;
     $("#f-status").value = filtro;
     $("#f-status").addEventListener("change", e => { store.set("filtro-decks", e.target.value); vDecks(); });
     ligarCardsDeck();
   }
 
+  /* ---------------- Cartas (imagens) ---------------- */
+  const IMG = window.IMAGENS || {};
+  function urlCarta(nome, chaveLista) {
+    const r = (chaveLista && IMG[chaveLista]) || IMG[String(nome).toLowerCase()];
+    return r ? r.img : null;
+  }
+  function htmlCarta(nome, opt = {}) {
+    const u = urlCarta(nome, opt.chave);
+    const st = opt.estilo ? ` style="${opt.estilo}"` : "";
+    return `<button type="button" class="carta" data-zoom="${esc(nome)}"${opt.chave ? ` data-chave="${esc(opt.chave)}"` : ""}${st} aria-label="Ampliar ${esc(nome)}">${u ? `<img loading="lazy" decoding="async" src="${u}" alt="${esc(nome)}">` : `<span class="sem-img">${esc(nome)}</span>`}${opt.qtd ? `<span class="qtd">${opt.qtd}</span>` : ""}</button>`;
+  }
+  function tira(nomes) {
+    const uniq = [...new Set(nomes)].filter(n => urlCarta(n));
+    if (!uniq.length) return "";
+    return `<div class="bloco"><span class="rotulo">Cartas citadas</span><div class="tira">${uniq.map(n => `<figure>${htmlCarta(n)}<figcaption>${esc(n)}</figcaption></figure>`).join("")}</div></div>`;
+  }
+  function leque(nomes) {
+    const l = [...new Set(nomes)].filter(n => urlCarta(n)).slice(0, 5);
+    const n = l.length, meio = (n - 1) / 2;
+    return `<div class="leque" aria-hidden="false">${l.map((c, i) => {
+      const ang = (i - meio) * 9;
+      const t = `translateX(calc(-50% + ${i - meio} * var(--passo))) rotate(${ang}deg)`;
+      return htmlCarta(c, { estilo: `--t:${t};transform:${t};z-index:${i + 1}` });
+    }).join("")}</div>`;
+  }
+  // zoom
+  const dlg = document.createElement("dialog");
+  dlg.className = "zoom";
+  dlg.innerHTML = `<form method="dialog"><button aria-label="Fechar">×</button></form><img alt=""><p class="leg"></p>`;
+  document.body.appendChild(dlg);
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-zoom]");
+    if (!b) return;
+    const u = urlCarta(b.dataset.zoom, b.dataset.chave);
+    if (!u) return;
+    dlg.querySelector("img").src = u.startsWith("data:") ? u : u.replace("/low.webp", "/high.webp");
+    dlg.querySelector("img").alt = b.dataset.zoom;
+    dlg.querySelector(".leg").textContent = b.dataset.zoom;
+    if (dlg.showModal) dlg.showModal();
+  });
+
+  function mesa(textoLista) {
+    const grupos = { P: [], T: [], E: [] }; let sec = "P";
+    for (const l of textoLista.split("\n")) {
+      if (/^pok/i.test(l)) { sec = "P"; continue; } if (/^trainer/i.test(l)) { sec = "T"; continue; } if (/^energ/i.test(l)) { sec = "E"; continue; }
+      const m = l.match(/^(\d+)\s+(.+?)(?:\s+([A-Z0-9]{2,5})\s+(\d+)[a-z]?)?$/);
+      if (!m) continue;
+      grupos[sec].push({ q: m[1], nome: m[2], chave: m[3] ? `${m[2]}|${m[3]}|${parseInt(m[4], 10)}` : null });
+    }
+    const nomes = { P: "Pokémon", T: "Treinadores", E: "Energias" };
+    return `<div class="mesa">${Object.entries(grupos).filter(([, g]) => g.length).map(([k, g]) => `<div class="mesa-grupo"><span class="rotulo">${nomes[k]} · ${g.reduce((s, c) => s + +c.q, 0)}</span><div class="mesa-cartas">${g.map(c => htmlCarta(c.nome, { chave: c.chave, qtd: c.q })).join("")}</div></div>`).join("")}</div>`;
+  }
+
   /* ---------------- Detalhe do deck ---------------- */
-  function vDeck(id) {
+  function guiasDoDeck(id) { return Object.values(window.GUIAS || {}).filter(g => g.deck === id); }
+
+  function vDeck(id, aba) {
     const d = DECKS.find(x => x.id === id);
     if (!d) return vDecks();
-    const mus = Object.entries(d.matchups).sort((a, b) => b[1].r - a[1].r);
-    app.innerHTML = `<section class="vista det">
+    const gs = guiasDoDeck(id);
+    const abas = [["geral", "Visão geral"]].concat(d.lista ? [["mesa", "Mesa (lista)"]] : []).concat(gs.map(g => ["guia-" + g.id, "Guia: " + g.titulo + (g.autor ? " · " + g.autor : "")])).concat([["matchups", "Matchups"]]);
+    const atual = abas.some(a => a[0] === aba) ? aba : (gs.length ? "guia-" + gs[0].id : "geral");
+    app.innerHTML = `<section class="vista">
       <p><a href="#decks">← Todos os decks</a></p>
-      <div class="det-topo"><div class="bloco"><div class="chips"><span class="chip ${d.status === "meta" ? "meta" : ""}">${STATUS[d.status]}</span><span class="chip">${esc(d.formato)}</span></div>
-        <h2>${esc(d.nome)}</h2><p class="nota">Também chamado: ${esc(d.apelidos.join(", "))}</p></div>
-        <div class="barra">${d.lista ? `<button class="btn pri" id="b-analisar">Analisar a lista no Laboratório</button>` : ""}</div></div>
-      <p class="lead">${esc(d.resumo)}</p>
-      <div class="grade-2">
-        <div class="cartao"><span class="rotulo">Como o deck funciona</span><p>${esc(d.comoFunciona)}</p></div>
-        <div class="cartao"><span class="rotulo">1º ou 2º?</span><p>${esc(d.primeiroOuSegundo)}</p>
-          ${d.prizeMaps.length ? `<span class="rotulo">Prize maps</span><ul class="lista">${d.prizeMaps.map(p => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}</div>
-      </div>
-      <div class="bloco"><h3>Plano de jogo</h3><div class="turnos">
-        ${[["Turno 1", d.planoDeJogo.turno1], ["Turno 2", d.planoDeJogo.turno2], ["Meio de jogo", d.planoDeJogo.meio], ["Fechamento", d.planoDeJogo.final]].map(([t, x]) => `<div class="turno"><span class="rotulo">${t}</span><p>${esc(x)}</p></div>`).join("")}
-      </div></div>
-      <div class="bloco"><h3>Peças-chave</h3><div class="tabela-wrap"><table><thead><tr><th>Carta</th><th>Papel</th></tr></thead><tbody>
-        ${d.pecasChave.map(([c, p]) => `<tr><td><strong>${esc(c)}</strong></td><td>${esc(p)}</td></tr>`).join("")}</tbody></table></div></div>
-      <div class="grade-2">
-        ${d.dicas.length ? `<div class="cartao"><span class="rotulo">Dicas dos guias</span><ul class="lista">${d.dicas.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
-        ${d.erros.length ? `<div class="cartao"><span class="rotulo">Erros comuns</span><ul class="lista">${d.erros.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
-        ${d.variantes ? `<div class="cartao"><span class="rotulo">Variantes</span><ul class="lista">${d.variantes.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
-      </div>
-      ${mus.length ? `<div class="bloco"><h3>Matchups</h3><div class="tabela-wrap"><table><thead><tr><th>Contra</th><th>Avaliação</th><th>Ir</th><th>Como jogar</th></tr></thead><tbody>
-        ${mus.map(([o, m]) => `<tr><td><strong>${esc(nomeDeck(o))}</strong></td><td>${chipR(m.r)}</td><td>${esc(m.ir)}</td><td>${esc(m.p)}</td></tr>`).join("")}
-      </tbody></table></div></div>` : ""}
-      ${d.lista ? `<div class="bloco"><div class="barra" style="justify-content:space-between"><h3>Lista de referência</h3><button class="btn" id="b-copiar">Copiar lista</button></div><p class="nota">${esc(d.lista.titulo)}</p><pre class="decklist">${esc(d.lista.texto)}</pre></div>` : ""}
-      <div class="bloco"><span class="rotulo">Guias originais</span><ul class="lista">${d.fontes.map(f => `<li><a href="${f.url}" target="_blank" rel="noopener">${esc(f.titulo)}</a></li>`).join("")}</ul></div>
-    </section>`;
-    if (d.lista) {
-      $("#b-copiar").addEventListener("click", e => copiar(d.lista.texto, e.target));
-      $("#b-analisar").addEventListener("click", () => { store.set("lab-lista", d.lista.texto); location.hash = "laboratorio"; });
+      <div class="heroi"><div class="texto"><div class="chips"><span class="chip ${d.status === "meta" ? "meta" : ""}">${STATUS[d.status]}</span><span class="chip">${esc(d.formato)}</span><span class="chip">Dificuldade ${d.dificuldade}/5</span></div>
+        <h2>${esc(d.nome)}</h2><p class="nota">Também chamado: ${esc(d.apelidos.join(", "))}</p><p>${esc(d.resumo)}</p>
+        <div class="barra">${d.lista ? `<button class="btn pri" id="b-analisar">Analisar a lista no Laboratório</button>` : ""}<span class="nota">${gs.length ? `${gs.length} guia(s) completo(s) em português` : "Guia completo ainda não traduzido — veja o resumo"}</span></div></div>
+        ${leque(d.assinatura.concat(d.pecasChave.map(p => p[0].split(" / ").pop())))}</div>
+      <div class="subabas" role="tablist">${abas.map(([k, t]) => `<button role="tab" data-aba="${k}" aria-selected="${k === atual}">${esc(t)}</button>`).join("")}</div>
+      <div id="aba-conteudo"></div></section>`;
+    app.querySelectorAll("[data-aba]").forEach(b => b.addEventListener("click", () => { history.replaceState(null, "", "#deck-" + id + "~" + b.dataset.aba); vDeck(id, b.dataset.aba); }));
+    if (d.lista) $("#b-analisar").addEventListener("click", () => { store.set("lab-lista", d.lista.texto); location.hash = "laboratorio"; });
+    const alvo = $("#aba-conteudo");
+    if (atual === "geral") alvo.innerHTML = abaGeral(d);
+    else if (atual === "mesa") { alvo.innerHTML = `<div class="bloco"><div class="barra" style="justify-content:space-between"><div><h3>${esc(d.lista.titulo)}</h3><p class="nota">Toque numa carta para ampliar. Imagens: TCGdex.</p></div><button class="btn" id="b-copiar">Copiar lista</button></div>${mesa(d.lista.texto)}<details class="cartao"><summary>Lista em texto (para importar no TCG Live)</summary><pre class="decklist">${esc(d.lista.texto)}</pre></details></div>`; $("#b-copiar").addEventListener("click", e => copiar(d.lista.texto, e.target)); }
+    else if (atual === "matchups") alvo.innerHTML = abaMatchups(d);
+    else leitorGuia(alvo, window.GUIAS[atual.slice(5)]);
+  }
+
+  function abaGeral(d) {
+    return `<div class="bloco" style="gap:var(--s4)">
+      <div class="grade-2"><div class="cartao"><span class="rotulo">Como o deck funciona</span><p>${esc(d.comoFunciona)}</p></div>
+        <div class="cartao"><span class="rotulo">1º ou 2º?</span><p>${esc(d.primeiroOuSegundo)}</p>${d.prizeMaps.length ? `<span class="rotulo">Prize maps</span><ul class="lista">${d.prizeMaps.map(p => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}</div></div>
+      <div class="bloco"><h3>Plano de jogo</h3><div class="turnos">${[["Turno 1", d.planoDeJogo.turno1], ["Turno 2", d.planoDeJogo.turno2], ["Meio de jogo", d.planoDeJogo.meio], ["Fechamento", d.planoDeJogo.final]].map(([t, x]) => `<div class="turno"><span class="rotulo">${t}</span><p>${esc(x)}</p></div>`).join("")}</div></div>
+      <div class="bloco"><h3>Peças-chave</h3><div class="tabela-wrap"><table><thead><tr><th></th><th>Carta</th><th>Papel</th></tr></thead><tbody>${d.pecasChave.map(([c, p]) => `<tr><td style="width:74px">${htmlCarta(c.split(" / ").pop(), { estilo: "--w:60px" })}</td><td><strong>${esc(c)}</strong></td><td>${esc(p)}</td></tr>`).join("")}</tbody></table></div></div>
+      <div class="grade-2">${d.dicas.length ? `<div class="cartao"><span class="rotulo">Dicas dos guias</span><ul class="lista">${d.dicas.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}${d.erros.length ? `<div class="cartao"><span class="rotulo">Erros comuns</span><ul class="lista">${d.erros.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}${d.variantes ? `<div class="cartao"><span class="rotulo">Variantes</span><ul class="lista">${d.variantes.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}</div>
+      <div class="bloco"><span class="rotulo">Guias originais</span><ul class="lista">${d.fontes.map(f => `<li><a href="${f.url}" target="_blank" rel="noopener">${esc(f.titulo)}</a></li>`).join("")}</ul></div></div>`;
+  }
+
+  function abaMatchups(d) {
+    const mus = Object.entries(d.matchups).sort((a, b) => b[1].r - a[1].r);
+    if (!mus.length) return `<p class="nota">Este guia não traz matchups.</p>`;
+    return `<div class="tabela-wrap"><table><thead><tr><th>Contra</th><th>Avaliação</th><th>Ir</th><th>Como jogar</th></tr></thead><tbody>${mus.map(([o, m]) => `<tr><td><strong>${esc(nomeDeck(o))}</strong></td><td>${chipR(m.r)}</td><td>${esc(m.ir)}</td><td>${esc(m.p)}</td></tr>`).join("")}</tbody></table></div>`;
+  }
+
+  function corpoCap(pars) {
+    let h = "", lista = [];
+    const fecha = () => { if (lista.length) { h += `<ul>${lista.map(x => `<li>${md(x)}</li>`).join("")}</ul>`; lista = []; } };
+    for (const p of pars) {
+      if (p.startsWith("- ")) lista.push(p.slice(2));
+      else if (/^@(mesa|mao|premios|cartas) /.test(p)) { fecha(); h += ilustracao(p); }
+      else { fecha(); h += `<p>${md(p)}</p>`; }
     }
-    window.scrollTo(0, 0);
+    fecha(); return h;
+  }
+
+  /* Ilustrações dentro dos capítulos:
+     "@mesa Título | Ativo: X | Banco: A, B | Rival ativo: Y | Rival banco: C, D | nota"
+     "@mao Título | A, B, C | nota"   "@premios Título | 1-1-2-2 | Budew, Dreepy, Dragapult ex, Dragapult ex | nota"
+     "@cartas Título | A, B, C | nota" */
+  function ilustracao(p) {
+    const tipo = p.slice(1, p.indexOf(" "));
+    const seg = p.slice(tipo.length + 2).split(" | ").map(x => x.trim());
+    const titulo = seg.shift();
+    const lista = x => x.split(/,\s*/).filter(Boolean);
+    const cartasRow = (nomes, cls = "") => `<div class="ilu-linha ${cls}">${nomes.map(n => { const m = n.match(/^(.*?)\s*\+\s*(.+)$/); const base = m ? m[1] : n; return `<figure>${htmlCarta(base)}${m ? `<span class="anexo">+ ${esc(m[2])}</span>` : ""}<figcaption>${esc(base)}</figcaption></figure>`; }).join("")}</div>`;
+    let corpo = "", notas = [];
+    if (tipo === "mesa") {
+      const campo = {}; for (const s of seg) { const m = s.match(/^(Ativo|Banco|Rival ativo|Rival banco):\s*(.*)$/i); if (m) campo[m[1].toLowerCase()] = lista(m[2]); else notas.push(s); }
+      const lado = (a, b, rot) => (a || b) ? `<div class="ilu-lado"><span class="rotulo">${rot}</span><div class="ilu-campo">${a ? `<div class="ilu-ativo"><span class="mini">Ativo</span>${cartasRow(a)}</div>` : ""}${b ? `<div class="ilu-banco"><span class="mini">Banco</span>${cartasRow(b)}</div>` : ""}</div></div>` : "";
+      corpo = lado(campo["rival ativo"], campo["rival banco"], "Oponente") + lado(campo["ativo"], campo["banco"], "Você");
+    } else if (tipo === "premios") {
+      const linha = seg.shift() || "", alvos = lista(seg.shift() || ""); notas = seg;
+      const passos = linha.split("-");
+      corpo = `<div class="ilu-premios">${passos.map((q, i) => `<div class="ilu-passo"><span class="ilu-q">${esc(q)}</span>${alvos[i] ? cartasRow([alvos[i]]) : ""}<span class="mini">${i + 1}º KO</span></div>`).join('<span class="ilu-seta" aria-hidden="true">→</span>')}</div>`;
+    } else { corpo = cartasRow(lista(seg.shift() || ""), tipo === "mao" ? "ilu-mao" : ""); notas = seg; }
+    const icone = { mesa: "Mesa", mao: "Mão", premios: "Mapa de prêmios", cartas: "Cartas" }[tipo];
+    return `<figure class="ilu ilu-${tipo}"><figcaption><span class="chip">${icone}</span> ${md(titulo)}</figcaption>${corpo}${notas.length ? `<p class="nota">${notas.map(md).join(" ")}</p>` : ""}</figure>`;
+  }
+
+  function leitorGuia(alvo, g, idx = 0) {
+    const caps = g.caps;
+    const k = Math.max(0, Math.min(idx, caps.length - 1));
+    const [titulo, pars, cartas] = caps[k];
+    alvo.innerHTML = `<div class="bloco"><div class="guia-meta"><strong style="color:var(--fg)">${esc(g.titulo)}</strong><span>por ${esc(g.autor)}</span><span>${esc(g.formato)}</span><span>${caps.length} capítulos</span><a href="${g.url}" target="_blank" rel="noopener">Guia original (${esc(g.idioma)})</a></div></div>
+      <div class="leitor"><nav class="indice" aria-label="Capítulos">${caps.map((c, i) => `<button data-cap="${i}" aria-current="${i === k}"><span class="num">${String(i + 1).padStart(2, "0")}</span>${esc(c[0])}</button>`).join("")}</nav>
+      <article class="capitulo"><label class="seletor-cap" for="sel-cap">Capítulo <select id="sel-cap">${caps.map((c, i) => `<option value="${i}" ${i === k ? "selected" : ""}>${i + 1}. ${esc(c[0])}</option>`).join("")}</select></label>
+        <span class="rotulo">Capítulo ${k + 1} de ${caps.length}</span><h3 style="font-size:1.5rem">${esc(titulo)}</h3>
+        ${tira(cartas || [])}
+        <div class="corpo">${corpoCap(pars)}</div>
+        <div class="cap-nav"><button class="btn" data-ir="${k - 1}" ${k === 0 ? "disabled" : ""}>← Anterior</button><button class="btn pri" data-ir="${k + 1}" ${k === caps.length - 1 ? "disabled" : ""}>Próximo capítulo →</button></div></article></div>`;
+    const ir = i => { leitorGuia(alvo, g, i); alvo.scrollIntoView({ block: "start" }); };
+    alvo.querySelectorAll("[data-cap]").forEach(b => b.addEventListener("click", () => ir(+b.dataset.cap)));
+    alvo.querySelectorAll("[data-ir]").forEach(b => b.addEventListener("click", () => ir(+b.dataset.ir)));
+    alvo.querySelector("#sel-cap").addEventListener("change", e => ir(+e.target.value));
+  }
+
+  /* ---------------- Biblioteca de guias ---------------- */
+  function vGuias() {
+    const gs = Object.values(window.GUIAS || {}).sort((a, b) => a.id.localeCompare(b.id));
+    const porDeck = id => gs.filter(g => g.deck === id);
+    app.innerHTML = `<section class="vista"><div class="bloco"><h2>Guias completos</h2><p class="lead">Cada guia reescrito em português, capítulo por capítulo, com as cartas citadas em imagem. ${gs.length} guias, ordenados como no Metafy. Os que eram só vídeo trazem a lista e um resumo do que os outros guias dizem.</p></div>
+      <div class="grade">${gs.map(g => { const d = DECKS.find(x => x.id === g.deck); return `<a class="cartao" href="${d ? `#deck-${g.deck}~guia-${g.id}` : `#guia-${g.id}`}"><span class="rotulo">${esc(d ? d.nome : (g.deck === "expanded" ? "Formato Expanded" : g.deck))}</span><h3>${esc(g.titulo)}</h3><p class="nota">por ${esc(g.autor)} · ${g.caps.length} capítulos · ${esc(g.formato)}</p>${tira(g.caps.flatMap(c => c[2] || []).slice(0, 4)).replace('<span class="rotulo">Cartas citadas</span>', "")}</a>`; }).join("")}</div></section>`;
   }
 
   /* ---------------- Matchup ---------------- */
@@ -241,7 +359,7 @@
     const E = EXPANDED;
     app.innerHTML = `<section class="vista"><div class="bloco"><h2>Regras oficiais (resumo em português)</h2><p class="lead">Resumo do Rulebook (setembro/2026), do Tournament Handbook, da lista de erratas (agosto/2026) e do Alternative Play Handbook. Em caso de dúvida, vale o documento oficial.</p></div>
       <div class="grade-2">${REGRAS.map(r => `<div class="cartao"><h3>${esc(r.titulo)}</h3><ul class="lista">${r.itens.map(i => `<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>
-      <div class="bloco"><h2>Formato Expanded</h2><p class="lead">${esc(E.resumo)}</p></div>
+      <div class="bloco"><h2>Formato Expanded</h2><p class="lead">${esc(E.resumo)}</p><p><a class="btn pri" href="#guia-g05">Ler o guia completo de Expanded</a></p></div>
       <div class="grade-2"><div class="cartao"><span class="rotulo">Staples</span><ul class="lista">${E.staples.map(s => `<li>${esc(s)}</li>`).join("")}</ul></div>
         <div class="cartao"><span class="rotulo">ACE SPEC (tier list)</span><p>${esc(E.aceSpecs)}</p><span class="rotulo">Números-chave de dano</span><p class="mono">${esc(E.numeros)}</p></div></div>
       <div class="tabela-wrap"><table><thead><tr><th>Deck do Expanded</th><th>Resumo</th></tr></thead><tbody>${E.decks.map(([n, r]) => `<tr><td><strong>${esc(n)}</strong></td><td>${esc(r)}</td></tr>`).join("")}</tbody></table></div>
@@ -278,9 +396,10 @@
   /* ---------------- Roteador ---------------- */
   function rota() {
     const h = (location.hash || "#inicio").slice(1);
-    document.querySelectorAll("#abas a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (h.startsWith("deck-") ? "decks" : h) ? "page" : "false"));
-    if (h.startsWith("deck-")) return vDeck(h.slice(5));
-    ({ inicio: vInicio, decks: vDecks, matchup: vMatchup, laboratorio: vLab, coach: vCoach, conceitos: vConceitos, regras: vRegras, cartas: vCartas }[h] || vInicio)();
+    document.querySelectorAll("#abas a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (h.startsWith("deck-") ? "decks" : h.startsWith("guia-") ? "guias" : h) ? "page" : "false"));
+    if (h.startsWith("deck-")) { const [id, aba] = h.slice(5).split("~"); window.scrollTo(0, 0); return vDeck(id, aba); }
+    if (h.startsWith("guia-") && window.GUIAS[h.slice(5)]) { window.scrollTo(0, 0); app.innerHTML = `<section class="vista"><p><a href="#guias">← Todos os guias</a></p><div id="aba-conteudo"></div></section>`; return leitorGuia($("#aba-conteudo"), window.GUIAS[h.slice(5)]); }
+    ({ guias: vGuias, inicio: vInicio, decks: vDecks, matchup: vMatchup, laboratorio: vLab, coach: vCoach, conceitos: vConceitos, regras: vRegras, cartas: vCartas }[h] || vInicio)();
   }
   window.addEventListener("hashchange", rota);
   rota();
