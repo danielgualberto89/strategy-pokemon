@@ -250,11 +250,36 @@
   function vGuias() {
     const gs = Object.values(window.GUIAS || {}).sort((a, b) => a.id.localeCompare(b.id));
     const porDeck = id => gs.filter(g => g.deck === id);
-    app.innerHTML = `<section class="vista"><div class="bloco"><h2>Guias completos</h2><p class="lead">Cada guia reescrito em português, capítulo por capítulo, com as cartas citadas em imagem. ${gs.length} guias: os 30 gratuitos do Metafy (g01–g30) e todos os 43 decks do Pokemite (Japão) traduzidos (g31–g73). Os que eram só vídeo trazem a lista e um resumo do que a página mostra. Nomes de cartas em <strong class="nome-carta">negrito</strong> estão em português (passe o mouse para ver o original).</p></div>
+    app.innerHTML = `<section class="vista"><div class="bloco"><h2>Guias completos</h2><p class="lead">Cada guia reescrito em português, capítulo por capítulo, com as cartas citadas em imagem. ${gs.length} guias: os 30 gratuitos do Metafy (g01–g30) todos os 43 decks do Pokemite (Japão) traduzidos (g31–g73) e 23 análises do Pokecahack com os resultados da City League e a análise das listas premiadas (g74–g96; veja também a aba <a href="#meta">Meta JP</a>). Os que eram só vídeo trazem a lista e um resumo do que a página mostra. Nomes de cartas em <strong class="nome-carta">negrito</strong> estão em português (passe o mouse para ver o original).</p></div>
       <div class="grade">${gs.map(g => { const d = DECKS.find(x => x.id === g.deck); return `<a class="cartao" href="${d ? `#deck-${g.deck}~guia-${g.id}` : `#guia-${g.id}`}"><span class="rotulo">${esc(d ? d.nome : (g.deck === "expanded" ? "Formato Expanded" : g.deck))}</span><h3>${esc(g.titulo)}</h3><p class="nota">por ${esc(g.autor)} · ${g.caps.length} capítulos · ${esc(g.formato)}</p>${tira(g.caps.flatMap(c => c[2] || []).slice(0, 4)).replace('<span class="rotulo">Cartas citadas</span>', "")}</a>`; }).join("")}</div></section>`;
   }
 
   /* ---------------- Matchup ---------------- */
+  /* ---------------- Meta japonês (City League, dados do Pokecahack) ---------------- */
+  function vMeta() {
+    const M = window.META_JP;
+    if (!M) { app.innerHTML = `<section class="vista"><p>Sem dados de meta.</p></section>`; return; }
+    const max = Math.max(...M.decks.map(d => d.n));
+    const linha = d => {
+      const deck = DECKS.find(x => x.id === d.deck);
+      const pct = 100 * d.n / M.total, rot = pct < 1 ? "<1%" : Math.round(pct) + "%";
+      const href = deck ? `#deck-${d.deck}~guia-${d.guia}` : `#guia-${d.guia}`;
+      const dica = `${d.nome}: ${d.n} resultado(s) — ${d.vit} título(s), ${d.seg} vice(s); ${rot} do total`;
+      return `<a class="meta-linha" href="${href}" title="${esc(dica)}"><span class="meta-nome">${esc(d.nome)}</span>
+        <span class="meta-barra" aria-hidden="true"><span style="width:${(100 * d.n / max).toFixed(1)}%"></span></span>
+        <span class="meta-num"><strong>${d.n}</strong> <span class="nota">${rot} · ${d.vit} tít. · ${d.seg} vices</span></span></a>`;
+    };
+    const topo = M.topCartas.slice(0, 18);
+    app.innerHTML = `<section class="vista">
+      <div class="bloco"><h2>Meta japonês — City League</h2>
+        <p class="lead">${M.total} resultados premiados (campeões e vices) de ${esc(M.periodo)}, com ${M.listas} listas completas, publicados pelo <a href="${M.url}" target="_blank" rel="noopener">Pokecahack</a>. Clique num deck para ler a análise: resultados, as cartas que quase todas as listas usam, onde elas variam e uma lista típica.</p>
+        <p class="nota">Conta só os resultados com lista divulgada que o site reuniu — é um termômetro do meta, não a porcentagem exata de jogadores.</p></div>
+      <div class="cartao meta-grafico"><span class="rotulo">Resultados premiados por deck</span>${M.decks.map(linha).join("")}</div>
+      <div class="bloco"><h3>Cartas mais usadas no meta</h3><p class="nota">Porcentagem das ${M.listas} listas premiadas que levam a carta (energias básicas fora).</p>
+        <div class="grade-cartas-meta">${topo.map(c => `<figure>${htmlCarta(c.nome)}<figcaption><strong>${c.pct}%</strong> ${esc(ptNome(c.nome))}</figcaption></figure>`).join("")}</div></div>
+    </section>`;
+  }
+
   function vMatchup() {
     const ids = DECKS.map(d => d.id).concat(Object.keys(ARQUETIPOS_EXTRA));
     const opt = ids.map(id => `<option value="${id}">${esc(nomeDeck(id))}</option>`).join("");
@@ -440,7 +465,7 @@
     document.querySelectorAll("#abas a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (h.startsWith("deck-") ? "decks" : h.startsWith("guia-") ? "guias" : h) ? "page" : "false"));
     if (h.startsWith("deck-")) { const [id, aba] = h.slice(5).split("~"); window.scrollTo(0, 0); return vDeck(id, aba); }
     if (h.startsWith("guia-") && window.GUIAS[h.slice(5)]) { window.scrollTo(0, 0); app.innerHTML = `<section class="vista"><p><a href="#guias">← Todos os guias</a></p><div id="aba-conteudo"></div></section>`; return leitorGuia($("#aba-conteudo"), window.GUIAS[h.slice(5)]); }
-    ({ guias: vGuias, inicio: vInicio, decks: vDecks, matchup: vMatchup, laboratorio: vLab, coach: vCoach, conceitos: vConceitos, regras: vRegras, cartas: vCartas }[h] || vInicio)();
+    ({ guias: vGuias, meta: vMeta, inicio: vInicio, decks: vDecks, matchup: vMatchup, laboratorio: vLab, coach: vCoach, conceitos: vConceitos, regras: vRegras, cartas: vCartas }[h] || vInicio)();
   }
   window.addEventListener("hashchange", rota);
   rota();

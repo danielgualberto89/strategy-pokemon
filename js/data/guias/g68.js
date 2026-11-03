@@ -15,7 +15,7 @@ lista:{titulo:"Lista de exemplo do Pokemite",fonte:"Lista de um dos 3 vídeos co
 
 Trainer: 40
 4 Team Rocket's Transceiver
-4 Roto-Stick (ロトりぼう)
+4 Roto-Stick
 3 Poké Pad
 3 Night Stretcher
 1 Miracle Headset

@@ -30,12 +30,12 @@ window.GUIA = function (id, g) {
     if (window.ARQUETIPOS_EXTRA) delete window.ARQUETIPOS_EXTRA[g.deck];
     const lista = n.lista || (g.lista && g.lista.texto ? { titulo: g.lista.titulo || "Lista do guia", texto: g.lista.texto } : null);
     window.DECKS.push({
-      id: g.deck, nome: n.nome, apelidos: n.apelidos || [], estilo: n.estilo || "", formato: "Standard (meta japonês, Pokemite)",
+      id: g.deck, nome: n.nome, apelidos: n.apelidos || [], estilo: n.estilo || "", formato: "Standard (meta japonês, " + (g.fonte || "Pokemite") + ")",
       status: n.status || "rogue", dificuldade: n.dificuldade || 3, resumo: n.resumo, comoFunciona: n.comoFunciona || n.resumo,
       pecasChave: n.pecasChave || [], lista,
       variantes: n.variantes || [], planoDeJogo: Object.assign({ turno1: "—", turno2: "—", meio: "—", final: "—" }, n.plano || {}),
       primeiroOuSegundo: n.ir || "Veja o guia.", dicas: n.dicas || [], erros: n.erros || [], prizeMaps: n.prizeMaps || [],
-      matchups: n.matchups || {}, fontes: [{ titulo: "Pokemite — guia do deck (japonês)", url: g.url }], assinatura: n.assinatura || []
+      matchups: n.matchups || {}, fontes: [{ titulo: (g.fonte || "Pokemite") + " — guia do deck (japonês)", url: g.url }], assinatura: n.assinatura || []
     });
   }
 };

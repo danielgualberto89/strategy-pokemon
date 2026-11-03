@@ -206,3 +206,18 @@ footer { color: var(--muted); font-size: .84rem; max-width: 1200px; margin: 0 au
 .ajustes button:disabled { opacity: .4; cursor: not-allowed; }
 @media (max-width: 900px) { .marca span { display: none; } }
 @media (max-width: 560px) { .marca h1 { font-size: 1.1rem; } .ajustes button { min-width: 40px; } .capitulo { padding: 0; border: 0; background: none; } }
+
+/* Meta JP: barras horizontais (uma série, sem legenda; número sempre visível) */
+.meta-grafico { gap: 2px; }
+.meta-linha { display: grid; grid-template-columns: minmax(140px, 260px) minmax(0, 1fr) minmax(150px, auto); gap: 12px; align-items: center; padding: 7px 8px; border-radius: 8px; text-decoration: none; color: var(--fg); }
+.meta-linha:hover { background: var(--surface-2); }
+.meta-nome { font-family: var(--f-ui); font-weight: 600; font-size: .95rem; line-height: 1.25; }
+.meta-barra { height: 14px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+.meta-barra span { display: block; height: 100%; background: var(--felt); border-radius: 0 4px 4px 0; min-width: 3px; }
+.meta-num { font-family: var(--f-ui); font-size: .9rem; white-space: nowrap; }
+.grade-cartas-meta { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); }
+.grade-cartas-meta figure { margin: 0; display: grid; gap: 4px; }
+.grade-cartas-meta .carta { width: 100%; }
+.grade-cartas-meta figcaption { font-family: var(--f-ui); font-size: .8rem; line-height: 1.25; color: var(--muted); }
+.grade-cartas-meta figcaption strong { color: var(--fg); font-size: .95rem; display: block; }
+@media (max-width: 640px) { .meta-linha { grid-template-columns: 1fr auto; } .meta-barra { grid-column: 1 / -1; grid-row: 2; } }
