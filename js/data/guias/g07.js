@@ -30,7 +30,7 @@ caps:[
 "- +20 no Mega Manectric: **OHKO no Mega Lucario ex e no Mega Excadrill ex**. O Mega Eelektross também nocauteia Pokémon de 210 HP e o Split Bomb no Ativo também recebe o bônus.",
 "@cartas O motor do deck | Electrike, Mega Manectric ex, Manectric, Tynamo, Eelektrik, Canari | Eelektrik (Dynamotor) recicla as energias do Riotous Blasting; Canari busca tudo que é {L}.",
 "@cartas A conta do dano | Mega Manectric ex, Voltaic Energy, Hero's Cape, Stunfisk | 200 base + 130 descartando = 330; +20 da Voltaic = 350."
-],["Mega Manectric ex","Manectric","Electrike","Eelektrik","Tynamo","Canari","Explorer's Guidance","Voltaic Energy"]],
+],["Mega Manectric ex","Manectric","Electrike","Eelektrik","Tynamo","Canari","Explorer's Guidance","Voltaic Lightning Energy"]],
 ["Minha lista (Pitch Black)",[
 "- **Energia 8 {L} + 3 Voltaic:** 7-4 deixou poucas básicas; a Voltaic só serve para dano extra, então 4 é demais (2 talvez bastem, mas ela prefere 3).",
 "- **Hilda:** acha um Manectric + Voltaic, ou Kilowattrel + energia {L}.",
@@ -87,7 +87,7 @@ caps:[
 "- É corrida de prêmios; como os dois têm Megas, prêmios menores importam menos.",
 "- A Voltaic permite OHKO no Lucario, mas não é totalmente equilibrado por causa do Hariyama.",
 "- **Mega Eelektross:** quase ninguém joga Switch (dependem de Air Balloon) — paralise o Mega Lucario Ativo e nocauteie em 2 ataques. Ou Boss num Hariyama/Makuhita sem energia e Split Bomb no Lunatone e outros frágeis."
-],["Mega Lucario ex","Hariyama","Makuhita","Lunatone","Voltaic Energy","Mega Eelektross ex"]],
+],["Mega Lucario ex","Hariyama","Makuhita","Lunatone","Voltaic Lightning Energy","Mega Eelektross ex"]],
 ["Matchups: TR Mewtwo, Garchomp, Beedrill, Excadrill, Greninja",[
 "## Team Rocket's Mewtwo (favorável)",
 "- Com Voltaic, o **Flash Ray** nocauteia Spidops repetidamente e o Mewtwo não troca de volta. Trocar com Spidops (1 prêmio) é chato, mas eles não atingem seu Banco — monte tudo sem medo. O Articuno não para o Split Bomb (dano direto).",

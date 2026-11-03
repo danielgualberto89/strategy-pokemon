@@ -50,7 +50,7 @@
       <div class="barra"><label for="f-status">Mostrar <select id="f-status">
         <option value="todos">Todos</option><option value="meta">Meta atual</option><option value="rogue">Rogue / nicho</option><option value="formato-anterior">Formato anterior</option></select></label></div>
       <div class="grade">${lista.map(cardDeck).join("")}</div>
-      <div class="cartao"><span class="rotulo">Formato Expanded</span><h3>Guia de introdução ao Expanded</h3><p>${esc(EXPANDED.resumo)}</p><p><a href="#regras">Ver resumo do Expanded na aba Regras</a></p></div>
+      <div class="cartao"><span class="rotulo">Formato Expanded</span><h3>Guia de introdução ao Expanded</h3><p>${esc(EXPANDED.resumo)}</p><p><a href="#guia-g05">Ler o guia completo (27 capítulos)</a> · <a href="#regras">Resumo na aba Regras</a></p></div>
     </section>`;
     $("#f-status").value = filtro;
     $("#f-status").addEventListener("change", e => { store.set("filtro-decks", e.target.value); vDecks(); });
@@ -207,10 +207,10 @@
 
   /* ---------------- Biblioteca de guias ---------------- */
   function vGuias() {
-    const gs = Object.values(window.GUIAS || {});
+    const gs = Object.values(window.GUIAS || {}).sort((a, b) => a.id.localeCompare(b.id));
     const porDeck = id => gs.filter(g => g.deck === id);
-    app.innerHTML = `<section class="vista"><div class="bloco"><h2>Guias completos</h2><p class="lead">Cada guia reescrito em português, capítulo por capítulo, com as cartas citadas em imagem. ${gs.length} de 30 guias prontos — os demais estão sendo traduzidos por partes.</p></div>
-      <div class="grade">${gs.map(g => { const d = DECKS.find(x => x.id === g.deck); return `<a class="cartao" href="#deck-${g.deck}~guia-${g.id}"><span class="rotulo">${esc(d ? d.nome : g.deck)}</span><h3>${esc(g.titulo)}</h3><p class="nota">por ${esc(g.autor)} · ${g.caps.length} capítulos · ${esc(g.formato)}</p>${tira(g.caps.flatMap(c => c[2] || []).slice(0, 4)).replace('<span class="rotulo">Cartas citadas</span>', "")}</a>`; }).join("")}</div></section>`;
+    app.innerHTML = `<section class="vista"><div class="bloco"><h2>Guias completos</h2><p class="lead">Cada guia reescrito em português, capítulo por capítulo, com as cartas citadas em imagem. ${gs.length} guias, ordenados como no Metafy. Os que eram só vídeo trazem a lista e um resumo do que os outros guias dizem.</p></div>
+      <div class="grade">${gs.map(g => { const d = DECKS.find(x => x.id === g.deck); return `<a class="cartao" href="${d ? `#deck-${g.deck}~guia-${g.id}` : `#guia-${g.id}`}"><span class="rotulo">${esc(d ? d.nome : (g.deck === "expanded" ? "Formato Expanded" : g.deck))}</span><h3>${esc(g.titulo)}</h3><p class="nota">por ${esc(g.autor)} · ${g.caps.length} capítulos · ${esc(g.formato)}</p>${tira(g.caps.flatMap(c => c[2] || []).slice(0, 4)).replace('<span class="rotulo">Cartas citadas</span>', "")}</a>`; }).join("")}</div></section>`;
   }
 
   /* ---------------- Matchup ---------------- */
@@ -359,7 +359,7 @@
     const E = EXPANDED;
     app.innerHTML = `<section class="vista"><div class="bloco"><h2>Regras oficiais (resumo em português)</h2><p class="lead">Resumo do Rulebook (setembro/2026), do Tournament Handbook, da lista de erratas (agosto/2026) e do Alternative Play Handbook. Em caso de dúvida, vale o documento oficial.</p></div>
       <div class="grade-2">${REGRAS.map(r => `<div class="cartao"><h3>${esc(r.titulo)}</h3><ul class="lista">${r.itens.map(i => `<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>
-      <div class="bloco"><h2>Formato Expanded</h2><p class="lead">${esc(E.resumo)}</p></div>
+      <div class="bloco"><h2>Formato Expanded</h2><p class="lead">${esc(E.resumo)}</p><p><a class="btn pri" href="#guia-g05">Ler o guia completo de Expanded</a></p></div>
       <div class="grade-2"><div class="cartao"><span class="rotulo">Staples</span><ul class="lista">${E.staples.map(s => `<li>${esc(s)}</li>`).join("")}</ul></div>
         <div class="cartao"><span class="rotulo">ACE SPEC (tier list)</span><p>${esc(E.aceSpecs)}</p><span class="rotulo">Números-chave de dano</span><p class="mono">${esc(E.numeros)}</p></div></div>
       <div class="tabela-wrap"><table><thead><tr><th>Deck do Expanded</th><th>Resumo</th></tr></thead><tbody>${E.decks.map(([n, r]) => `<tr><td><strong>${esc(n)}</strong></td><td>${esc(r)}</td></tr>`).join("")}</tbody></table></div>
@@ -396,8 +396,9 @@
   /* ---------------- Roteador ---------------- */
   function rota() {
     const h = (location.hash || "#inicio").slice(1);
-    document.querySelectorAll("#abas a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (h.startsWith("deck-") ? "decks" : h) ? "page" : "false"));
+    document.querySelectorAll("#abas a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (h.startsWith("deck-") ? "decks" : h.startsWith("guia-") ? "guias" : h) ? "page" : "false"));
     if (h.startsWith("deck-")) { const [id, aba] = h.slice(5).split("~"); window.scrollTo(0, 0); return vDeck(id, aba); }
+    if (h.startsWith("guia-") && window.GUIAS[h.slice(5)]) { window.scrollTo(0, 0); app.innerHTML = `<section class="vista"><p><a href="#guias">← Todos os guias</a></p><div id="aba-conteudo"></div></section>`; return leitorGuia($("#aba-conteudo"), window.GUIAS[h.slice(5)]); }
     ({ guias: vGuias, inicio: vInicio, decks: vDecks, matchup: vMatchup, laboratorio: vLab, coach: vCoach, conceitos: vConceitos, regras: vRegras, cartas: vCartas }[h] || vInicio)();
   }
   window.addEventListener("hashchange", rota);

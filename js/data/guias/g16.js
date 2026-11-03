@@ -17,7 +17,7 @@ caps:[
 "- Comprar → **Lunar Cycle** (afinando antes, se der) → Apoiador do turno (afinando antes) → energia, Ferramenta, Estádio → atacar.",
 "- **Pokégear depois do Lunar Cycle** aumenta a chance do Apoiador desejado; se você precisa de uma carta específica (ex.: Prism) e não pode usar Apoiador de compra, use o Pokégear antes para afinar o baralho. Jogue seguro e consistente — mas às vezes é preciso “yolo draw”.",
 "@mesa T1 ideal | Ativo: Solrock | Banco: Lunatone, Okidogi + Fighting Energy, Binacle | Lunar Cycle descarta uma Energia {F} da mão para comprar. Okidogi já recebe a primeira ligação.",
-"@cartas O motor e os atacantes | Solrock, Lunatone, Okidogi, Binacle, Barbaracle, Bloodmoon Ursaluna ex"
+"@cartas O motor e os atacantes | Solrock, Lunatone, Okidogi, Binacle, Barbaracle, Bloodmoon Ursaluna"
 ],["Solrock","Lunatone","Okidogi","Binacle","Barbaracle","Lillie's Determination","Gwynn","Hassel","Tarragon","Pokégear 3.0"]],
 ["Versão 1: Battle Cage / Patrat (a “ótima”)",[
 "A build que o autor considera a melhor no meta (57–58 cartas fechadas para Louisville; dúvidas: 4ª Cage, 9ª {F} no lugar do Energy Retrieval, Dusk Ball).",
@@ -55,7 +55,7 @@ caps:[
 "- **Fantasmas (Dusknoir):** costuma ser melhor — se eles estourarem um fantasma, você recupera o 2º prêmio perdido. Com 2 Okidogi em jogo, tudo bem.",
 "- **Dudunsparce ex sem Hammers:** o melhor matchup (não descartam suas Rainbow nem “roubam” vitórias com fantasma).",
 "@premios Mapa contra Dragapult | 1-1-2-2 | Budew, Drakloak, Dragapult ex, Fezandipiti ex | Dois prêmios antes do primeiro Phantom Dive; depois um Dragapult em dois ataques e Boss no Fezandipiti/Meowth."
-],["Dragapult ex","Budew","Drakloak","Fezandipiti ex","Meowth ex","Blaziken ex","Crushing Hammer","Dusknoir","Dudunsparce ex","Patrat","Battle Cage","Bloodmoon Ursaluna ex"]],
+],["Dragapult ex","Budew","Drakloak","Fezandipiti ex","Meowth ex","Blaziken ex","Crushing Hammer","Dusknoir","Dudunsparce ex","Patrat","Battle Cage","Bloodmoon Ursaluna"]],
 ["Matchups: Zoroark, Festival Lead, Alakazam",[
 "## N's Zoroark",
 "- Contra um bom piloto com **Yveltal**: ~25/75 ou pior.",
@@ -83,7 +83,7 @@ caps:[
 "- Mapa ideal: **3-3**. Se eles forem de 1 prêmio (Solrock, Hariyama + PPP), o Okidogi supera mesmo assim. Derrota: travar ou levar Judge em turnos seguidos.",
 "## Hide n' Sneak",
 "- Parecido com Alakazam: pegue o 1º prêmio ou perde (o Dhelmise também usa Legacy). Foque nos Dudunsparce; senão, troque rápido nos Dhelmise. Boss KO em Poltchageist com Solrock poupa Prism. Genesect impede a Legacy deles."
-],["Hydrapple ex","Moltres","Teal Mask Ogerpon ex","Bloodmoon Ursaluna ex","Mega Excadrill ex","Genesect ex","Metagross","Mega Lucario ex","Wally's Compassion","Solrock","Dhelmise","Poltchageist","Genesect"]],
+],["Hydrapple ex","Moltres","Teal Mask Ogerpon ex","Bloodmoon Ursaluna","Mega Excadrill ex","Genesect ex","Metagross","Mega Lucario ex","Wally's Compassion","Solrock","Dhelmise","Poltchageist","Genesect"]],
 ["Matchups do 30C e próximos sets",[
 "## Slowking/Mew",
 "- Está explodindo nos regionais. Considere **Shaymin**: basta enfrentar um Slowking para justificar — praticamente vence o matchup, impedindo os Trifrost que perdem jogos do nada. Com Mew ex, o Slowking pivota melhor e joga mais seguro e mais agressivo.",

@@ -21,7 +21,15 @@ for (const d of window.DECKS) if (d.lista) for (const l of d.lista.texto.split("
   if (m) { listas[`${m[2]}|${m[3]}|${parseInt(m[4], 10)}`] = m[2]; nomes.add(m[2]); }
   else { const n = l.match(/^\d+\s+(.+)$/); if (n && !/energy$/i.test(n[1])) nomes.add(n[1]); }
 }
-for (const g of Object.values(window.GUIAS)) for (const c of g.caps) for (const n of (c[2] || [])) nomes.add(n);
+for (const g of Object.values(window.GUIAS)) for (const c of g.caps) {
+  for (const n of (c[2] || [])) nomes.add(n);
+  // cartas citadas nas ilustrações (@mesa/@mao/@premios/@cartas)
+  for (const p of c[1]) if (/^@(mesa|mao|premios|cartas) /.test(p)) for (const seg of p.split(" | ").slice(1)) {
+    const v = seg.replace(/^(Ativo|Banco|Rival ativo|Rival banco):\s*/i, "");
+    if (/^[\d-]+$/.test(v) || /[.!?)]$/.test(v) || v.length > 220) continue;
+    for (const n of v.split(/,\s*/)) { const b = n.replace(/\s*\+.*$/, "").trim(); if (b) nomes.add(b); }
+  }
+}
 
 const api = "https://api.tcgdex.net/v2";
 const get = async u => { const r = await fetch(u); if (!r.ok) throw new Error(r.status); return r.json(); };

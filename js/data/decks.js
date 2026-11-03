@@ -127,7 +127,39 @@ Energy: 9
       ["Latias ex, Fezandipiti ex, Clefairy, Meowth ex", "Suporte (recuo, compra, fraqueza, busca)."],
       ["Crispin, Energy Switch, Prime Catcher, Special Red Card, Area Zero Underdepths", "Aceleração, gust, disrupção e banco maior."]
     ],
-    lista: null,
+    lista: { titulo: "“Our perfect 60” — Mastering the basics of Basic Box (transcrita da imagem)", texto: `Pokémon: 20
+4 Mega Kangaskhan ex
+3 Meowth ex
+2 Lillie's Clefairy ex
+2 Teal Mask Ogerpon ex
+2 Latias ex
+1 Enamorus
+1 Wellspring Mask Ogerpon ex
+1 Raging Bolt ex
+1 Iron Leaves ex
+1 Iron Crown ex
+1 Fezandipiti ex
+1 Chien-Pao
+
+Trainer: 26
+4 Crispin
+2 Cyrano
+2 Boss's Orders
+1 Ciphermaniac's Codebreaking
+4 Ultra Ball
+4 Energy Switch
+2 Night Stretcher
+1 Special Red Card
+1 Prime Catcher
+1 Glass Trumpet
+4 Area Zero Underdepths
+
+Energy: 14
+6 Grass Energy
+3 Psychic Energy
+2 Fighting Energy
+2 Lightning Energy
+1 Water Energy` },
     planoDeJogo: {
       turno1: "Kangaskhan ativo, Teal Mask no banco, preparar o primeiro atacante.",
       turno2: "Começar a tomar prêmios antes de o oponente montar (especialmente vs Dragapult).",
@@ -182,7 +214,7 @@ Energy: 9
       ["Spiritomb", "Finalizador quando o descarte está cheio de HnS."],
       ["Lillie's Clefairy ex (x2)", "Fraqueza nos dragões — 'cheat code' contra Dragapult."],
       ["Patrat, Shaymin", "Patrat anula movimento de contadores; Shaymin protege o banco (Slowking, Wellspring, Grimmsnarl, Zoroark)."],
-      ["Legacy Energy, Telepathic Energy, Night Stretcher, Ultra Ball, Gwynn, Prism Tower", "Motor de descarte e energia."]
+      ["Legacy Energy, Telepathic Psychic Energy, Night Stretcher, Ultra Ball, Gwynn, Prism Tower", "Motor de descarte e energia."]
     ],
     lista: null,
     planoDeJogo: {
@@ -421,7 +453,41 @@ Energy: 5
       ["Festival Grounds", "Habilita o ataque duplo."],
       ["Gladion's Final Battle, Poké Pad, Secret Box (ACE), Air Balloon", "Recursos-chave."]
     ],
-    lista: null,
+    lista: {
+      titulo: "Lista recomendada para Pitch Black — Facu & Elena (base: Japão + Indonesia Master Ball League 2026)",
+      texto: `Pokémon: 21
+4 Grookey TWM 14
+4 Thwackey TWM 15
+3 Applin TWM 17
+1 Applin SCR 12
+3 Dipplin TWM 18
+2 Goldeen TWM 44
+1 Seaking PRE 21
+1 Rellor TEF 23
+1 Rabsca TEF 24
+1 Shaymin DRI 10
+
+Trainer: 34
+4 Lillie's Determination MEG 119
+2 Gladion's Final Battle PBL 77
+2 Boss's Orders MEG 114
+1 Kieran TWM 154
+4 Buddy-Buddy Poffin TEF 144
+4 Poké Pad POR 81
+3 Bug Catching Set TWM 143
+2 Ultra Ball MEG 131
+1 Secret Box TWM 163
+1 Switch MEG 130
+1 Night Stretcher ASC 196
+1 Sacred Ash DRI 168
+2 Brave Bangle WHT 80
+2 Air Balloon ASC 181
+4 Festival Grounds TWM 149
+
+Energy: 5
+4 Grass Energy MEE 1
+1 Growing Grass Energy POR 86`
+    },
     planoDeJogo: {
       turno1: "Sair 1º. Ativo: Goldeen (a menos que tenha Dipplin garantido no próximo turno). Indo 2º às cegas, bancar todos os Pokémon do arquétipo (contra Risky Ruins).",
       turno2: "Atacar duas vezes e tomar 2 prêmios.",
@@ -558,7 +624,32 @@ Energy: 8
       ["Unfair Stamp / Maximum Belt / Secret Box / Hero's Cape / Legacy Energy", "Opções de ACE SPEC por variante."],
       ["Rocky Fighting Energy", "Previne efeitos de ataques (anti-Alakazam)."]
     ],
-    lista: null,
+    lista: { titulo: "Mega Lucario/Hariyama — lista do guia de PixelCheetah (transcrita da imagem)", texto: `Pokémon: 16
+3 Riolu
+3 Mega Lucario ex
+3 Solrock
+2 Makuhita
+2 Hariyama
+2 Lunatone
+1 Meowth ex
+
+Trainer: 33
+4 Lillie's Determination
+2 Judge
+2 Boss's Orders
+1 Team Rocket's Petrel
+1 Wally's Compassion
+4 Fighting Gong
+4 Poké Pad
+4 Premium Power Pro
+4 Ultra Ball
+1 Unfair Stamp
+1 Switch
+2 Air Balloon
+3 Gravity Mountain
+
+Energy: 11
+11 Fighting Energy` },
     planoDeJogo: {
       turno1: "2 Riolu + Lunatone/Solrock; Lunar Cycle para ver mais cartas.",
       turno2: "Mega Lucario e Aura Jab para acelerar o banco.",
@@ -651,7 +742,7 @@ Energy: 8
       ["TR Proton (x4)", "Setup no T1, mesmo indo 1º."],
       ["TR Ariana, TR Archer", "Compra e disrupção ('Archer Wars')."],
       ["TR Articuno, TR Mimikyu, TR Porygon2", "Proteção, pivô/cópia e finalizador."],
-      ["TR Transceiver, Miracle Headset, Roto Stick, Poké Pad, Night Stretcher", "Busca de Supporters/Pokémon."],
+      ["TR Transceiver, Miracle Headset, Roto-Stick, Poké Pad, Night Stretcher", "Busca de Supporters/Pokémon."],
       ["Energias especiais Rocket/Ignition", "Difíceis de buscar — o ponto fraco do deck."]
     ],
     lista: {
@@ -672,7 +763,7 @@ Trainer: 39
 4 Team Rocket's Transceiver
 3 Poké Pad
 1 Ultra Ball
-3 Roto Stick
+3 Roto-Stick
 3 Night Stretcher
 1 Miracle Headset
 4 Team Rocket's Factory
@@ -802,7 +893,35 @@ Energy: 9
       ["Battle Cage + Patrat", "Reduzem o output do Dragapult."],
       ["Bloodmoon Ursaluna, Moltres, Genesect", "Finalizador, anti-Grass, anti-ACE."]
     ],
-    lista: null,
+    lista: { titulo: "Okidogi Battle Cage/Patrat — Kian, para Louisville (transcrita da imagem)", texto: `Pokémon: 16
+3 Okidogi
+3 Solrock
+2 Lunatone
+2 Binacle
+2 Barbaracle
+1 Bloodmoon Ursaluna
+1 Patrat
+1 Shaymin
+1 Moltres
+
+Trainer: 31
+4 Lillie's Determination
+3 Boss's Orders
+2 Gwynn
+2 Tarragon
+1 Hassel
+4 Poké Pad
+4 Fighting Gong
+3 Pokégear 3.0
+2 Night Stretcher
+1 Energy Retrieval
+2 Air Balloon
+3 Battle Cage
+
+Energy: 13
+8 Fighting Energy
+4 Prism Energy
+1 Legacy Energy` },
     planoDeJogo: {
       turno1: "Lunatone + Solrock antes de tudo; Binacle em seguida.",
       turno2: "Lunar Cycle no início do turno e só então decidir o Supporter.",
@@ -845,7 +964,43 @@ Energy: 9
       ["Noctowl, Fan Rotom", "Setup."],
       ["Sparkling Crystal, Energy Switch, Crispin", "Energia."]
     ],
-    lista: null,
+    lista: { titulo: "Tera Box — Marijn van Duivenboden, 164º em Frankfurt (transcrita da imagem)", texto: `Pokémon: 23
+3 Hoothoot
+3 Noctowl
+3 Mega Kangaskhan ex
+2 Fan Rotom
+2 Teal Mask Ogerpon ex
+2 Wellspring Mask Ogerpon ex
+1 Koraidon ex
+1 Terapagos ex
+1 Latias ex
+1 Iron Leaves ex
+1 Fezandipiti ex
+1 Lillie's Clefairy ex
+1 Meowth ex
+1 Chien-Pao
+
+Trainer: 27
+3 Crispin
+2 Boss's Orders
+1 Cyrano
+1 Lillie's Determination
+4 Ultra Ball
+4 Poké Pad
+2 Energy Switch
+2 Night Stretcher
+1 Switch
+1 Glass Trumpet
+1 Tera Orb
+1 Sparkling Crystal
+4 Area Zero Underdepths
+
+Energy: 10
+4 Grass Energy
+2 Water Energy
+2 Psychic Energy
+1 Lightning Energy
+1 Fighting Energy` },
     planoDeJogo: { turno1: "Jewel Seeker antes do oponente montar.", turno2: "Atacante certo para o matchup.", meio: "Controle a quantidade de ex no banco (Dudunsparce ex castiga).", final: "Feche com o atacante que bate em fraqueza." },
     primeiroOuSegundo: "Quase sempre 1º (2º vs Crustle).",
     dicas: ["Pré-banque Fez e Kangaskhan contra Pult; Clefairy só se eles não tiverem energia.", "Máximo de 3 ex no banco se o oponente jogar Dudunsparce ex."],
@@ -880,7 +1035,38 @@ Energy: 9
     resumo: "Flash Ray: dano médio e o Mega Manectric não recebe dano de ataques de Pokémon BÁSICOS no próximo turno. Riotous Blasting 200 (+130 descartando energias).",
     comoFunciona: "Tynamo/Eelektrik aceleram, Mega Eelektross (Split Bomb, dano direto), Manectric baby (barreira contra evoluídos), Kilowattrel (compra), Voltaic Energy, Zekrom, Zeraora (snipa ex no banco), Stunfisk (retreat lock). Battle Cage x3, Hero's Cape + Wally's Compassion, Air Balloon.",
     pecasChave: [["Mega Manectric ex", "Parede contra básicos e OHKO com Riotous Blasting."], ["Tynamo / Eelektrik / Mega Eelektross", "Aceleração e Split Bomb."], ["Manectric (baby)", "Parede contra evoluídos."], ["Battle Cage, Hero's Cape, Wally's Compassion", "Proteção e sustain."]],
-    lista: null,
+    lista: { titulo: "Mega Manectric (30th Celebration) — Emma (transcrita da imagem)", texto: `Pokémon: 18
+3 Tynamo
+3 Eelektrik
+1 Mega Eelektross ex
+3 Electrike
+2 Mega Manectric ex
+1 Manectric
+1 Iono's Wattrel
+1 Iono's Kilowattrel
+1 Meowth ex
+1 Mew ex
+1 Stunfisk
+
+Trainer: 31
+4 Lillie's Determination
+3 Boss's Orders
+2 Canari
+1 Judge
+1 Surfer
+1 Wally's Compassion
+4 Ultra Ball
+4 Buddy-Buddy Poffin
+2 Night Stretcher
+2 Poké Pad
+1 Special Red Card
+2 Air Balloon
+1 Hero's Cape
+3 Battle Cage
+
+Energy: 11
+9 Lightning Energy
+2 Voltaic Lightning Energy` },
     planoDeJogo: { turno1: "Electrike + Tynamos; Battle Cage cedo vs Dragapult.", turno2: "Mega Manectric e Flash Ray.", meio: "Contra decks de básicos: monte o mínimo e seja parede.", final: "Riotous Blasting para OHKO." },
     primeiroOuSegundo: "1º na maioria (Lucario, Slowking, Festival).",
     dicas: ["Energia 8 Lightning / 3 Volt.", "Contra Festival Lead, monte tudo EXCETO o 3-prizer."],
@@ -908,7 +1094,35 @@ Energy: 9
     resumo: "Mew ex (Memory Helix copia ataques; recuo grátis) com suporte Psychic: Frillish trava itens, Dusknoir monta KOs com Cursed Blast e Mega Diancie ex bate até 240.",
     comoFunciona: "Frillish (Oceanic Gloom = item lock), Duskull/Dusclops/Dusknoir, Jellicent ex, Lillie's Clefairy ex, Telepathic Energy, Mystery Garden, Wondrous Patch, Colress's Tenacity, Secret Box, Special Red Card.",
     pecasChave: [["Mew ex", "Copia ataques; recuo grátis."], ["Frillish", "Item lock."], ["Dusclops/Dusknoir", "Cursed Blast monta o prize map."], ["Mega Diancie ex", "Garland Ray até 240."], ["Colress's Tenacity, Mystery Garden", "Busca/compra."]],
-    lista: null,
+    lista: { titulo: "Mew ex / Dusknoir — lista principal do guia (transcrita da imagem)", texto: `Pokémon: 21
+4 Duskull
+3 Dusclops
+2 Dusknoir
+2 Frillish
+1 Jellicent ex
+2 Mew ex
+2 Latias ex
+1 Mega Diancie ex
+1 Lillie's Clefairy ex
+1 Flutter Mane
+1 Fezandipiti ex
+1 Meowth ex
+
+Trainer: 27
+4 Lillie's Determination
+4 Colress's Tenacity
+1 Boss's Orders
+4 Ultra Ball
+3 Night Stretcher
+3 Wondrous Patch
+2 Poké Pad
+2 Special Red Card
+1 Prime Catcher
+3 Mystery Garden
+
+Energy: 12
+8 Psychic Energy
+4 Telepathic Psychic Energy` },
     planoDeJogo: { turno1: "Ir 2º: Supporter no T1 para achar Telepathic e começar o item lock.", turno2: "Oceanic Gloom; peças de Dusknoir.", meio: "Use Cursed Blast para administrar ameaças.", final: "Oceanic Curse + Special Red Card para virar." },
     primeiroOuSegundo: "2º.",
     dicas: ["Contra Dragapult, quebre o item lock deles: 2 Oceanic Gloom no Budew ou Cursed Blast."],
@@ -983,7 +1197,34 @@ Energy: 7
     resumo: "1) Ting-Lu ataca 1–3 vezes espalhando dano; 2) Boss + Pecharunt + Counter Gain prendem e envenenam; 3) Bloodmoon Ursaluna (Mad Bite) finaliza.",
     comoFunciona: "4-4 Dudunsparce como motor, Patrat (limita o dano do Pult no banco a 60), Prism Tower, Prism Energy, Psyduck, Poké Pad, Poffin, 6 estádios.",
     pecasChave: [["Ting-Lu", "Spread e descarte de estádio."], ["Pecharunt + Counter Gain", "Trap + veneno."], ["Bloodmoon Ursaluna", "Finalizador."], ["Dudunsparce 4-4", "Motor reutilizável."]],
-    lista: null,
+    lista: { titulo: "Prism Box (Chaos Rising) — Deck Spotlight (transcrita da imagem)", texto: `Pokémon: 18
+4 Dunsparce
+4 Dudunsparce
+3 Ting-Lu
+2 Pecharunt
+1 Shaymin
+1 Bloodmoon Ursaluna
+1 Psyduck
+1 Patrat
+1 Fan Rotom
+
+Trainer: 32
+4 Lillie's Determination
+3 Boss's Orders
+3 Hilda
+4 Buddy-Buddy Poffin
+4 Poké Pad
+2 Night Stretcher
+2 Fighting Gong
+1 Unfair Stamp
+1 Accompanying Flute
+2 Counter Gain
+3 Festival Grounds
+3 Prism Tower
+
+Energy: 10
+7 Fighting Energy
+3 Prism Energy` },
     planoDeJogo: { turno1: "Dunsparces em campo.", turno2: "Ting-Lu começa o spread.", meio: "Boss + Pecharunt para prender.", final: "Bloodmoon one-shot." },
     primeiroOuSegundo: "—",
     dicas: ["Use os dois Dudunsparce antes do Poffin para buscar os mesmos de novo.", "Prism Tower: descarte primeiro os Pokémon inúteis no matchup."], erros: ["Overbench/pré-bench Pecharunt contra Phantom Dive."], prizeMaps: [], matchups: {},
@@ -1114,7 +1355,41 @@ Energy: 13
     resumo: "Gardevoir ex (Psychic Embrace) acelera energias; Frillish trava itens; Munkidori move dano.",
     comoFunciona: "Frillish/Jellicent ex, Gardevoir ex, Munkidori, Lillie's Clefairy ex, Mew ex, Scream Tail, Bravery Charm, TM Devolution, Counter Catcher, Team Rocket's Watchtower (tech vs Pidgeot/Fan Rotom/Noctowl).",
     pecasChave: [["Frillish", "Item lock."], ["Gardevoir ex", "Aceleração."], ["Munkidori", "Move dano."]],
-    lista: null,
+    lista: { titulo: "Gardevoir/Jellicent v2 (Seattle) — Elijah Pereira (transcrita da imagem)", texto: `Pokémon: 17
+2 Ralts
+1 Kirlia
+2 Gardevoir ex
+3 Munkidori
+2 Frillish
+1 Jellicent ex
+1 Scream Tail
+1 Lillie's Clefairy ex
+1 Latias ex
+1 Mew ex
+1 Mega Diancie ex
+1 Fezandipiti ex
+
+Trainer: 33
+4 Iono
+4 Lillie's Determination
+1 Arven
+1 Professor Turo's Scenario
+4 Ultra Ball
+3 Nest Ball
+3 Earthen Vessel
+3 Rare Candy
+2 Night Stretcher
+1 Super Rod
+1 Counter Catcher
+1 Secret Box
+2 Bravery Charm
+1 Technical Machine: Devolution
+1 Artazon
+1 Mystery Garden
+
+Energy: 10
+7 Psychic Energy
+3 Darkness Energy` },
     planoDeJogo: { turno1: "Prize check na 1ª busca.", turno2: "Frillish item lock.", meio: "Munkidori.", final: "Devolution / Mew." },
     primeiroOuSegundo: "Depende.",
     dicas: ["Contra Gholdengo NÃO evolua para Jellicent (perde para Boss)."], erros: [], prizeMaps: ["vs Ceruledge: Scream Tail 2 → Gnome Hacking 2 → 1 + 1."], matchups: {},
@@ -1130,10 +1405,37 @@ Energy: 13
     formato: "Standard",
     status: "rogue",
     dificuldade: 3,
-    resumo: "Guia em espanhol (conteúdo majoritariamente em imagens): força no late game quando Mega Meganium e Mega Venusaur (o maior HP do jogo, 380) estão em campo.",
-    comoFunciona: "Motor de compra, motor de busca, early game indo 1º/2º e fraquezas do deck são discutidos no guia original.",
-    pecasChave: [["Mega Venusaur ex", "Um dos atacantes mais fortes do formato (380 HP)."], ["Mega Meganium", "Suporte/aceleração."]],
-    lista: null, planoDeJogo: { turno1: "Montar as linhas Stage 2.", turno2: "—", meio: "—", final: "Late game com os dois Megas." }, primeiroOuSegundo: "Veja o guia.", dicas: [], erros: [], prizeMaps: [], matchups: {},
+    resumo: "Deck agressivo e linear de Planta: evoluir as 3 linhas (Venusaur, Meganium, Mega Meganium) o quanto antes com Forest of Vitality e bater muito alto com o Giant Bouquet do Mega Meganium ex (70 + 50 por Energia {G}; com Wild Growth do Meganium, até 570).",
+    comoFunciona: "Mega Venusaur ex (380 HP) fica no Banco movendo Energias {G} com Solar Transfer; Meganium (Wild Growth) faz cada {G} contar dobrado; Teal Mask Ogerpon ex é motor de compra (Teal Dance) e atacante; Celebi (Traverse Time) busca Estádio + Pokémon {G}; Bug Catching Set, Poké Pad e Ultra Ball formam o motor de busca. Mega Meganium ex fecha com Giant Bouquet (5 energias = 320, KO no Dragapult).",
+    pecasChave: [["Mega Venusaur ex", "Solar Transfer (move {G} à vontade) e Jungle Dump 240; 380 HP."], ["Mega Meganium ex", "Giant Bouquet: 70 + 50 por {G} — a arma secreta."], ["Meganium", "Wild Growth: cada {G} básica conta como 2."], ["Teal Mask Ogerpon ex", "Teal Dance: liga {G} e compra; atacante cedo."], ["Celebi", "Traverse Time: busca Estádio e Pokémon {G}."], ["Forest of Vitality", "Evolui Planta no mesmo turno (até Estágio 2)."]],
+    lista: { titulo: "Mega Venusaur / Mega Meganium — Joe Jordan (transcrita da imagem do guia)", texto: `Pokémon: 23
+2 Bulbasaur
+2 Ivysaur
+2 Mega Venusaur ex
+3 Chikorita
+3 Bayleef
+2 Meganium
+1 Mega Meganium ex
+4 Teal Mask Ogerpon ex
+2 Meowth ex
+1 Fezandipiti ex
+1 Celebi
+
+Trainer: 25
+4 Lillie's Determination
+2 Boss's Orders
+1 Judge
+1 Lana's Aid
+1 Wally's Compassion
+4 Bug Catching Set
+4 Ultra Ball
+2 Night Stretcher
+1 Poké Pad
+1 Unfair Stamp
+4 Forest of Vitality
+
+Energy: 12
+12 Grass Energy` }, planoDeJogo: { turno1: "Indo 1º: Teal Mask Ogerpon ex Ativo com 2 energias (Teal Dance + ligação) e 1–2 Chikorita/Bulbasaur no Banco. Indo 2º: Celebi busca Forest of Vitality + Pokémon de evolução.", turno2: "Forest of Vitality evolui as linhas; Ogerpon nocauteia com a 3ª energia.", meio: "Monte Meganium e Venusaur; evolua o Mega Meganium só com as 3 linhas no Banco (evita KO precoce).", final: "Solar Transfer concentra a energia no Mega Meganium: Giant Bouquet nocauteia qualquer coisa." }, primeiroOuSegundo: "Os dois funcionam: 1º com Ogerpon agressivo; 2º com Celebi e Bulbasaur (retreat lock).", dicas: ["Para KO no Dragapult ex o Giant Bouquet precisa de 5 Energias (320).", "Com Meganium, o Myriad Leaf Shower do Ogerpon chega a 210 de base.", "Bug Catching Set no início; Poké Pad para as evoluções; Ultra Ball para os ex."], erros: ["Evoluir o Mega Meganium cedo, sem as 3 linhas montadas.", "Ignorar Bronzong (bloqueio de evolução) e Ethan's Typhlosion (fraqueza)."], prizeMaps: ["2-2-2 com Ogerpon/Meganium contra ex", "3-3 contra Megas"], matchups: {},
     fontes: [{ titulo: "Guía para usar a Venusaur (ES)", url: "https://metafy.gg/guides/view/guia-para-usar-a-venusaur-UUjgfcW2GZN" }],
     assinatura: ["Mega Venusaur ex", "Bulbasaur", "Ivysaur", "Mega Meganium ex", "Chikorita"]
   },

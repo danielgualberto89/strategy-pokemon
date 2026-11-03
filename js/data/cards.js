@@ -58,7 +58,7 @@ window.CARDS = (function () {
   add("Energy Search Pro", { cat: "T", sub: "item", papeis: ["busca"], d: "Busca energias de tipos diferentes (ACE SPEC).", ace: true });
   add("Pokégear 3.0", { cat: "T", sub: "item", papeis: ["busca"], d: "Olha o topo e pega um Supporter." });
   add("Team Rocket's Transceiver", { cat: "T", sub: "item", papeis: ["busca"], d: "Busca Supporter TR." });
-  add("Roto Stick", { cat: "T", sub: "item", papeis: ["busca"], d: "Procura Supporters." });
+  add("Roto-Stick", { cat: "T", sub: "item", papeis: ["busca"], d: "Procura Supporters." });
   add("Rare Candy", { cat: "T", sub: "item", papeis: ["busca"], d: "Básico → Stage 2 (não no 1º turno nem em Pokémon que entrou neste turno)." });
   add("Night Stretcher", { cat: "T", sub: "item", papeis: ["recuperacao"], d: "Recupera Pokémon ou energia básica do descarte." });
   add("Super Rod", { cat: "T", sub: "item", papeis: ["recuperacao"], d: "Embaralha até 3 Pokémon/energias básicas no deck." });
@@ -123,7 +123,7 @@ window.CARDS = (function () {
   add("Enriching Energy", { cat: "E", papeis: ["compra"], ace: true, d: "ACE SPEC: compra 4 ao ligar." });
   add("Neo Upper Energy", { cat: "E", papeis: ["acel"], ace: true, d: "ACE SPEC: 2 energias de qualquer tipo em Stage 2." });
   add("Telepathic Psychic Energy", { cat: "E", papeis: ["busca", "acel"], d: "Ao ligar, busca básicos Psychic." });
-  add("Telepathic Energy", { cat: "E", papeis: ["busca", "acel"], d: "Ao ligar, busca básicos Psychic." });
+  add("Telepathic Psychic Energy", { cat: "E", papeis: ["busca", "acel"], d: "Ao ligar, busca básicos Psychic." });
   add("Mist Energy", { cat: "E", papeis: ["protecao"], d: "Previne efeitos de ataques (anula contadores do Alakazam, spread)." });
   add("Rocky Fighting Energy", { cat: "E", papeis: ["protecao"], d: "Previne efeitos de ataques no Pokémon Fighting." });
   add("Prism Energy", { cat: "E", papeis: ["acel"], d: "Todos os tipos em Pokémon Básico (1 por vez)." });
@@ -131,7 +131,7 @@ window.CARDS = (function () {
   add("Growing Grass Energy", { cat: "E", papeis: ["cura"], d: "+20 HP." });
   add("Ignition Energy", { cat: "E", papeis: ["acel"], d: "Energia especial (Porygon2 TR)." });
   add("Team Rocket's Energy", { cat: "E", papeis: ["acel"], d: "Energia especial TR." });
-  add("Voltaic Energy", { cat: "E", papeis: ["dano"], d: "Mais dano para Manectric." });
+  add("Voltaic Lightning Energy", { cat: "E", papeis: ["dano"], d: "Mais dano para Manectric." });
   add("Double Dragon Energy", { cat: "E", papeis: ["acel"], d: "Expanded: 2 energias para dragões." });
 
   /* ---------- Pokémon ---------- */

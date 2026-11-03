@@ -94,7 +94,7 @@ GUIA("g04", {
       "- Não caia no Unfair Stamp cedo sem board: com mão ruim, talvez valha matar o Budew com Teleportation Burst — mas com board fraco, dar a eles um Stamp pode ser decisivo.",
       "- Contra builds de Dusknoir, a Lillie's Clefairy ex tem HP infeliz: com seus Pokémon de 2 prêmios mais fracos em jogo, um Cursed Blast pode render 4 prêmios a eles e ainda tirar a Clefairy.",
       "Conclusão: favorável, porque você pressiona mais cedo do que eles aguentam. Ganhar a 'guerra de Budew' é o que decide, e o Oceanic Gloom quase garante isso — seu atacante de item lock tem mais que o dobro do HP do Budew."
-    ], ["Dragapult ex", "Recon Directive", "Mystery Garden", "Dusclops", "Crushing Hammer", "Dusknoir", "Mew ex", "Lillie's Clefairy ex", "Jellicent ex", "Special Red Card", "Budew", "Frillish", "Unfair Stamp", "Boss's Orders", "Prime Catcher", "Dreepy", "Drakloak", "Fezandipiti ex", "Crispin", "Rosa's Encouragement", "Wondrous Patch", "Night Stretcher", "Mega Diancie ex", "Latias ex", "Munkidori"]],
+    ], ["Dragapult ex", "Mystery Garden", "Dusclops", "Crushing Hammer", "Dusknoir", "Mew ex", "Lillie's Clefairy ex", "Jellicent ex", "Special Red Card", "Budew", "Frillish", "Unfair Stamp", "Boss's Orders", "Prime Catcher", "Dreepy", "Drakloak", "Fezandipiti ex", "Crispin", "Rosa's Encouragement", "Wondrous Patch", "Night Stretcher", "Mega Diancie ex", "Latias ex", "Munkidori"]],
 
     ["Conclusão e atualizações", [
       "O guia ainda é enxuto; o autor planeja adicionar setup de abertura, simulações de Cursed Blast e guias por matchup.",
