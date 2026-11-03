@@ -217,7 +217,7 @@
   function vGuias() {
     const gs = Object.values(window.GUIAS || {}).sort((a, b) => a.id.localeCompare(b.id));
     const porDeck = id => gs.filter(g => g.deck === id);
-    app.innerHTML = `<section class="vista"><div class="bloco"><h2>Guias completos</h2><p class="lead">Cada guia reescrito em português, capítulo por capítulo, com as cartas citadas em imagem. ${gs.length} guias, ordenados como no Metafy. Os que eram só vídeo trazem a lista e um resumo do que os outros guias dizem.</p></div>
+    app.innerHTML = `<section class="vista"><div class="bloco"><h2>Guias completos</h2><p class="lead">Cada guia reescrito em português, capítulo por capítulo, com as cartas citadas em imagem. ${gs.length} guias: os 30 gratuitos do Metafy (g01–g30) e 15 decks do meta japonês traduzidos do Pokemite (g31–g45). Os que eram só vídeo trazem a lista e um resumo do que os outros guias dizem.</p></div>
       <div class="grade">${gs.map(g => { const d = DECKS.find(x => x.id === g.deck); return `<a class="cartao" href="${d ? `#deck-${g.deck}~guia-${g.id}` : `#guia-${g.id}`}"><span class="rotulo">${esc(d ? d.nome : (g.deck === "expanded" ? "Formato Expanded" : g.deck))}</span><h3>${esc(g.titulo)}</h3><p class="nota">por ${esc(g.autor)} · ${g.caps.length} capítulos · ${esc(g.formato)}</p>${tira(g.caps.flatMap(c => c[2] || []).slice(0, 4)).replace('<span class="rotulo">Cartas citadas</span>', "")}</a>`; }).join("")}</div></section>`;
   }
 

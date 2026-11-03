@@ -1454,18 +1454,775 @@ Energy: 12
     matchups: { "honchkrow": { r: -1, ir: "—", p: "Honchkrow bate em fraqueza no Mewtwo (3 Supporters)." }, "mega-manectric": { r: -1, ir: "—", p: "Flash Ray mata Spidops sem troca." }, "zoroark": { r: -1, ir: "—", p: "Zoroark foca nos Spidops." } },
     fontes: [{ titulo: "Team Rocket's Mewtwo Masterclass", url: "https://metafy.gg/guides/view/team-rockets-mewtwo-masterclass-as-of-phan-mqPMEo8eVm3" }],
     assinatura: ["Team Rocket's Mewtwo ex", "Team Rocket's Spidops", "Team Rocket's Tarountula"]
+  },
+  {
+    "id": "mega-rayquaza",
+    "nome": "Mega Rayquaza ex / Talonflame ex",
+    "apelidos": [
+      "Mega Ray",
+      "Rayquaza",
+      "Mega Rayquaza"
+    ],
+    "estilo": "Big Basics com Mega Evolução",
+    "formato": "Standard (meta japonês, Pokemite)",
+    "status": "meta",
+    "dificuldade": 3,
+    "resumo": "Storm Emerald: 50 × as Energias {R} e {L} em todos os seus Pokémon. Mega Kangaskhan ex e Talonflame ex montam o início; o Mega Rayquaza ex fecha nocauteando ex grandes.",
+    "comoFunciona": "Talonflame ex entra da mão de graça se houver uma Mega Evolução incolor em jogo e ataca por 150 buscando 2 cartas. O Kangaskhan compra 2 no Ativo; Ethan's Ho-Oh ex e a habilidade do Rayquaza aceleram energia, que pode ficar espalhada no Banco (também conta no dano).",
+    "pecasChave": [
+      [
+        "Mega Rayquaza ex",
+        "Atacante: 50 por Energia {R}/{L} no tabuleiro."
+      ],
+      [
+        "Talonflame ex",
+        "Entra da mão, 150 + busca 2."
+      ],
+      [
+        "Mega Kangaskhan ex",
+        "Run Errand no Ativo; parede de 300 HP."
+      ],
+      [
+        "Ethan's Ho-Oh ex",
+        "Liga até 2 {R} da mão no Banco."
+      ],
+      [
+        "Latias ex",
+        "Skyliner: recuo zero."
+      ],
+      [
+        "Hero's Cape",
+        "ACE SPEC preferido pelos avançados."
+      ]
+    ],
+    "lista": {
+      "titulo": "Mega Rayquaza (Legendary Lava Lake) — Pokeca Casual, 29/10/2026",
+      "texto": "Pokémon: 15\n2 Mega Rayquaza ex\n3 Mega Kangaskhan ex\n2 Talonflame ex\n2 Ethan's Ho-Oh ex\n2 Latias ex\n1 Bloodmoon Ursaluna ex\n1 Raikou ex\n1 Fezandipiti ex\n1 Meowth ex\n\nTrainer: 30\n4 Ultra Ball\n4 Energy Switch\n2 Switch\n2 Adventurer's Lantern\n1 Special Red Card\n1 Hero's Cape\n3 Cyrano\n3 Boss's Orders\n2 Crispin\n2 Judge\n1 Lillie's Determination\n1 Black Belt's Training\n4 Legendary Lava Lake\n\nEnergy: 15\n10 Fire Energy\n5 Lightning Energy"
+    },
+    "variantes": [
+      "Talonflame ex (padrão)",
+      "Legendary Mountain Peak (Rayquaza cede 2 prêmios)",
+      "Legendary Lava Lake (contra 1 prêmio)",
+      "Iono's Bellibolt ex ou Terapagos ex como fonte de energia"
+    ],
+    "planoDeJogo": {
+      "turno1": "Mega Kangaskhan ex Ativo; Talonflame ex com Ignition Energy; Mega Rayquaza ex e Ho-Oh ex no Banco.",
+      "turno2": "Talonflame ex pega os primeiros 2 prêmios buscando o que falta.",
+      "meio": "Energia espalhada; Energy Switch concentra no Rayquaza; Latias troca.",
+      "final": "Boss's Orders num alvo certo; Glass Trumpet mantém o dano."
+    },
+    "primeiroOuSegundo": "Os dois: 2º para usar Apoiador no T1 e ativar o Talonflame; 1º para firmar o tabuleiro.",
+    "dicas": [
+      "Sempre pegue prêmio no turno em que atacar.",
+      "Espalhe a energia para perder menos num KO.",
+      "Team Rocket's Watchtower para o Rayquaza e o Kangaskhan — tenha como trocar o Estádio."
+    ],
+    "erros": [
+      "Concentrar toda a energia num só Pokémon.",
+      "Baixar muitos ex contra Dudunsparce ex (Tenacious Tail)."
+    ],
+    "prizeMaps": [
+      "2-3",
+      "2-2-2"
+    ],
+    "matchups": {
+      "dragapult": {
+        "r": 1,
+        "ir": "2º",
+        "p": "Com o Talonflame pegando prêmios primeiro enquanto monta, vence de forma unilateral."
+      },
+      "alakazam": {
+        "r": -1,
+        "ir": "1º",
+        "p": "1 prêmio: corrida desfavorável."
+      },
+      "festival-lead": {
+        "r": -1,
+        "ir": "1º",
+        "p": "1 prêmio com ataque duplo: corrida desfavorável."
+      },
+      "slowking": {
+        "r": -1,
+        "ir": "1º",
+        "p": "1 prêmio: corrida desfavorável."
+      },
+      "raging-bolt": {
+        "r": 0,
+        "ir": "—",
+        "p": "Tapu Koko ex explora sua fraqueza a {L}."
+      }
+    },
+    "fontes": [
+      {
+        "titulo": "Pokemite — guia do deck (japonês)",
+        "url": "https://pokemite.com/deck/mega-rayquaza/"
+      }
+    ],
+    "assinatura": [
+      "Mega Rayquaza ex",
+      "Talonflame ex",
+      "Mega Kangaskhan ex",
+      "Ethan's Ho-Oh ex",
+      "Latias ex"
+    ]
+  },
+  {
+    "id": "raging-bolt",
+    "nome": "Raging Bolt ex (Takeru Raiko)",
+    "apelidos": [
+      "Raging Bolt",
+      "Bolt",
+      "Takeru Raiko"
+    ],
+    "estilo": "Big Basics de dano sem teto",
+    "formato": "Standard (meta japonês, Pokemite)",
+    "status": "meta",
+    "dificuldade": 3,
+    "resumo": "Bellowing Thunder: descarta quantas energias básicas quiser e dá 70 por energia. Teal Mask Ogerpon ex (Teal Dance) e Crispin acumulam energia; Mega Kangaskhan ex e Talonflame ex montam o início.",
+    "comoFunciona": "Deck de Básicos: sem esperar evolução, pode atacar forte no T1 indo segundo. 4–5 energias descartadas nocauteiam ex de 280–340 HP, e o Raging Bolt ex não tem fraqueza. Fezandipiti ex e Iron Leaves ex reconstroem depois de um KO.",
+    "pecasChave": [
+      [
+        "Raging Bolt ex",
+        "Bellowing Thunder: 70 × energias descartadas."
+      ],
+      [
+        "Teal Mask Ogerpon ex",
+        "Teal Dance: liga {G} e compra."
+      ],
+      [
+        "Mega Kangaskhan ex",
+        "Run Errand no Ativo."
+      ],
+      [
+        "Talonflame ex",
+        "150 + busca 2."
+      ],
+      [
+        "Crispin",
+        "{L} e {F} de uma vez."
+      ],
+      [
+        "Latias ex",
+        "Zera o recuo de 3 do Raging Bolt."
+      ]
+    ],
+    "lista": {
+      "titulo": "Raging Bolt / Teal Mask — Pokeca Casual, 14/10/2026",
+      "texto": "Pokémon: 9\n3 Raging Bolt ex\n4 Teal Mask Ogerpon ex\n1 Koraidon\n1 Lillie's Clefairy ex\n\nTrainer: 31\n4 Ultra Ball\n3 Tera Orb\n4 Bug Catching Set\n4 Pokégear 3.0\n4 Pokémon Catcher\n2 Energy Retrieval\n1 Unfair Stamp\n4 Lillie's Determination\n4 Crispin\n1 Boss's Orders\n\nEnergy: 20\n4 Lightning Energy\n4 Fighting Energy\n11 Grass Energy\n1 Psychic Energy"
+    },
+    "variantes": [
+      "Mega Kangaskhan ex + Talonflame ex (padrão)",
+      "Muitos Meowth ex + Area Zero",
+      "Tapu Koko ex / Lillie's Clefairy ex como secundários",
+      "Mega Yanma ex"
+    ],
+    "planoDeJogo": {
+      "turno1": "Indo 2º: Crispin + Teal Dance e já ataca. Indo 1º: Area Zero para ampliar o Banco.",
+      "turno2": "Bellowing Thunder descartando só o necessário.",
+      "meio": "Fezandipiti ex e Iron Leaves ex para revidar depois de um KO.",
+      "final": "Boss's Orders/Prime Catcher e energia exata para os prêmios restantes."
+    },
+    "primeiroOuSegundo": "Os dois funcionam: 2º para atacar no T1, 1º com Area Zero para o T2 garantido.",
+    "dicas": [
+      "Descarte só o necessário e deixe energia para o próximo ataque.",
+      "Não tem fraqueza: ninguém o devolve por fraqueza."
+    ],
+    "erros": [
+      "Ficar sem energia no tabuleiro e ser preso por Boss's Orders.",
+      "Baixar muitos ex contra Dudunsparce ex."
+    ],
+    "prizeMaps": [
+      "2-2-2"
+    ],
+    "matchups": {
+      "dragapult": {
+        "r": -1,
+        "ir": "2º",
+        "p": "Ataque antes de o tabuleiro dele ficar pronto, senão sofre KOs múltiplos."
+      },
+      "alakazam": {
+        "r": -1,
+        "ir": "1º",
+        "p": "Só pega 1 prêmio por vez."
+      },
+      "festival-lead": {
+        "r": -1,
+        "ir": "1º",
+        "p": "1 prêmio."
+      },
+      "slowking": {
+        "r": -1,
+        "ir": "1º",
+        "p": "1 prêmio."
+      },
+      "mega-rayquaza": {
+        "r": 1,
+        "ir": "—",
+        "p": "Tapu Koko ex explora a fraqueza a {L} dele."
+      }
+    },
+    "fontes": [
+      {
+        "titulo": "Pokemite — guia do deck (japonês)",
+        "url": "https://pokemite.com/deck/takeruraiko/"
+      }
+    ],
+    "assinatura": [
+      "Raging Bolt ex",
+      "Teal Mask Ogerpon ex",
+      "Crispin",
+      "Mega Kangaskhan ex",
+      "Talonflame ex"
+    ]
+  },
+  {
+    "id": "prism-bullet",
+    "nome": "Prism Bullet (Ogerpon Bullet)",
+    "apelidos": [
+      "Prism Bullet",
+      "Ogerpon Bullet",
+      "Bala Prisma"
+    ],
+    "estilo": "Basic Box multitipo",
+    "formato": "Standard (meta japonês, Pokemite)",
+    "status": "meta",
+    "dificuldade": 4,
+    "resumo": "Só Básicos, e a Prism Energy (todos os tipos num Básico) junta atacantes de vários tipos. Teal Mask Ogerpon ex acelera e compra; Energy Switch e N's Plan reposicionam a energia para o atacante certo contra cada oponente.",
+    "comoFunciona": "Lillie's Clefairy ex põe os Dragões em fraqueza {P}; Latias ex zera o recuo; Wellspring Mask Ogerpon ex faz 2 KOs; Pecharunt prende e envenena. Não depende de um ás: muda o caminho de vitória em cada matchup.",
+    "pecasChave": [
+      [
+        "Teal Mask Ogerpon ex",
+        "Teal Dance: aceleração + compra."
+      ],
+      [
+        "Prism Energy",
+        "Todos os tipos em Básicos."
+      ],
+      [
+        "Lillie's Clefairy ex",
+        "Fairy Zone: Dragões fracos a {P}."
+      ],
+      [
+        "Latias ex",
+        "Skyliner: trocas grátis."
+      ],
+      [
+        "Wellspring Mask Ogerpon ex",
+        "Torrential Pump: 2 KOs."
+      ],
+      [
+        "Pecharunt",
+        "Veneno + retreat lock."
+      ]
+    ],
+    "lista": {
+      "titulo": "Prism Bullet — Pokeca Casual, 12/10/2026",
+      "texto": "Pokémon: 19\n4 Teal Mask Ogerpon ex\n1 Wellspring Mask Ogerpon ex\n2 Latias ex\n2 Mega Kangaskhan ex\n2 Meowth ex\n1 Fezandipiti ex\n1 Pecharunt ex\n2 Lillie's Clefairy ex\n1 Koraidon ex\n2 Pecharunt\n1 Chi-Yu\n\nTrainer: 27\n1 Ogre's Mask\n4 Ultra Ball\n2 Bug Catching Set\n1 Tera Orb\n1 Night Stretcher\n1 Unfair Stamp\n4 Energy Switch\n4 Lillie's Determination\n3 Boss's Orders\n1 N's Plan\n1 Cyrano\n1 Ciphermaniac's Codebreaking\n2 Area Zero Underdepths\n1 Jamming Tower\n\nEnergy: 14\n4 Prism Energy\n9 Grass Energy\n1 Darkness Energy"
+    },
+    "variantes": [
+      "Lillie's Clefairy ex (básico)",
+      "Wellspring Mask Ogerpon ex",
+      "Koraidon ex (mirror)",
+      "Mew ex (30th)"
+    ],
+    "planoDeJogo": {
+      "turno1": "Indo 2º: muitos Básicos para vários Teal Dance.",
+      "turno2": "Escolha o atacante principal conforme o oponente.",
+      "meio": "Area Zero, vários Teal Mask; Chi-Yu quebra o Estádio do oponente.",
+      "final": "Passe a energia para os seguintes; Unfair Stamp no turno certo."
+    },
+    "primeiroOuSegundo": "Normalmente 2º.",
+    "dicas": [
+      "Defina cedo o atacante principal e se o retreat lock funciona.",
+      "Contra 1 prêmio: Torrential Pump e veneno do Pecharunt."
+    ],
+    "erros": [
+      "Esquecer que a Prism só se move com N's Plan (e a básica com Energy Switch)."
+    ],
+    "prizeMaps": [
+      "2-2-2 contra ex",
+      "KO duplo do Torrential Pump contra 1 prêmio"
+    ],
+    "matchups": {
+      "dragapult": {
+        "r": 1,
+        "ir": "2º",
+        "p": "Lillie's Clefairy ex põe o Dragapult em fraqueza {P}."
+      },
+      "zoroark": {
+        "r": 1,
+        "ir": "—",
+        "p": "Zoroark é fraco a {G}: Teal Mask nocauteia."
+      },
+      "festival-lead": {
+        "r": -1,
+        "ir": "—",
+        "p": "1 prêmio vira no fim."
+      },
+      "hide-n-sneak": {
+        "r": -1,
+        "ir": "—",
+        "p": "1 prêmio."
+      },
+      "alakazam": {
+        "r": -1,
+        "ir": "—",
+        "p": "1 prêmio."
+      }
+    },
+    "fontes": [
+      {
+        "titulo": "Pokemite — guia do deck (japonês)",
+        "url": "https://pokemite.com/deck/prism-bullet/"
+      }
+    ],
+    "assinatura": [
+      "Prism Energy",
+      "Teal Mask Ogerpon ex",
+      "Lillie's Clefairy ex",
+      "Latias ex",
+      "Pecharunt",
+      "Energy Switch"
+    ]
+  },
+  {
+    "id": "grimmsnarl",
+    "nome": "Marnie's Grimmsnarl ex / Froslass",
+    "apelidos": [
+      "Grimmsnarl",
+      "Snarl",
+      "Menoko-Mashira"
+    ],
+    "estilo": "Estágio 2 de contadores",
+    "formato": "Standard (meta japonês, Pokemite)",
+    "status": "meta",
+    "dificuldade": 4,
+    "resumo": "Punk Up liga até 5 {D} do baralho ao evoluir; Shadow Bullet dá 180 + 30 no Banco. Froslass (Freezing Shroud) espalha contadores a cada checkup e os Munkidori devolvem ao oponente.",
+    "comoFunciona": "Spikemuth Gym busca Pokémon de Marnie todo turno; Rare Candy funciona com o Punk Up. Três Munkidori com {D} movem 90 por turno: 180 + 90 = 270. Budew trava Itens para dar tempo.",
+    "pecasChave": [
+      [
+        "Marnie's Grimmsnarl ex",
+        "Punk Up + Shadow Bullet."
+      ],
+      [
+        "Froslass",
+        "Freezing Shroud: contadores em Pokémon com habilidade."
+      ],
+      [
+        "Munkidori",
+        "Adrena-Brain (3–4 cópias)."
+      ],
+      [
+        "Spikemuth Gym",
+        "Busca Pokémon de Marnie."
+      ],
+      [
+        "Budew",
+        "Trava de Itens."
+      ]
+    ],
+    "lista": {
+      "titulo": "Marnie's Grimmsnarl — Pokeca Casual, 28/10/2026",
+      "texto": "Pokémon: 20\n3 Marnie's Grimmsnarl ex\n2 Marnie's Morgrem\n3 Marnie's Impidimp\n1 Snorunt\n1 Froslass\n3 Munkidori\n3 Dunsparce\n2 Dudunsparce\n1 Dudunsparce ex\n1 Budew\n\nTrainer: 31\n1 Energy Switch\n2 Rare Candy\n3 Buddy-Buddy Poffin\n2 Night Stretcher\n4 Poké Pad\n1 Ultra Ball\n1 Hero's Cape\n3 Boss's Orders\n2 Team Rocket's Proton\n4 Lillie's Determination\n3 Dawn\n1 Judge\n3 Spikemuth Gym\n1 Risky Ruins\n\nEnergy: 9\n9 Darkness Energy"
+    },
+    "variantes": [
+      "Froslass + Munkidori (principal)"
+    ],
+    "planoDeJogo": {
+      "turno1": "Impidimp e Snorunt com Poffin; Proton busca Spikemuth Gym ou Rare Candy; Estádio primeiro.",
+      "turno2": "Evolua (Rare Candy) e use o Punk Up.",
+      "meio": "Ligação manual nos Munkidori; decida se baixa o Froslass.",
+      "final": "Boss's Orders no Pokémon cheio de contadores; 2 KOs no turno."
+    },
+    "primeiroOuSegundo": "Depende: o Budew no T1 ajuda indo 2º contra decks de Itens.",
+    "dicas": [
+      "Contra Dragapult/Lucario, às vezes não baixe o Froslass (os contadores colocam você no alcance).",
+      "Dudunsparce escapa do Freezing Shroud ao voltar ao baralho."
+    ],
+    "erros": [
+      "Deixar o próprio tabuleiro desmoronar sem limpar contadores com Munkidori."
+    ],
+    "prizeMaps": [
+      "2-2-2 com KOs duplos"
+    ],
+    "matchups": {
+      "hydrapple": {
+        "r": -2,
+        "ir": "—",
+        "p": "Fraco a {G} e eles curam."
+      },
+      "prism-bullet": {
+        "r": -1,
+        "ir": "—",
+        "p": "Teal Mask explora a fraqueza."
+      },
+      "excadrill": {
+        "r": -1,
+        "ir": "—",
+        "p": "OHKO deles anula a tática de contadores."
+      },
+      "raging-bolt": {
+        "r": -1,
+        "ir": "—",
+        "p": "Dano sem teto."
+      },
+      "alakazam": {
+        "r": -1,
+        "ir": "—",
+        "p": "Battle Cage bloqueia contadores no Banco."
+      },
+      "dragapult": {
+        "r": 1,
+        "ir": "—",
+        "p": "Spread de contadores contra Estágio 2."
+      }
+    },
+    "fontes": [
+      {
+        "titulo": "Pokemite — guia do deck (japonês)",
+        "url": "https://pokemite.com/deck/marnie-orronge/"
+      }
+    ],
+    "assinatura": [
+      "Marnie's Grimmsnarl ex",
+      "Marnie's Impidimp",
+      "Froslass",
+      "Munkidori",
+      "Spikemuth Gym"
+    ]
+  },
+  {
+    "id": "excadrill",
+    "nome": "Mega Excadrill ex / Metang",
+    "apelidos": [
+      "Excadrill",
+      "Drill",
+      "Doryuzu"
+    ],
+    "estilo": "Mega Estágio 1 de Metal",
+    "formato": "Standard (meta japonês, Pokemite)",
+    "status": "meta",
+    "dificuldade": 3,
+    "resumo": "Metal Maker do Metang liga {M} das 4 de cima; o Mega Excadrill ex (340 HP) com 5 energias dá 330 (Maximum Drill). Genesect ex busca evoluções {M}; Precious Trolley monta tudo no T1 indo segundo.",
+    "comoFunciona": "Dois Metang = dois Metal Maker por turno. Undermine (90 + mill 2) nos turnos sem 5 energias. Jumbo Ice Cream cura 80; Gravity Mountain só enfraquece Estágio 2 (o Excadrill é Estágio 1).",
+    "pecasChave": [
+      [
+        "Mega Excadrill ex",
+        "Maximum Drill 330 com 5 energias."
+      ],
+      [
+        "Metang",
+        "Metal Maker: aceleração."
+      ],
+      [
+        "Genesect ex",
+        "Metallic Signal: 2 evoluções {M}."
+      ],
+      [
+        "Precious Trolley",
+        "ACE SPEC: Básicos à vontade."
+      ],
+      [
+        "Metagross",
+        "300 sem Regra."
+      ],
+      [
+        "Jumbo Ice Cream",
+        "Cura 80."
+      ]
+    ],
+    "lista": {
+      "titulo": "Mega Excadrill — Pokeca Casual, 23/10/2026",
+      "texto": "Pokémon: 20\n2 Mega Excadrill ex\n3 Drilbur\n2 Metagross\n4 Metang\n4 Beldum\n2 Genesect ex\n1 Fezandipiti ex\n1 Shaymin\n1 Flutter Mane\n\nTrainer: 24\n1 Precious Trolley\n1 Buddy-Buddy Poffin\n1 Ultra Ball\n3 Pokégear 3.0\n4 Team Rocket's Transceiver\n1 Energy Recycler\n1 Jumbo Ice Cream\n1 Special Red Card\n4 Team Rocket's Proton\n3 Boss's Orders\n1 Kieran\n1 Lillie's Determination\n1 Gravity Mountain\n1 Jamming Tower\n\nEnergy: 16\n16 Metal Energy"
+    },
+    "variantes": [
+      "Precious Trolley (padrão, indo 2º)",
+      "Hero's Cape (440 HP)",
+      "Mega Skarmory ex / Empoleon ex"
+    ],
+    "planoDeJogo": {
+      "turno1": "Indo 2º: Precious Trolley com 2 Drilbur, 2 Beldum e Genesect ex.",
+      "turno2": "Metang × 2 e Mega Excadrill ex atacando.",
+      "meio": "Sem 5 energias, Undermine 90 nos pequenos.",
+      "final": "Boss's Orders + Gravity Mountain nos ex de Estágio 2."
+    },
+    "primeiroOuSegundo": "2º (Precious Trolley no T1).",
+    "dicas": [
+      "Mantenha 2 Metang em jogo.",
+      "Tenha rota por Apoiador ao Genesect ex contra Budew."
+    ],
+    "erros": [
+      "Perder os Metang para Boss's Orders e travar em 200.",
+      "Esquecer que o Gravity Mountain afeta seu Metagross."
+    ],
+    "prizeMaps": [
+      "3-3",
+      "1-2-3"
+    ],
+    "matchups": {
+      "raging-bolt": {
+        "r": -1,
+        "ir": "—",
+        "p": "Bellowing Thunder atravessa os 340 HP."
+      },
+      "mega-lucario": {
+        "r": -1,
+        "ir": "—",
+        "p": "330 não alcança os 340; Wally's Compassion."
+      },
+      "dragapult": {
+        "r": 0,
+        "ir": "2º",
+        "p": "Versão Blaziken explora a fraqueza {R}."
+      },
+      "festival-lead": {
+        "r": 1,
+        "ir": "—",
+        "p": "Resistência a Planta."
+      },
+      "alakazam": {
+        "r": -1,
+        "ir": "—",
+        "p": "1 prêmio retoma a iniciativa."
+      }
+    },
+    "fontes": [
+      {
+        "titulo": "Pokemite — guia do deck (japonês)",
+        "url": "https://pokemite.com/deck/mega-doryuzu/"
+      }
+    ],
+    "assinatura": [
+      "Mega Excadrill ex",
+      "Metang",
+      "Beldum",
+      "Genesect ex",
+      "Drilbur",
+      "Precious Trolley"
+    ]
+  },
+  {
+    "id": "hydrapple",
+    "nome": "Hydrapple ex / Meganium (Kamitsu-Orochi)",
+    "apelidos": [
+      "Hydrapple",
+      "Kamitsu-Orochi",
+      "Ogerpon/Meganium Box"
+    ],
+    "estilo": "Estágio 2 de Planta, fim de jogo",
+    "formato": "Standard (meta japonês, Pokemite)",
+    "status": "meta",
+    "dificuldade": 3,
+    "resumo": "Ripening Charge (Hydrapple ex) e Teal Dance (Teal Mask) enchem o tabuleiro de {G}; Syrup Storm dá +30 por {G}. Com Wild Growth do Meganium, cada {G} vale 2.",
+    "comoFunciona": "Forest of Vitality evolui no turno em que o Pokémon entra (exceto T1); Bug Catching Set e Lillie's montam rápido. Briar pega 2 prêmios no fim. Tapu Bulu é o atacante de 1 prêmio.",
+    "pecasChave": [
+      [
+        "Hydrapple ex",
+        "Syrup Storm sem teto; Ripening Charge cura 30."
+      ],
+      [
+        "Meganium",
+        "Wild Growth: {G} conta 2."
+      ],
+      [
+        "Teal Mask Ogerpon ex",
+        "Teal Dance."
+      ],
+      [
+        "Forest of Vitality",
+        "Evolução imediata."
+      ],
+      [
+        "Briar",
+        "Prêmio extra no fim."
+      ],
+      [
+        "Tapu Bulu",
+        "1 prêmio."
+      ]
+    ],
+    "lista": {
+      "titulo": "Hydrapple / Meganium — Pokeca Casual, 22/10/2026",
+      "texto": "Pokémon: 19\n2 Hydrapple ex\n2 Dipplin\n2 Applin\n2 Meganium\n2 Bayleef\n2 Chikorita\n4 Teal Mask Ogerpon ex\n1 Fezandipiti ex\n1 Meowth ex\n1 Celebi\n\nTrainer: 26\n4 Bug Catching Set\n1 Unfair Stamp\n1 Night Stretcher\n3 Ultra Ball\n1 Poké Pad\n1 Jumbo Ice Cream\n1 Special Red Card\n2 Boss's Orders\n1 Lana's Aid\n1 Briar\n1 Team Rocket's Proton\n4 Lillie's Determination\n1 Dawn\n4 Forest of Vitality\n\nEnergy: 15\n13 Grass Energy\n2 Growing Grass Energy"
+    },
+    "variantes": [
+      "Tapu Bulu (principal)",
+      "Mega Venusaur ex",
+      "Rabsca",
+      "Cacturne"
+    ],
+    "planoDeJogo": {
+      "turno1": "Applin, Chikorita e Teal Mask (não dá para evoluir no T1).",
+      "turno2": "Forest of Vitality evolui as linhas.",
+      "meio": "Só ataque com o Meganium em jogo; tenha o 2º de reserva.",
+      "final": "Briar para 2 prêmios; Boss's Orders nos ex de suporte."
+    },
+    "primeiroOuSegundo": "Monte com calma; o deck é de fim de jogo.",
+    "dicas": [
+      "Proteja o Meganium: é o primeiro alvo.",
+      "Applin (40 HP) vai cair: tenha a 2ª linha."
+    ],
+    "erros": [
+      "Atacar antes do Meganium estar pronto."
+    ],
+    "prizeMaps": [
+      "2-2-2",
+      "1-2-3"
+    ],
+    "matchups": {
+      "zoroark": {
+        "r": 1,
+        "ir": "—",
+        "p": "Zoroark é fraco a {G}."
+      },
+      "grimmsnarl": {
+        "r": 2,
+        "ir": "—",
+        "p": "Fraco a {G}, e você cura."
+      },
+      "garchomp": {
+        "r": 1,
+        "ir": "—",
+        "p": "Garchomp é fraco a {G}."
+      },
+      "excadrill": {
+        "r": -1,
+        "ir": "—",
+        "p": "Resistência a Planta."
+      },
+      "raging-bolt": {
+        "r": -1,
+        "ir": "—",
+        "p": "Perde na velocidade."
+      },
+      "festival-lead": {
+        "r": -1,
+        "ir": "—",
+        "p": "Ataque duplo de 1 prêmio."
+      },
+      "dragapult": {
+        "r": 0,
+        "ir": "—",
+        "p": "A versão Blaziken explora a fraqueza {R}."
+      }
+    },
+    "fontes": [
+      {
+        "titulo": "Pokemite — guia do deck (japonês)",
+        "url": "https://pokemite.com/deck/kamitsuorochi/"
+      }
+    ],
+    "assinatura": [
+      "Hydrapple ex",
+      "Meganium",
+      "Teal Mask Ogerpon ex",
+      "Forest of Vitality",
+      "Chikorita"
+    ]
+  },
+  {
+    "id": "mega-greninja",
+    "nome": "Mega Greninja ex",
+    "apelidos": [
+      "Mega Greninja",
+      "Greninja"
+    ],
+    "estilo": "Estágio 2 de controle",
+    "formato": "Standard (meta japonês, Pokemite)",
+    "status": "meta",
+    "dificuldade": 4,
+    "resumo": "No Ativo, o Mega Greninja ex (350 HP) descarta 1 {W} da mão para colocar 6 contadores num Pokémon; Ninja Spinner dá 120 (+80 devolvendo energia). O Greninja ex Tera ({F}) busca com 170 ou dá 120 em 2.",
+    "comoFunciona": "Desgaste preciso: deixa os Pokémon do oponente “sempre nocauteáveis” e fecha vários de uma vez no fim, sem dar chance de disrupção. Wally's Compassion cura tudo e Neo Upper Energy volta ao ataque.",
+    "pecasChave": [
+      [
+        "Mega Greninja ex",
+        "6 contadores por turno + Ninja Spinner."
+      ],
+      [
+        "Greninja ex",
+        "Tera {F}: busca 170 ou 120 em dois."
+      ],
+      [
+        "Frogadier",
+        "Busca Pokémon para a mão."
+      ],
+      [
+        "Neo Upper Energy",
+        "ACE SPEC: 2 energias de todos os tipos."
+      ],
+      [
+        "Wally's Compassion",
+        "Cura total de Mega."
+      ]
+    ],
+    "lista": {
+      "titulo": "Mega Greninja — Pokeca Casual, 27/10/2026",
+      "texto": "Pokémon: 20\n2 Mega Greninja ex\n3 Greninja ex\n2 Frogadier\n4 Froakie\n3 Mega Kangaskhan ex\n2 Talonflame ex\n2 Latias ex\n1 Fezandipiti ex\n1 Meowth ex\n\nTrainer: 29\n3 Buddy-Buddy Poffin\n4 Ultra Ball\n3 Rare Candy\n1 Night Stretcher\n2 Switch\n1 Special Red Card\n1 Air Balloon\n4 Lillie's Determination\n1 Judge\n2 Hilda\n1 Cyrano\n3 Boss's Orders\n1 Zinnia's Resolve\n2 Surfing Beach\n\nEnergy: 11\n1 Neo Upper Energy\n3 Ignition Energy\n7 Water Energy"
+    },
+    "variantes": [
+      "Mega Greninja ex + Greninja ex Tera",
+      "Dudunsparce ex",
+      "novo Greninja ex do 30th"
+    ],
+    "planoDeJogo": {
+      "turno1": "Froakie com Poffin/Pad; Frogadier busca o resto.",
+      "turno2": "Mega Greninja ex no Ativo, shuriken todo turno.",
+      "meio": "Deixe alvos “sempre nocauteáveis”; Ninja Spinner sem devolver energia.",
+      "final": "Special Red Card e Boss's Orders para fechar vários de uma vez."
+    },
+    "primeiroOuSegundo": "Depende do matchup; contra Dragapult é guerra entre a trava de Itens dele e a sua busca.",
+    "dicas": [
+      "Monte o Banco com Pokémon {W} (Surfing Beach).",
+      "Não dê ao oponente chance de usar Apoiadores de disrupção."
+    ],
+    "erros": [
+      "Nocautear cedo e abrir espaço para Special Red Card/Unfair Stamp."
+    ],
+    "prizeMaps": [
+      "2-2-2 fechando no fim"
+    ],
+    "matchups": {
+      "raging-bolt": {
+        "r": -1,
+        "ir": "—",
+        "p": "3 prêmios de vantagem cedo e você não alcança."
+      },
+      "mega-lucario": {
+        "r": -1,
+        "ir": "—",
+        "p": "Puxam Meowth/Fez e fecham no Mega com PPP."
+      },
+      "alakazam": {
+        "r": 1,
+        "ir": "—",
+        "p": "Caça os Abra ao entrarem."
+      },
+      "dragapult": {
+        "r": 0,
+        "ir": "—",
+        "p": "Controle o Dragapult ex e feche vários de uma vez."
+      }
+    },
+    "fontes": [
+      {
+        "titulo": "Pokemite — guia do deck (japonês)",
+        "url": "https://pokemite.com/deck/mega-greninja/"
+      }
+    ],
+    "assinatura": [
+      "Mega Greninja ex",
+      "Greninja ex",
+      "Frogadier",
+      "Froakie",
+      "Neo Upper Energy"
+    ]
   }
 ];
 
 /* Arquétipos citados nos guias que não têm guia próprio entre os 30 — usados
    nas análises de matchup do motor. */
 window.ARQUETIPOS_EXTRA = {
-  "excadrill": { nome: "Mega Excadrill ex", nota: "Pitch Black: 330 por turno (Maximum Drilling), Genesect + Metang aceleram, Metagross single-prize, Jumbo Ice Cream. Resistente a Grass." },
-  "hydrapple": { nome: "Hydrapple ex / Meganium (Ogerpon Box)", nota: "Meganium (Wild Growth) dobra energias Grass; Teal Mask, Celebi, Briar, cura." },
-  "grimmsnarl": { nome: "Marnie's Grimmsnarl ex / Froslass", nota: "Froslass (Freezing Shroud) + Munkidori espalham contadores; castiga habilidades e baixo HP." },
   "mega-lopunny": { nome: "Mega Lopunny ex (Froslass / Dusknoir / Dudunsparce)", nota: "Gale Thrust; 4 Mist Energy; Wally's Compassion cura." },
-  "mega-greninja": { nome: "Mega Greninja ex", nota: "Greninja ex TWM (Shinobi Blade) tutora; Mortal Shuriken no banco." },
   "beedrill": { nome: "Beedrill ex", nota: "110 de dano por abelha; às vezes com Arboliva ex." },
-  "mega-rayquaza": { nome: "Mega Rayquaza / Talonflame", nota: "Delta Reign: big basics com Mega Kangaskhan." },
   "mega-absol": { nome: "Mega Absol ex", nota: "Claw of Darkness; Mist Energy." }
 };
