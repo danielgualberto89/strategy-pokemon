@@ -1,0 +1,105 @@
+GUIA("g17",{
+deck:"mega-sharpedo",
+titulo:"Guia do Mega Sharpedo ex",
+autor:"MacTmac",
+url:"https://metafy.gg/guides/view/sharpedo-ex-guide-lIwBhKLSAIw",
+formato:"Standard (Pitch Black / pós-Worlds 2026)",
+idioma:"en",
+caps:[
+["Por que escolhi este deck",[
+"- A ideia original: aproveitar o **recuo grátis** para uma habilidade que funciona ao entrar no Ativo, e o **Pecharunt ex** para trazer o atacante de volta. A primeira build era ruim e foi abandonada.",
+"- Depois do Worlds apareceu um Sharpedo 50º colocado; o autor não gostou da lista, mas se inspirou nela para recriar o deck.",
+"- Resultados: vários locais, 2º numa Cup, vitória num Challenge, 4-1 no início do Regional de Baltimore e 1800 de Elo no TCG Live."
+],["Mega Sharpedo ex","Pecharunt ex"]],
+["Lista e escolhas",[
+"**Lista:** 2 Munkidori, 1 Pecharunt (promo), 3 Carvanha, 2 Toxtricity, 1 Fezandipiti ex, 1 Yveltal, 3 Mega Sharpedo ex, 2 Toxel, 2 Pecharunt ex, 2 Tatsugiri | 1 Unfair Stamp, 2 Dawn, 2 TR Petrel, 3 Judge, 2 TR Watchtower, 3 Poké Pad, 2 Night Stretcher, 3 Binding Mochi, 4 Buddy-Buddy Poffin, 4 Lillie's Determination, 4 Ultra Ball, 3 Boss's Orders | 8 Energia {D}.",
+"## Pokémon",
+"- **3-3 Sharpedo:** o Carvanha é forte sozinho como one-prizer; 3 bastam. 3 Sharpedo para não perder o 2º nos prêmios.",
+"- **2-2 Toxtricity:** o deck não funciona sem ela em jogo (aceleração de energia e Sinister Surge); não dá para perder peça nos prêmios.",
+"- **2 Pecharunt ex:** o ataque (60×) aparece muito; também não pode ir para os prêmios.",
+"- **2 Tatsugiri:** todo turno, o ideal é **recuar o Sharpedo para o Tatsugiri** (busca um Apoiador) e depois usar o **Subjugating Chains** do Pecharunt ex para trazer o atacante de volta ao Ativo.",
+"- **2 Munkidori:** o deck gera dano o tempo todo (veneno e Sinister Surge); normalmente 1 basta, mas 2 às vezes importam.",
+"- **Yveltal:** retreat lock forte (muitos decks não têm atacante no Banco). **Baby Pecharunt:** com Mochi e Munkidori manipula dano e nocauteia ao voltar ao seu turno. **Chi-Yu PBL** (fora da lista): 110 com Sinister Surge, 150 com Mochi.",
+"## Itens e Estádios",
+"- **4 Poffin, 4 Ultra Ball, 3 Poké Pad** (o Pad perde valor depois do setup). **2 Night Stretcher** (com Dawn para compensar).",
+"- **Unfair Stamp:** sem Red Card, é a melhor disrupção não-Apoiador; dá para usá-la agressivamente com Petrel e “trapacear” jogos com Watchtower. Hero's Cape foi considerada.",
+"- **2 Team Rocket's Watchtower:** amplia a vantagem cedo e ajuda contra Slop Box.",
+"## Apoiadores",
+"- **4 Lillie's, 3 Boss** (alguns usam 4), **2 TR Petrel** (acha a peça que falta / xeque-mate), **3 Judge**: Sharpedo → recua para Tatsugiri → Chains volta: você vê um Apoiador grátis e ganha +40 de dano. **Greedy Fang** vai a 110 (130 com Munki) — dá para Judge (oponente com 4 cartas, você com 4), comprar 2 com o Greedy Fang e ver 6 com o Tatsugiri. Grande vantagem contra evoluções e combos.",
+"- **2 Dawn:** quase sempre um Estágio 1 (Toxtricity ou Sharpedo) + Pecharunt bastam para ficar agressivo — o Dawn acha ambos.",
+"- **3 Binding Mochi:** um em cada Sharpedo; no Carvanha bate 70 (nocauteia Dreepy e Psíquicos evoluídos como Slowking e Alakazam).",
+"- **8 {D}** (em vez de 9): difícil faltar; Night Stretcher compensa.",
+"## Considerados",
+"- Seviper PFL (240 de 1 prêmio, mas exige duas Toxtricity), Okidogi ex (mesmo problema), 3º/4º Watchtower (contra Slop, Meowth e Dudunsparce), Hero's Cape (ajudaria contra Excadrill)."
+],["Mega Sharpedo ex","Carvanha","Toxel","Toxtricity","Pecharunt ex","Tatsugiri","Munkidori","Yveltal","Pecharunt","Unfair Stamp","Team Rocket's Watchtower","Judge","Dawn","Binding Mochi","Team Rocket's Petrel"]],
+["Plano de jogo e tabuleiros ideais",[
+"- Deck linear, mas que muda de plano com frequência.",
+"- **Vá primeiro às cegas.** Contra Mega Excadrill, **vá segundo**.",
+"- **T1:** pelo menos 4 Pokémon — **Toxel, Carvanha, Pecharunt ex, Tatsugiri** (o Tatsugiri é opcional se você já tem Lillie's na mão; aí vale um 2º Carvanha).",
+"- Carvanha + Mochi + Pecharunt ex (veneno) bate 70 e nocauteia Dreepy — nem sempre vale (um Drakloak com Crispin devolve o KO).",
+"- **T2: force Sharpedo + Toxtricity.** Com só um dos dois: Sharpedo se tiver energia + Judge; Toxtricity se não tiver disrupção ou atacante bom.",
+"- **Quase nunca deixe dano no tabuleiro do oponente** (Munkidori deles).",
+"- Se precisar mudar o tabuleiro final, normalmente corte um Sharpedo.",
+"- **Pecharunt ex** é ótimo atacante: depois que um Sharpedo cai, bate 180 (nocauteia muitos 2 prêmios de HP baixo) e 210 com Munkidori.",
+"@mesa Tabuleiro ideal do fim de jogo | Ativo: Mega Sharpedo ex + Binding Mochi | Banco: Munkidori + Darkness Energy, Mega Sharpedo ex + Binding Mochi, Tatsugiri, Toxtricity, Pecharunt ex | O ciclo: Sharpedo recua de graça para o Tatsugiri (Apoiador grátis), e o Subjugating Chains do Pecharunt ex devolve o atacante ao Ativo.",
+"@mesa Turno 1 indo primeiro | Ativo: Carvanha + Binding Mochi | Banco: Toxel, Pecharunt ex, Tatsugiri | No T2: Sharpedo + Toxtricity."
+],["Mega Sharpedo ex","Toxel","Carvanha","Pecharunt ex","Tatsugiri","Toxtricity","Munkidori","Binding Mochi"]],
+["Matchup: Dragapult ex",[
+"- Matchup muito bom, mas pode desandar rápido. É onde mais importa manter o **tabuleiro núcleo**: Sharpedo (Mochi) Ativo; Sharpedo (Mochi), Toxtricity, Pecharunt ex, Munkidori e Tatsugiri no Banco.",
+"- **Toxtricity** protege contra os Hammers colocando mais energia do que eles conseguem remover (mantenha 1–2 disponíveis caso martelem o Munkidori).",
+"- **Pecharunt ex + Tatsugiri** = Apoiador grátis todo turno (Stamp perde força) + pressão de Judge e Boss. O Pecharunt bate 180 depois que um Sharpedo cai — xeque-mate nocauteando Fezandipiti ou Meowth.",
+"- **Munkidori é obrigatório para OHKO no Dragapult ex** (sem ele, o Sharpedo dá 310).",
+"- Mapa: 2 primeiros prêmios antes do Dragapult montar → KO no Dragapult com Sharpedo → KO em qualquer 2 prêmios: **1-1-2-2**.",
+"- Carvanha + Mochi nocauteia Dreepy (Drakloak com Munkidori), mas quase nunca vale ser agressivo — só com Carvanha de reserva, eles com 1–2 Dreepy e Tatsugiri em jogo.",
+"- Indo primeiro com Carvanha + Pecharunt + Munkidori: Chains no Carvanha (20 de veneno + 20 do Itchy Pollen) ameaça KO no Munkidori + KO com Sharpedo ou impede o Itchy Pollen.",
+"- Não use Sinister Surge num Carvanha com ameaça de Phantom Dive (KOs grátis no Banco).",
+"## Variantes",
+"- **Dudunsparce/Hammers (a melhor de enfrentar):** com Sharpedo cedo, **spam de Judge** dificulta combos (2–3 Hammers + Stamp). Com poucos Hammers restantes: energia no Pecharunt ex, num Sharpedo e um no Ativo — eles precisariam de 3 caras.",
+"- **Dusknoir:** também bom; não costuma jogar Rare Candy. Budew + Dusclops nocauteando um Carvanha dá um prêmio a você e tira deles a combinação Dusknoir 130 + Phantom Dive 200 que derrubaria um Sharpedo. Pode valer deixar Duskulls em jogo se você abriu 1-2. Patrat do lado deles ajuda você (pré-coloque os 10 de dano no Dreepy/Drakloak).",
+"- **Blaziken (surpreendentemente difícil):** com Rare Candy, não dá para punir o início lento. Controle a mão deles com Judge e monte o Munkidori cedo (um prêmio no Budew com Munkidori + um com Sharpedo). Um Blaziken sozinho vira alvo fácil de 2 prêmios.",
+"@premios Mapa contra Dragapult | 1-1-2-2 | Budew, Drakloak, Dragapult ex, Fezandipiti ex | O Munkidori completa os 330 no Dragapult; o Pecharunt ex fecha no Fezandipiti/Meowth."
+],["Dragapult ex","Mega Sharpedo ex","Toxtricity","Pecharunt ex","Tatsugiri","Munkidori","Carvanha","Budew","Dreepy","Drakloak","Crushing Hammer","Dusknoir","Blaziken ex","Patrat"]],
+["Matchup: Slop Box (Basic Box)",[
+"- Um dos que mais preocupam, mas longe de derrota automática.",
+"- **Vá primeiro** e nocauteie qualquer coisa com Sharpedo no T2. Se eles devolverem o KO, monte o Pecharunt e Boss KO na Latias ou Meowth. **Não evolua um 2º Sharpedo** (Boss + 3-3). Depois, Sharpedo com Mochi ou um 2º Pecharunt ex fecha (eles estão com 5 prêmios).",
+"- Se não devolverem o KO no Sharpedo, monte um atacante reserva e vença.",
+"- Eles têm **3 formas de OHKO no Sharpedo:** Teal Mask Ogerpon ex (5 energias), Mega Kangaskhan ex (2/3 caras) e Iron Leaves ex.",
+"- **Yveltal/baby Pecharunt:** se eles usarem Iron Leaves, o retreat lock impede que ataquem duas vezes. Yveltal + Mochi bate com e sem veneno numa Latias (deixa a 160); com veneno do Munkidori e Sinister Surge, 60 a mover → KO na Latias no seu turno (turno de 4 prêmios).",
+"- **Baby Pecharunt + Mochi** nocauteia Latias ou Meowth com um ataque e dois ticks de veneno; se derem Boss nele, um Carvanha de 30 + Munkidori termina — força 1-1-3-2.",
+"- Saídas deles ao retreat lock: Iron Leaves, Prime Catcher e (raro) AZ's Tranquility — combine com Stamp."
+],["Mega Sharpedo ex","Latias ex","Meowth ex","Teal Mask Ogerpon ex","Mega Kangaskhan ex","Iron Leaves ex","Yveltal","Pecharunt","Binding Mochi","Munkidori","Unfair Stamp"]],
+["Matchups: Zoroark, Alakazam, Slowking",[
+"## N's Zoroark ex",
+"- Pode ser difícil, mas costuma ir bem: dá para correr na frente (como contra Dragapult) ou forçar 3-2-3 (como contra Slop).",
+"- **Aqui pode baixar o 2º Sharpedo** (eles não têm Boss + Black Belt juntos). Mesmo que deem 90 + 90 nos dois Sharpedos, você dá OHKO e eles não acompanham.",
+"- Tabuleiro fraco **com energia**: corra com Carvanha + Mochi num Zorua (nunca se houver sinal de Darumaka). **Sem energia**: corra com Sharpedo + Judge + Greedy Fang.",
+"- A única forma deles chegarem a 300+ é Mochi + Black Belt's Training (normalmente 1). Não deixe dano do lado deles e deixe seu Sharpedo com só 10 de dano se subir envenenado (310 de volta).",
+"- Se eles se envenenarem com Mochi, ficam a 270 — sem precisar de Munkidori. Jogue em volta de um 2º Black Belt com o Pecharunt ex (180 depois do 1º KO no Sharpedo). Mapa **1-1-2-2**.",
+"## Alakazam (pode ir segundo)",
+"- **Carvanha + Binding Mochi = 140**, OHKO exato no Alakazam (requer Pecharunt, um passivo — a maioria joga só 2 Boss).",
+"- O dano que você leva (30) pode ser espalhado com Munkidori; um 2º Munkidori (30 + 20 do Sinister Surge) nocauteia Abras no Banco.",
+"- 3 Judge + Watchtower pressionam a compra deles. Forçando-os a evoluir Kadabras e Alakazam, prepare no fim: Unfair Stamp, evolua o Sharpedo e vire um tanque (só com Watchtower em jogo e eles sem recursos).",
+"- **Dusknoir:** um pouco mais difícil; Yveltal no Dusknoir/Dusclops força a explosão cedo. Carvanha nocauteia Duskulls, Abras e Kadabras sem Mochi.",
+"## Slowking (teoria)",
+"- Mapa **3-2-1**: Kangaskhan, Latias, Slowking.",
+"- Tabuleiro: Carvanha (Mochi) Ativo; Pecharunt, Sharpedo, Toxtricity no Banco. O Carvanha nocauteia o Slowking (1 prêmio); o Kyurem só pega 1 por Trifrost. Então Munkidori cura o Pecharunt para aguentar outro Trifrost.",
+"- Depois, KO no Kangaskhan (3) → com 2 prêmios restantes, o Pecharunt ex bate em fraqueza na Latias.",
+"@premios Mapa contra Slowking | 1-3-2 | Slowking, Mega Kangaskhan ex, Latias ex | Carvanha + Mochi no Slowking, Sharpedo no Kangaskhan e Pecharunt ex fecha na Latias."
+],["N's Zoroark ex","N's Darumaka","Mega Sharpedo ex","Carvanha","Binding Mochi","Black Belt's Training","Pecharunt ex","Alakazam","Abra","Kadabra","Duskull","Slowking","Kyurem","Mega Kangaskhan ex","Latias ex"]],
+["Matchups: Mega Excadrill e Crustle",[
+"## Mega Excadrill (difícil — vá segundo)",
+"- Conselhos de William Stull (2× campeão regional com Sharpedo): eles dão OHKO no Sharpedo, mas o Sharpedo só dá OHKO no Excadrill com 30 de dano já colocado.",
+"- Com Judge, eles normalmente ficam com 1 Metang e 1 Metagross — precisam de ligações da mão no T1 e T2 e acertar 3 energias do Metal Maker para te nocautear. Com Greedy Fang, eles ficam no alcance.",
+"- Se eles baterem sem nocautear, ou curarem, veneno + Sinister Surge colocam os 30 e o Sharpedo com Mochi bate 310 para o KO. Depois, 2º Excadrill ou Genesect + Metang: **3-2-1**.",
+"- Com veneno + 10 de dano, eles podem seguir com Metagross e trocar 3 por 1 — às vezes melhor tirar um Metang (fonte de energia). Começando com Fezandipiti, dê Boss no Genesect e snipe os Metangs. Um Carvanha batendo 30 coloca o alvo no alcance do Sharpedo.",
+"## Crustle",
+"- Indo primeiro, **Sharpedo nocauteia o Kangaskhan no T2**: eles ficam muito atrás com 1 energia, e um Judge corta a mão sem Kangaskhan.",
+"- Sem Kangaskhan, o **Carvanha** bate 70 + 30 (Reckless Charge, veneno e Munki) todo turno. Com 1 energia, eles não usam Ice Cream para curar — você drena o HP. Persiga as energias primeiro (salvo se estiverem carregando uma Capa).",
+"- Sem KO no Kangaskhan no T1: Ice Cream só cura o Ativo — suba um Sharpedo envenenado e repita o Greedy Fang; busque Watchtower e Judge e use Munki para corroer o Banco. Cuidado com a **Bianca**."
+],["Mega Excadrill ex","Metang","Metagross","Genesect ex","Fezandipiti ex","Carvanha","Crustle","Mega Kangaskhan ex","Jumbo Ice Cream","Judge","Team Rocket's Watchtower"]],
+["Conclusão",[
+"- Para o autor, o Sharpedo ainda é um deck “não resolvido”, com bastante espaço nas 60, mas perto disso e gerando resultados.",
+"- Resultados: 1800 no TCG Live, vitória num Challenge com estas 60, 2º numa Cup (com Morty's Conviction) e 5-3 em Baltimore (derrotas para a lista surpresa de Chao e para Stamp + Tower).",
+"- Primeiro ano buscando o Worlds — pretende levar algo parecido a Kentucky. Contato: X @MacTmac_TCG."
+],[]]
+]});
