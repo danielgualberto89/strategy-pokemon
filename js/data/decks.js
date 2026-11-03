@@ -654,7 +654,32 @@ Energy: 8
       ["TR Transceiver, Miracle Headset, Roto Stick, Poké Pad, Night Stretcher", "Busca de Supporters/Pokémon."],
       ["Energias especiais Rocket/Ignition", "Difíceis de buscar — o ponto fraco do deck."]
     ],
-    lista: null,
+    lista: {
+      titulo: "Lista do guia (reconstruída da explicação carta a carta, versão de maio/2026)",
+      texto: `Pokémon: 13
+4 Team Rocket's Murkrow
+4 Team Rocket's Honchkrow
+2 Team Rocket's Porygon
+1 Team Rocket's Porygon2
+1 Team Rocket's Articuno
+1 Team Rocket's Mimikyu
+Trainer: 39
+4 Team Rocket's Proton
+4 Team Rocket's Archer
+4 Team Rocket's Petrel
+4 Team Rocket's Ariana
+4 Team Rocket's Giovanni
+4 Team Rocket's Transceiver
+3 Poké Pad
+1 Ultra Ball
+3 Roto Stick
+3 Night Stretcher
+1 Miracle Headset
+4 Team Rocket's Factory
+Energy: 8
+4 Team Rocket's Energy
+4 Ignition Energy`
+    },
     planoDeJogo: {
       turno1: "Ir 1º e jogar Proton: 2 Murkrow + 1 Porygon (vs Dragapult/Alakazam: Articuno no lugar do Porygon).",
       turno2: "Evoluir e jogar Ariana; começar a atacar.",
