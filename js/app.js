@@ -156,8 +156,36 @@
   function corpoCap(pars) {
     let h = "", lista = [];
     const fecha = () => { if (lista.length) { h += `<ul>${lista.map(x => `<li>${md(x)}</li>`).join("")}</ul>`; lista = []; } };
-    for (const p of pars) { if (p.startsWith("- ")) lista.push(p.slice(2)); else { fecha(); h += `<p>${md(p)}</p>`; } }
+    for (const p of pars) {
+      if (p.startsWith("- ")) lista.push(p.slice(2));
+      else if (/^@(mesa|mao|premios|cartas) /.test(p)) { fecha(); h += ilustracao(p); }
+      else { fecha(); h += `<p>${md(p)}</p>`; }
+    }
     fecha(); return h;
+  }
+
+  /* Ilustrações dentro dos capítulos:
+     "@mesa Título | Ativo: X | Banco: A, B | Rival ativo: Y | Rival banco: C, D | nota"
+     "@mao Título | A, B, C | nota"   "@premios Título | 1-1-2-2 | Budew, Dreepy, Dragapult ex, Dragapult ex | nota"
+     "@cartas Título | A, B, C | nota" */
+  function ilustracao(p) {
+    const tipo = p.slice(1, p.indexOf(" "));
+    const seg = p.slice(tipo.length + 2).split(" | ").map(x => x.trim());
+    const titulo = seg.shift();
+    const lista = x => x.split(/,\s*/).filter(Boolean);
+    const cartasRow = (nomes, cls = "") => `<div class="ilu-linha ${cls}">${nomes.map(n => { const m = n.match(/^(.*?)\s*\+\s*(.+)$/); const base = m ? m[1] : n; return `<figure>${htmlCarta(base)}${m ? `<span class="anexo">+ ${esc(m[2])}</span>` : ""}<figcaption>${esc(base)}</figcaption></figure>`; }).join("")}</div>`;
+    let corpo = "", notas = [];
+    if (tipo === "mesa") {
+      const campo = {}; for (const s of seg) { const m = s.match(/^(Ativo|Banco|Rival ativo|Rival banco):\s*(.*)$/i); if (m) campo[m[1].toLowerCase()] = lista(m[2]); else notas.push(s); }
+      const lado = (a, b, rot) => (a || b) ? `<div class="ilu-lado"><span class="rotulo">${rot}</span><div class="ilu-campo">${a ? `<div class="ilu-ativo"><span class="mini">Ativo</span>${cartasRow(a)}</div>` : ""}${b ? `<div class="ilu-banco"><span class="mini">Banco</span>${cartasRow(b)}</div>` : ""}</div></div>` : "";
+      corpo = lado(campo["rival ativo"], campo["rival banco"], "Oponente") + lado(campo["ativo"], campo["banco"], "Você");
+    } else if (tipo === "premios") {
+      const linha = seg.shift() || "", alvos = lista(seg.shift() || ""); notas = seg;
+      const passos = linha.split("-");
+      corpo = `<div class="ilu-premios">${passos.map((q, i) => `<div class="ilu-passo"><span class="ilu-q">${esc(q)}</span>${alvos[i] ? cartasRow([alvos[i]]) : ""}<span class="mini">${i + 1}º KO</span></div>`).join('<span class="ilu-seta" aria-hidden="true">→</span>')}</div>`;
+    } else { corpo = cartasRow(lista(seg.shift() || ""), tipo === "mao" ? "ilu-mao" : ""); notas = seg; }
+    const icone = { mesa: "Mesa", mao: "Mão", premios: "Mapa de prêmios", cartas: "Cartas" }[tipo];
+    return `<figure class="ilu ilu-${tipo}"><figcaption><span class="chip">${icone}</span> ${md(titulo)}</figcaption>${corpo}${notas.length ? `<p class="nota">${notas.map(md).join(" ")}</p>` : ""}</figure>`;
   }
 
   function leitorGuia(alvo, g, idx = 0) {

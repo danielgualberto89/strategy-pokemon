@@ -163,3 +163,29 @@ footer { color: var(--muted); font-size: .84rem; max-width: 1200px; margin: 0 au
 /* Arte dos cartões de deck: três cartas sobrepostas */
 .deck-arte { position: relative; height: 120px; border-radius: 10px; background: radial-gradient(120% 120% at 50% 0%, var(--heroi-luz), var(--surface-2) 70%); overflow: hidden; }
 .deck-arte img { position: absolute; bottom: -26px; width: 84px; aspect-ratio: 63/88; border-radius: 5px; left: calc(50% - 42px + (var(--i) - 1) * 56px); transform: rotate(calc((var(--i) - 1) * 8deg)); box-shadow: var(--shadow); }
+
+/* Ilustrações nos capítulos (mesa / mão / mapa de prêmios) */
+.ilu { margin: var(--s3) 0; padding: var(--s3); border-radius: calc(var(--r) + 2px); border: 1px solid var(--line); background: radial-gradient(130% 120% at 50% 0%, color-mix(in srgb, var(--felt) 34%, var(--surface)) 0%, var(--surface) 75%); display: grid; gap: var(--s2); min-width: 0; }
+.ilu > figcaption { font-family: var(--f-ui); font-weight: 600; color: var(--fg); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.ilu .nota { margin: 0; }
+.ilu-linha { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; }
+.ilu-linha figure { margin: 0; display: grid; gap: 3px; width: 92px; flex: none; position: relative; }
+.ilu-linha .carta { --w: 92px; box-shadow: var(--shadow); }
+.ilu-linha figcaption { font-family: var(--f-ui); font-size: .72rem; color: var(--muted); line-height: 1.2; }
+.ilu-linha .anexo { font-family: var(--f-ui); font-size: .7rem; color: var(--accent); font-weight: 600; line-height: 1.2; }
+.ilu-lado { display: grid; gap: 6px; }
+.ilu-lado + .ilu-lado { border-top: 1px dashed var(--line); padding-top: var(--s2); }
+.ilu-campo { display: flex; gap: var(--s3); align-items: flex-start; flex-wrap: wrap; }
+.ilu-ativo, .ilu-banco { display: grid; gap: 4px; min-width: 0; }
+.ilu-banco { flex: 1 1 260px; }
+.ilu-ativo .carta { --w: 112px; outline: 2px solid var(--accent); outline-offset: 2px; }
+.ilu-ativo figure { width: 112px; }
+.ilu .mini { font-family: var(--f-ui); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.ilu-linha.ilu-mao { gap: 0; padding-top: 8px; }
+.ilu-mao figure + figure { margin-left: -26px; }
+.ilu-mao figure:hover { z-index: 2; transform: translateY(-6px); transition: transform .15s; }
+.ilu-premios { display: flex; align-items: center; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.ilu-passo { display: grid; justify-items: center; gap: 4px; flex: none; }
+.ilu-q { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--accent-fg); font-family: var(--f-display); display: grid; place-items: center; font-size: 1.05rem; }
+.ilu-seta { color: var(--muted); font-size: 1.4rem; flex: none; }
+@media (max-width: 560px) { .ilu-linha figure, .ilu-linha .carta { width: 76px; --w: 76px; } .ilu-ativo .carta, .ilu-ativo figure { --w: 90px; width: 90px; } }
