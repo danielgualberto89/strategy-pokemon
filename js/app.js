@@ -61,12 +61,18 @@
   const IMG = window.IMAGENS || {};
   function urlCarta(nome, chaveLista) {
     const r = (chaveLista && IMG[chaveLista]) || IMG[String(nome).toLowerCase()];
-    return r ? r.img : null;
+    if (!r) return null;
+    // imagem hospedada no próprio site (img/cartas); a do TCGdex fica como reserva
+    return r.img.startsWith("data:") ? r.img : (r.loc || r.img);
+  }
+  function urlReserva(nome, chaveLista) {
+    const r = (chaveLista && IMG[chaveLista]) || IMG[String(nome).toLowerCase()];
+    return r && r.loc && !r.img.startsWith("data:") ? r.img : "";
   }
   function htmlCarta(nome, opt = {}) {
     const u = urlCarta(nome, opt.chave);
     const st = opt.estilo ? ` style="${opt.estilo}"` : "";
-    return `<button type="button" class="carta" data-zoom="${esc(nome)}"${opt.chave ? ` data-chave="${esc(opt.chave)}"` : ""}${st} aria-label="Ampliar ${esc(nome)}">${u ? `<img loading="lazy" decoding="async" src="${u}" alt="${esc(nome)}">` : `<span class="sem-img">${esc(nome)}</span>`}${opt.qtd ? `<span class="qtd">${opt.qtd}</span>` : ""}</button>`;
+    return `<button type="button" class="carta" data-zoom="${esc(nome)}"${opt.chave ? ` data-chave="${esc(opt.chave)}"` : ""}${st} aria-label="Ampliar ${esc(nome)}">${u ? `<img loading="lazy" decoding="async" src="${u}" alt="${esc(nome)}"${urlReserva(nome, opt.chave) ? ` onerror="this.onerror=null;this.src='${urlReserva(nome, opt.chave)}'"` : ""}>` : `<span class="sem-img">${esc(nome)}</span>`}${opt.qtd ? `<span class="qtd">${opt.qtd}</span>` : ""}</button>`;
   }
   function tira(nomes) {
     const uniq = [...new Set(nomes)].filter(n => urlCarta(n));
@@ -93,7 +99,9 @@
     if (!b) return;
     const u = urlCarta(b.dataset.zoom, b.dataset.chave);
     if (!u) return;
-    dlg.querySelector("img").src = u.startsWith("data:") ? u : u.replace("/low.webp", "/high.webp");
+    const zi = dlg.querySelector("img"), alta = (urlReserva(b.dataset.zoom, b.dataset.chave) || u).replace("/low.webp", "/high.webp");
+    zi.onerror = () => { zi.onerror = null; zi.src = u; };
+    zi.src = u.startsWith("data:") || !/^https?:/.test(alta) ? u : alta;
     dlg.querySelector("img").alt = b.dataset.zoom;
     dlg.querySelector(".leg").textContent = b.dataset.zoom;
     if (dlg.showModal) dlg.showModal();
