@@ -184,8 +184,11 @@ footer { color: var(--muted); font-size: .84rem; max-width: 1200px; margin: 0 au
 .ilu-linha.ilu-mao { gap: 0; padding-top: 8px; }
 .ilu-mao figure + figure { margin-left: -26px; }
 .ilu-mao figure:hover { z-index: 2; transform: translateY(-6px); transition: transform .15s; }
-.ilu-premios { display: flex; align-items: center; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.ilu-etapas { display: flex; align-items: center; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
 .ilu-passo { display: grid; justify-items: center; gap: 4px; flex: none; }
 .ilu-q { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--accent-fg); font-family: var(--f-display); display: grid; place-items: center; font-size: 1.05rem; }
 .ilu-seta { color: var(--muted); font-size: 1.4rem; flex: none; }
 @media (max-width: 560px) { .ilu-linha figure, .ilu-linha .carta { width: 76px; --w: 76px; } .ilu-ativo .carta, .ilu-ativo figure { --w: 90px; width: 90px; } }
+
+/* nomes de cartas nos guias (em português, negrito) */
+.nome-carta { font-weight: 700; color: var(--fg); border-bottom: 1px dotted color-mix(in srgb, var(--accent) 60%, transparent); cursor: help; }

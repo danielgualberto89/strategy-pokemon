@@ -5,6 +5,26 @@
   const app = $("#app");
   const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  /* Nomes das cartas em português (TCGdex) e destaque em negrito nos textos dos guias. */
+  const NPT = window.NOMES_PT || {};
+  const ptNome = n => NPT[String(n).toLowerCase()] || n;
+  let reCartas = null;
+  function regexCartas() {
+    if (reCartas) return reCartas;
+    const nomes = new Set();
+    Object.values(window.CARDS || {}).forEach(c => c && c.nome && nomes.add(c.nome));
+    Object.values(window.GUIAS || {}).forEach(g => g.caps.forEach(c => (c[2] || []).forEach(n => nomes.add(n))));
+    const lista = [...nomes].filter(n => n.length >= 4).sort((a, b) => b.length - a.length)
+      .map(n => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    reCartas = new RegExp("(?<![\\wÀ-ÿ'])(" + lista.join("|") + ")(?![\\wÀ-ÿ])", "g");
+    return reCartas;
+  }
+  // markdown com nomes de cartas: troca o nome inglês pelo oficial em português, em negrito
+  const mdc = s => {
+    const achados = [];
+    const t = String(s == null ? "" : s).replace(regexCartas(), m => { achados.push(m); return "\u0001" + (achados.length - 1) + "\u0002"; });
+    return md(t).replace(/\u0001(\d+)\u0002/g, (_, i) => { const en = achados[+i], pt = ptNome(en); return `<strong class="nome-carta" title="${esc(en)}">${esc(pt)}</strong>`; });
+  };
   const ROT = { 2: "Muito favorável", 1: "Favorável", 0: "Equilibrado", "-1": "Desfavorável", "-2": "Muito desfavorável" };
   const chipR = r => `<span class="chip r${r}">${r > 0 ? "+" : ""}${r} · ${ROT[r]}</span>`;
   const STATUS = { meta: "Meta atual", rogue: "Rogue / nicho", "formato-anterior": "Formato anterior" };
@@ -77,7 +97,7 @@
   function tira(nomes) {
     const uniq = [...new Set(nomes)].filter(n => urlCarta(n));
     if (!uniq.length) return "";
-    return `<div class="bloco"><span class="rotulo">Cartas citadas</span><div class="tira">${uniq.map(n => `<figure>${htmlCarta(n)}<figcaption>${esc(n)}</figcaption></figure>`).join("")}</div></div>`;
+    return `<div class="bloco"><span class="rotulo">Cartas citadas</span><div class="tira">${uniq.map(n => `<figure>${htmlCarta(n)}<figcaption>${esc(ptNome(n))}</figcaption></figure>`).join("")}</div></div>`;
   }
   function leque(nomes) {
     const l = [...new Set(nomes)].filter(n => urlCarta(n)).slice(0, 5);
@@ -103,7 +123,7 @@
     zi.onerror = () => { zi.onerror = null; zi.src = u; };
     zi.src = u.startsWith("data:") || !/^https?:/.test(alta) ? u : alta;
     dlg.querySelector("img").alt = b.dataset.zoom;
-    dlg.querySelector(".leg").textContent = b.dataset.zoom;
+    dlg.querySelector(".leg").textContent = ptNome(b.dataset.zoom) === b.dataset.zoom ? b.dataset.zoom : `${ptNome(b.dataset.zoom)} (${b.dataset.zoom})`;
     if (dlg.showModal) dlg.showModal();
   });
 
@@ -163,11 +183,11 @@
 
   function corpoCap(pars) {
     let h = "", lista = [];
-    const fecha = () => { if (lista.length) { h += `<ul>${lista.map(x => `<li>${md(x)}</li>`).join("")}</ul>`; lista = []; } };
+    const fecha = () => { if (lista.length) { h += `<ul>${lista.map(x => `<li>${mdc(x)}</li>`).join("")}</ul>`; lista = []; } };
     for (const p of pars) {
       if (p.startsWith("- ")) lista.push(p.slice(2));
       else if (/^@(mesa|mao|premios|cartas) /.test(p)) { fecha(); h += ilustracao(p); }
-      else { fecha(); h += `<p>${md(p)}</p>`; }
+      else { fecha(); h += `<p>${mdc(p)}</p>`; }
     }
     fecha(); return h;
   }
@@ -181,7 +201,7 @@
     const seg = p.slice(tipo.length + 2).split(" | ").map(x => x.trim());
     const titulo = seg.shift();
     const lista = x => x.split(/,\s*/).filter(Boolean);
-    const cartasRow = (nomes, cls = "") => `<div class="ilu-linha ${cls}">${nomes.map(n => { const m = n.match(/^(.*?)\s*\+\s*(.+)$/); const base = m ? m[1] : n; return `<figure>${htmlCarta(base)}${m ? `<span class="anexo">+ ${esc(m[2])}</span>` : ""}<figcaption>${esc(base)}</figcaption></figure>`; }).join("")}</div>`;
+    const cartasRow = (nomes, cls = "") => `<div class="ilu-linha ${cls}">${nomes.map(n => { const m = n.match(/^(.*?)\s*\+\s*(.+)$/); const base = m ? m[1] : n; return `<figure>${htmlCarta(base)}${m ? `<span class="anexo">+ ${esc(ptNome(m[2]))}</span>` : ""}<figcaption>${esc(ptNome(base))}</figcaption></figure>`; }).join("")}</div>`;
     let corpo = "", notas = [];
     if (tipo === "mesa") {
       const campo = {}; for (const s of seg) { const m = s.match(/^(Ativo|Banco|Rival ativo|Rival banco):\s*(.*)$/i); if (m) campo[m[1].toLowerCase()] = lista(m[2]); else notas.push(s); }
@@ -190,10 +210,10 @@
     } else if (tipo === "premios") {
       const linha = seg.shift() || "", alvos = lista(seg.shift() || ""); notas = seg;
       const passos = linha.split("-");
-      corpo = `<div class="ilu-premios">${passos.map((q, i) => `<div class="ilu-passo"><span class="ilu-q">${esc(q)}</span>${alvos[i] ? cartasRow([alvos[i]]) : ""}<span class="mini">${i + 1}º KO</span></div>`).join('<span class="ilu-seta" aria-hidden="true">→</span>')}</div>`;
+      corpo = `<div class="ilu-etapas">${passos.map((q, i) => `<div class="ilu-passo"><span class="ilu-q">${esc(q)}</span>${alvos[i] ? cartasRow([alvos[i]]) : ""}<span class="mini">${i + 1}º KO</span></div>`).join('<span class="ilu-seta" aria-hidden="true">→</span>')}</div>`;
     } else { corpo = cartasRow(lista(seg.shift() || ""), tipo === "mao" ? "ilu-mao" : ""); notas = seg; }
     const icone = { mesa: "Mesa", mao: "Mão", premios: "Mapa de prêmios", cartas: "Cartas" }[tipo];
-    return `<figure class="ilu ilu-${tipo}"><figcaption><span class="chip">${icone}</span> ${md(titulo)}</figcaption>${corpo}${notas.length ? `<p class="nota">${notas.map(md).join(" ")}</p>` : ""}</figure>`;
+    return `<figure class="ilu ilu-${tipo}"><figcaption><span class="chip">${icone}</span> ${mdc(titulo)}</figcaption>${corpo}${notas.length ? `<p class="nota">${notas.map(mdc).join(" ")}</p>` : ""}</figure>`;
   }
 
   function leitorGuia(alvo, g, idx = 0) {
