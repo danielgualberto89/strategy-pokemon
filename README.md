@@ -50,3 +50,10 @@ tools/pagina_unica.py   gera dist/coach-de-decks.html (tudo embutido)
 - Alguns guias são de formatos anteriores (Black Bolt/White Flare, Phantasmal Flames) e suas listas têm cartas que rotacionaram; o Laboratório avisa quando uma carta não é legal no Standard.
 - As avaliações "estimativa" do Laboratório são heurísticas do motor, não resultados de torneio.
 - Ferramenta sem afiliação com The Pokémon Company, Nintendo, Metafy ou TCGdex.
+
+## Publicar no GitHub Pages
+
+O workflow `.github/workflows/pages.yml` publica o site a cada push na branch `main`.
+Na primeira vez, ative em **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+O endereço fica `https://<usuário>.github.io/strategy-pokemon/` (a versão de arquivo único fica em `/pagina-unica.html`).
+Publicado assim, o site consegue consultar o TCGdex e usar o Coach IA com a sua chave.
