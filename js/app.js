@@ -233,6 +233,19 @@
     alvo.querySelector("#sel-cap").addEventListener("change", e => ir(+e.target.value));
   }
 
+  /* ---------------- Preferências de leitura (tema e tamanho do texto) ---------------- */
+  (function ajustesLeitura() {
+    const raiz = document.documentElement;
+    const salvar = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
+    const bTema = document.getElementById("tema"), bMais = document.getElementById("fonte-mais"), bMenos = document.getElementById("fonte-menos");
+    if (!bTema) return;
+    const pintar = () => { const esc = raiz.dataset.theme === "dark"; bTema.textContent = esc ? "☀" : "☾"; bTema.setAttribute("aria-label", esc ? "Tema claro" : "Tema escuro"); };
+    bTema.addEventListener("click", () => { if (raiz.dataset.theme === "dark") { delete raiz.dataset.theme; salvar("tema", null); } else { raiz.dataset.theme = "dark"; salvar("tema", "dark"); } pintar(); });
+    const fonte = d => { const n = Math.max(-1, Math.min(2, (+raiz.dataset.fonte || 0) + d)); if (n) raiz.dataset.fonte = n; else delete raiz.dataset.fonte; salvar("fonte", n ? String(n) : null); bMenos.disabled = n <= -1; bMais.disabled = n >= 2; };
+    bMais.addEventListener("click", () => fonte(1)); bMenos.addEventListener("click", () => fonte(-1));
+    fonte(0); pintar();
+  })();
+
   /* ---------------- Biblioteca de guias ---------------- */
   function vGuias() {
     const gs = Object.values(window.GUIAS || {}).sort((a, b) => a.id.localeCompare(b.id));
