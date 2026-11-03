@@ -221,3 +221,21 @@ footer { color: var(--muted); font-size: .84rem; max-width: 1200px; margin: 0 au
 .grade-cartas-meta figcaption { font-family: var(--f-ui); font-size: .8rem; line-height: 1.25; color: var(--muted); }
 .grade-cartas-meta figcaption strong { color: var(--fg); font-size: .95rem; display: block; }
 @media (max-width: 640px) { .meta-linha { grid-template-columns: 1fr auto; } .meta-barra { grid-column: 1 / -1; grid-row: 2; } }
+
+/* Botão copiar para o TCG Live */
+.copiar-tcgl { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; max-width: 100%; }
+.btn-copiar { display: inline-flex; align-items: center; gap: 8px; }
+.btn-copiar .ic { flex: none; }
+.copiar-status:empty { display: none; }
+.copiar-status { flex: 1 1 260px; }
+
+/* Meta JP: estratégia por deck */
+.meta-estrategias { display: grid; gap: 10px; }
+.meta-deck { gap: 12px; }
+.meta-deck summary { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.meta-deck-nome { font-family: var(--f-display); font-size: 1.12rem; }
+.meta-deck h4 { font-family: var(--f-ui); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 6px 0 4px; }
+.meta-deck ul { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; line-height: 1.65; }
+.meta-deck li::marker { color: var(--accent); }
+.meta-ideia { font-size: 1.05rem; line-height: 1.7; max-width: 75ch; border-left: 3px solid var(--accent); padding-left: 12px; }
+.meta-colunas { display: grid; gap: 16px 28px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }

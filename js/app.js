@@ -36,6 +36,50 @@
     catch (e) { const ta = document.createElement("textarea"); ta.value = texto; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (_) { /* sem cópia */ } ta.remove(); if (btn) btn.textContent = "Selecione e copie manualmente"; }
   }
 
+  /* ---------------- Copiar lista no formato do Pokémon TCG Live ---------------- */
+  const TCGL = window.CODIGOS_TCGL || {};
+  const CORES_BASICAS = { G: "grass", R: "fire", W: "water", L: "lightning", P: "psychic", F: "fighting", D: "darkness", M: "metal" };
+  function paraTCGLive(texto) {
+    const out = [], sem = [];
+    for (const bruto of String(texto).split("\n")) {
+      const l = bruto.trim();
+      const h = l.match(/^(Pok[ée]mon|Trainer|Energy)s?:\s*(\d+)/i);
+      if (h) { if (out.length) out.push(""); out.push(`${/^pok/i.test(h[1]) ? "Pokémon" : h[1][0].toUpperCase() + h[1].slice(1).toLowerCase()}: ${h[2]}`); continue; }
+      const m = l.match(/^(\d+)\s+(.+)$/);
+      if (!m) continue;
+      let [, q, nome] = m;
+      if (/\s[A-Z0-9-]{2,6}\s\d+[a-z]?$/.test(nome)) { out.push(`${q} ${nome}`); continue; }
+      const base = nome.replace(/\s*\([^)]*[\u3040-\u30ff\u4e00-\u9fff][^)]*\)\s*$/, "").trim();
+      const bas = base.match(/^Basic \{([A-Z])\} Energy$/i);
+      const chave = (bas ? `${CORES_BASICAS[bas[1].toUpperCase()]} energy` : base).toLowerCase();
+      const cod = TCGL[chave];
+      if (cod) out.push(`${q} ${bas ? CORES_BASICAS[bas[1].toUpperCase()].replace(/^./, c => c.toUpperCase()) + " Energy" : base} ${cod}`);
+      else { out.push(`${q} ${base}`); sem.push(base); }
+    }
+    return { texto: out.join("\n"), sem };
+  }
+  const ICONE_COPIAR = '<svg class="ic" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+  const listasCopiar = [];
+  function botaoCopiar(texto, rotulo = "Copiar para o TCG Live") {
+    const id = listasCopiar.push(texto) - 1;
+    return `<span class="copiar-tcgl"><button type="button" class="btn btn-copiar" data-copiar="${id}" title="Copia a lista com sigla e número de cada carta, pronta para Importar deck no Pokémon TCG Live">${ICONE_COPIAR}<span>${esc(rotulo)}</span></button><span class="nota copiar-status" role="status"></span></span>`;
+  }
+  async function copiarTCGLive(texto, btn) {
+    const { texto: t, sem } = paraTCGLive(texto);
+    const st = btn.parentElement.querySelector(".copiar-status");
+    try { await navigator.clipboard.writeText(t); }
+    catch (e) { const ta = document.createElement("textarea"); ta.value = t; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (_) { /* sem cópia */ } ta.remove(); }
+    const rot = btn.querySelector("span"), antes = rot.textContent;
+    rot.textContent = "Copiado!"; setTimeout(() => { rot.textContent = antes; }, 1800);
+    if (st) st.innerHTML = sem.length
+      ? `Copiado. No TCG Live: Decks → Importar → colar. <strong>Atenção:</strong> ${sem.length} carta(s) sem código no TCG Live (podem ser exclusivas do Japão ou ainda não lançadas no jogo): ${sem.map(esc).join(", ")}.`
+      : "Copiado. No TCG Live: Decks → Importar → colar.";
+  }
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-copiar]");
+    if (b) { const id = b.dataset.copiar; copiarTCGLive(id === "lab" ? ($("#lab-txt") || {}).value || "" : listasCopiar[+id], b); }
+  });
+
   /* ---------------- Início ---------------- */
   function vInicio() {
     const meta = DECKS.filter(d => d.status === "meta");
@@ -160,7 +204,7 @@
     if (d.lista) $("#b-analisar").addEventListener("click", () => { store.set("lab-lista", d.lista.texto); location.hash = "laboratorio"; });
     const alvo = $("#aba-conteudo");
     if (atual === "geral") alvo.innerHTML = abaGeral(d);
-    else if (atual === "mesa") { alvo.innerHTML = `<div class="bloco"><div class="barra" style="justify-content:space-between"><div><h3>${esc(d.lista.titulo)}</h3><p class="nota">Toque numa carta para ampliar. Imagens: TCGdex.</p></div><button class="btn" id="b-copiar">Copiar lista</button></div>${mesa(d.lista.texto)}<details class="cartao"><summary>Lista em texto (para importar no TCG Live)</summary><pre class="decklist">${esc(d.lista.texto)}</pre></details></div>`; $("#b-copiar").addEventListener("click", e => copiar(d.lista.texto, e.target)); }
+    else if (atual === "mesa") { alvo.innerHTML = `<div class="bloco"><div class="barra" style="justify-content:space-between"><div><h3>${esc(d.lista.titulo)}</h3><p class="nota">Toque numa carta para ampliar. Imagens: TCGdex.</p></div>${botaoCopiar(d.lista.texto)}</div>${mesa(d.lista.texto)}<details class="cartao"><summary>Lista em texto (formato do TCG Live)</summary><pre class="decklist">${esc(paraTCGLive(d.lista.texto).texto)}</pre></details></div>`; }
     else if (atual === "matchups") alvo.innerHTML = abaMatchups(d);
     else leitorGuia(alvo, window.GUIAS[atual.slice(5)]);
   }
@@ -187,6 +231,7 @@
     for (const p of pars) {
       if (p.startsWith("- ")) lista.push(p.slice(2));
       else if (/^@(mesa|mao|premios|cartas) /.test(p)) { fecha(); h += ilustracao(p); }
+      else if (/^@copiar /.test(p)) { fecha(); const g = window.GUIAS[p.slice(8).trim()]; if (g && g.lista) h += `<div class="barra">${botaoCopiar(g.lista.texto)}</div>`; }
       else { fecha(); h += `<p>${mdc(p)}</p>`; }
     }
     fecha(); return h;
@@ -269,12 +314,28 @@
         <span class="meta-barra" aria-hidden="true"><span style="width:${(100 * d.n / max).toFixed(1)}%"></span></span>
         <span class="meta-num"><strong>${d.n}</strong> <span class="nota">${rot} · ${d.vit} tít. · ${d.seg} vices</span></span></a>`;
     };
+    const estrategia = (d, i) => {
+      const deck = DECKS.find(x => x.id === d.deck);
+      const href = deck ? `#deck-${d.deck}~guia-${d.guia}` : `#guia-${d.guia}`;
+      const lista = xs => `<ul>${xs.map(x => `<li>${mdc(x)}</li>`).join("")}</ul>`;
+      return `<details class="cartao meta-deck"${i === 0 ? " open" : ""}><summary><span class="meta-deck-nome">${esc(d.nome)}</span><span class="nota">${d.n} resultado(s) · ${d.vit} título(s)</span></summary>
+        <p class="meta-ideia">${mdc(d.resumo)}</p>
+        <div class="meta-colunas">
+          <div><h4>Plano de jogo</h4>${lista(d.plano)}</div>
+          <div><h4>Decisões que ganham jogos</h4>${lista(d.dicas.slice(0, 4))}<h4>Cuidados</h4>${lista(d.cuidados.slice(0, 4))}</div>
+        </div>
+        <h4>Contra o meta</h4><ul>${d.contra.map(([o, x]) => `<li><strong>${esc(o)}:</strong> ${mdc(x)}</li>`).join("")}</ul>
+        <div class="barra">${botaoCopiar(d.lista, "Copiar lista típica para o TCG Live")}<a class="btn" href="${href}">Ler a análise completa →</a></div>
+      </details>`;
+    };
     const topo = M.topCartas.slice(0, 18);
     app.innerHTML = `<section class="vista">
       <div class="bloco"><h2>Meta japonês — City League</h2>
         <p class="lead">${M.total} resultados premiados (campeões e vices) de ${esc(M.periodo)}, com ${M.listas} listas completas, publicados pelo <a href="${M.url}" target="_blank" rel="noopener">Pokecahack</a>. Clique num deck para ler a análise: resultados, as cartas que quase todas as listas usam, onde elas variam e uma lista típica.</p>
         <p class="nota">Conta só os resultados com lista divulgada que o site reuniu — é um termômetro do meta, não a porcentagem exata de jogadores.</p></div>
       <div class="cartao meta-grafico"><span class="rotulo">Resultados premiados por deck</span>${M.decks.map(linha).join("")}</div>
+      <div class="bloco"><h3>Estratégia por deck</h3><p class="nota">Plano de jogo, os cuidados que mais decidem partidas e como jogar contra os decks mais premiados. Abra um deck para ver tudo; a análise completa tem também as cartas-chave e a taxa de uso de cada carta.</p>
+        <div class="meta-estrategias">${M.decks.filter(d => d.resumo).map(estrategia).join("")}</div></div>
       <div class="bloco"><h3>Cartas mais usadas no meta</h3><p class="nota">Porcentagem das ${M.listas} listas premiadas que levam a carta (energias básicas fora).</p>
         <div class="grade-cartas-meta">${topo.map(c => `<figure>${htmlCarta(c.nome)}<figcaption><strong>${c.pct}%</strong> ${esc(ptNome(c.nome))}</figcaption></figure>`).join("")}</div></div>
     </section>`;
@@ -313,7 +374,7 @@
       <div class="bloco"><h2>Laboratório de estratégia</h2><p class="lead">Cole uma lista no formato do Pokémon TCG Live ou Limitless (uma carta por linha: “4 Dreepy TWM 128”). O motor valida o deck, compara com os arquétipos dos guias e monta a estratégia. Com “Buscar cartas no TCGdex” ele lê o texto oficial de cada carta e entende cartas que não aparecem nos guias.</p></div>
       <div class="grade-2">
         <div class="bloco"><label for="lab-txt">Sua lista</label><textarea id="lab-txt" spellcheck="false">${esc(exemplo)}</textarea>
-          <div class="barra"><button class="btn pri" id="lab-go">Analisar</button><label style="display:flex;gap:6px;align-items:center;font-weight:400"><input type="checkbox" id="lab-dex" ${store.get("lab-dex", "1") === "1" ? "checked" : ""}> Buscar cartas no TCGdex (online)</label></div>
+          <div class="barra"><button class="btn pri" id="lab-go">Analisar</button><span class="copiar-tcgl"><button type="button" class="btn btn-copiar" data-copiar="lab" title="Copia a lista da caixa com sigla e número, pronta para o TCG Live">${ICONE_COPIAR}<span>Copiar para o TCG Live</span></button><span class="nota copiar-status" role="status"></span></span><label style="display:flex;gap:6px;align-items:center;font-weight:400"><input type="checkbox" id="lab-dex" ${store.get("lab-dex", "1") === "1" ? "checked" : ""}> Buscar cartas no TCGdex (online)</label></div>
           <p class="nota" id="lab-status">A lista acima é um exemplo (Alakazam do guia da Project Artemis). Troque pela sua.</p></div>
         <div class="cartao"><span class="rotulo">Criar um deck do zero</span><p class="nota">Gera um esqueleto de 60 cartas com as proporções que os guias usam. Depois ajuste e analise.</p>
           <label for="esq-tipo">Estrutura <select id="esq-tipo">${Object.entries(Engine.ESQUELETOS).map(([k, v]) => `<option value="${k}">${esc(v.nome)}</option>`).join("")}</select></label>

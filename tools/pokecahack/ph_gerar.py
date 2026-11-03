@@ -4,6 +4,7 @@ import json, sys, pathlib, re
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from ph_textos import T
 from ph_dic import D
+from ph_estrategia import E
 repo = pathlib.Path(sys.argv[1]); prox = int(sys.argv[2])
 st = json.load(open("ph_stats.json", encoding="utf-8")); res = json.load(open("ph_res.json", encoding="utf-8"))
 TOTAL = sum(v["n"] for v in st.values())
@@ -37,6 +38,12 @@ for slug in ordem:
     url = f"https://pokecahack.com/{slug.replace('_', '-')}/"
     caps = []
     caps.append(["Visão geral", [f"Análise traduzida do site japonês **Pokecahack** (ポケカはっく), atualizada em {t['atual']}. Completa os guias do Metafy e do Pokemite com os **resultados da City League** e uma **análise das listas premiadas**."] + [("- " + x) for x in t["carac"]], []])
+    e = E.get(slug)
+    if e:
+        caps.append(["Como jogar", [f"**A ideia:** {e['resumo']}"] + ["- " + x for x in e["plano"]], []])
+        caps.append(["Decisões que ganham jogos", ["- " + x for x in e["dicas"]], []])
+        caps.append(["Cuidados", ["O que mais faz este deck perder:"] + ["- " + x for x in e["cuidados"]], []])
+        caps.append(["Contra o meta", ["Como jogar contra os decks mais premiados da City League:"] + [f"- **{d}:** {x}" for d, x in e["contra"]], []])
     caps.append(["Pontos fortes e fracos", ["**Pontos fortes**"] + ["- " + x for x in t["fortes"]] + ["**Pontos fracos**"] + ["- " + x for x in t["fracos"]], []])
     if t["chaves"]:
         caps.append(["Cartas-chave", ["- **" + c + "** — " + x for c, x in t["chaves"]] + ["@cartas Cartas-chave | " + ", ".join(c for c, _ in t["chaves"])], [c for c, _ in t["chaves"]]])
@@ -66,12 +73,15 @@ for slug in ordem:
         poke_nucleo = [en(u["nome"]) for u in uso if u["cat"] == "P" and u["pct"] >= 50][:8]
         if poke_nucleo: pa.append("@cartas Pokémon do núcleo | " + ", ".join(poke_nucleo) + f" | Pokémon presentes em pelo menos metade das {n} listas.")
         if n < 5: pa = [f"Só **{n} lista(s)** premiada(s) publicada(s) até agora — pouco para uma média. Veja a lista completa no último capítulo."]
+        if e and e.get("ajustes"): pa += ["**Como ajustar a lista**"] + ["- " + x for x in e["ajustes"]]
         caps.append([f"Análise das {n} listas" if n >= 5 else "Listas premiadas", pa, [en(u["nome"]) for u in nucleo if u["cat"] == "P"][:6]])
         r = s["rep"]["r"]
         lista = {"titulo": f"Lista típica ({RES.get(r['res'], r['res'])}, {data_pt(r['data'])})",
                  "fonte": f"A lista premiada mais próxima da média das {n} listas: {RES.get(r['res'], r['res'])} de uma City League em {local(r['loja'])} ({r['jogadores']} jogadores), via Pokecahack / site oficial (pokemon-card.com).",
                  "texto": lista_txt(s["rep"]["lista"])}
-        meta.append({"slug": slug, "deck": t["deck"], "nome": t["nome"], "n": n, "vit": s["vitorias"], "seg": s["segundos"], "jog": s["jogMedio"], "guia": gid})
+        m = {"slug": slug, "deck": t["deck"], "nome": t["nome"], "n": n, "vit": s["vitorias"], "seg": s["segundos"], "jog": s["jogMedio"], "guia": gid, "lista": lista["texto"]}
+        if e: m.update({"resumo": e["resumo"], "plano": e["plano"], "dicas": e["dicas"], "cuidados": e["cuidados"], "contra": [[d, x] for d, x in e["contra"]]})
+        meta.append(m)
     linhas = [f'GUIA("{gid}",{{', f'deck:{js(t["deck"])},', f'titulo:{js(t["nome"] + " — análise do Pokecahack")},', 'autor:"Pokecahack (Japão)",', f'url:{js(url)},',
               'formato:"Standard japonês (City League 2027, temporada 1)",', 'idioma:"ja",', 'fonte:"Pokecahack",']
     if t.get("novo"):
@@ -100,6 +110,6 @@ NT = len(ids_t)
 top = [{"nome": en(nm), "pct": round(100 * c / NT), "cat": cat[nm]} for nm, c in cont.most_common(24)]
 M = {"fonte": "Pokecahack (ポケカはっく) — resultados de City League com lista publicada", "url": "https://pokecahack.com/category/deck/",
      "periodo": "26/09 a 03/11/2026 (City League 2027, temporada 1)", "total": TOTAL, "listas": NT, "decks": meta, "topCartas": top}
-(repo / "js/data/meta-jp.js").write_text("/* Gerado por tools/pokecahack/ph_gerar.py a partir dos artigos do Pokecahack (dados de 03/11/2026). */\nwindow.META_JP = " + json.dumps(M, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
+(repo / "js/data/meta-jp.js").write_text("/* Gerado por tools/ a partir dos artigos do Pokecahack (dados de 03/11/2026). */\nwindow.META_JP = " + json.dumps(M, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
 print("guias", ids[0], "a", ids[-1], "| total resultados", TOTAL)
 if falt: print("SEM TRADUÇÃO:", sorted(falt))

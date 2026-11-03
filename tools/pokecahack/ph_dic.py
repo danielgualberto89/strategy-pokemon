@@ -56,7 +56,7 @@ D = {
 "ロケット団のヤミカラス":"Team Rocket's Murkrow","ロケット団のラムダ":"Team Rocket's Proton","ロケット団のランス":"Team Rocket's Petrel",
 "ロケット団のレシーバー":"Team Rocket's Transceiver","ロケット団のワナイダー":"Team Rocket's Spidops","ロケット団の監視塔":"Team Rocket's Watchtower",
 "ロケット団エネルギー":"Team Rocket's Energy","ロック闘エネルギー":"Rock Fighting Energy","ロトりぼう":"Roto-Stick","ワカシャモ":"Combusken",
-"ワンダーパッチ":"Wondrous Patch","伝説の溶岩洞":"Legendary Lava Lake","偉大な大樹(ACE SPEC)":"Grand Tree","危ない廃墟":"Ruínas Perigosas (危ない廃墟)",
+"ワンダーパッチ":"Wondrous Patch","伝説の溶岩洞":"Legendary Lava Lake","偉大な大樹(ACE SPEC)":"Grand Tree","危ない廃墟":"Risky Ruins",
 "基本悪エネルギー":"Darkness Energy","基本水エネルギー":"Water Energy","基本炎エネルギー":"Fire Energy","基本草エネルギー":"Grass Energy",
 "基本超エネルギー":"Psychic Energy","基本鋼エネルギー":"Metal Energy","基本闘エネルギー":"Fighting Energy","基本雷エネルギー":"Lightning Energy",
 "夜のタンカ":"Night Stretcher","夜の鉱山":"Mina Noturna (夜の鉱山)","探検家の先導":"Explorer's Guidance","改造ハンマー":"Enhanced Hammer",

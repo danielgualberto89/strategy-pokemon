@@ -19,6 +19,7 @@ window.GUIA = function (id, g) {
     const pars = [g.lista.fonte || "Lista do guia. Contagens do momento do vídeo/guia, não necessariamente de um deck premiado."]
       .concat(secs.map(s => `**${s.t} (${s.n}):** ${s.c.join(", ")}.`));
     const pok = (secs[0] ? secs[0].c : []).slice(0, 10).map(x => x.replace(/^\d+\s+/, ""));
+    pars.splice(1, 0, "@copiar " + id);
     if (pok.length) pars.push("@cartas Os Pokémon da lista | " + pok.join(", "));
     g.caps.push([g.lista.titulo || "Lista de exemplo", pars, nomes.filter(n => !/Energy$/.test(n) || /Energy\b.*\w/.test(n)).slice(0, 14)]);
   }
