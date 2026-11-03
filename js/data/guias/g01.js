@@ -18,12 +18,14 @@ GUIA("g01", {
       "Outras listas que fizeram top cut trocam a 3ª Darkness Energy por Dudunsparce ex ou por Moltres. As três opções:",
       "- 3ª Darkness Energy: aumenta a chance de ter Darkness no mirror e dá consistência ao plano com Risky Ruins. Na visão do autor vale mais que um atacante tech, porque nos top cuts você enfrenta os melhores jogadores de Dragapult. Ele também testou uma 4ª Psychic no lugar e achou sólida, pois facilita atacar com Munkidori no mirror e contra decks agressivos.",
       "- Dudunsparce ex: melhora contra Basic Box/Slop Box (que já venceu 2 eventos grandes na temporada) e contra Crustle. Porém, os vencedores de Louisville e Puebla não enfrentaram nenhum Crustle e Basic Box é raro; alguns jogadores que usaram a carta preferiam ter outra energia no lugar.",
-      "- Moltres: melhora contra Grass (Teal Mask Ogerpon ex, Hydrapple ex, Arboliva), ajuda contra Slop Box, amacia Team Rocket's Mewtwo ex e N's Zoroark (cuidado com o Reshiram), faz OHKO em Budew e deixa Meowth ex no ponto para um Phantom Dive ou para Munkidori duplo + Moltres. O autor usou muito no Regional de Indianápolis, mas zero vezes em Turim e nos treinos recentes — ele não pretende jogar com Moltres."
+      "- Moltres: melhora contra Grass (Teal Mask Ogerpon ex, Hydrapple ex, Arboliva), ajuda contra Slop Box, amacia Team Rocket's Mewtwo ex e N's Zoroark (cuidado com o Reshiram), faz OHKO em Budew e deixa Meowth ex no ponto para um Phantom Dive ou para Munkidori duplo + Moltres. O autor usou muito no Regional de Indianápolis, mas zero vezes em Turim e nos treinos recentes — ele não pretende jogar com Moltres.",
+"@cartas O núcleo do Dragapult/Hammer | Dreepy, Drakloak, Dragapult ex, Budew, Munkidori, Crushing Hammer, Unfair Stamp | Budew trava Itens cedo; Munkidori move dano; Hammers e Stamp atrasam o oponente."
     ], ["Darkness Energy", "Psychic Energy", "Dudunsparce ex", "Moltres", "Risky Ruins", "Munkidori", "Budew", "Meowth ex"]],
 
     ["Dicas gerais", [
       "No início, se você tem Ultra Ball e precisa de Dreepy antes de jogar Lillie's Determination, descarte um Drakloak com a Ultra Ball. Depois do Lillie's você recupera o Drakloak com Night Stretcher.",
-      "Quando você já pode atacar com Dragapult ex, ainda vale usar Itchy Pollen mais uma vez: isso acumula energia nos Dragapult e abre linhas de Boss's Orders mais fáceis, porque você não vai precisar gastar o Supporter com Crispin depois."
+      "Quando você já pode atacar com Dragapult ex, ainda vale usar Itchy Pollen mais uma vez: isso acumula energia nos Dragapult e abre linhas de Boss's Orders mais fáceis, porque você não vai precisar gastar o Supporter com Crispin depois.",
+"@mesa Tabuleiro típico de meio de jogo | Ativo: Budew | Banco: Dragapult ex + Darkness Energy, Drakloak, Drakloak, Munkidori + Darkness Energy, Fezandipiti ex | Mais um Itchy Pollen enquanto acumula energia nos Dragapults facilita as linhas de Boss's Orders."
     ], ["Ultra Ball", "Dreepy", "Lillie's Determination", "Drakloak", "Night Stretcher", "Budew", "Boss's Orders", "Crispin"]],
 
     ["vs Dragapult / Hammer (mirror) — ir 2º", [
@@ -55,6 +57,7 @@ GUIA("g01", {
 
     ["vs Basic Box — ir 1º", [
       "Comece com Itchy Pollen para travar Energy Switch e a Ultra Ball que busca Meowth ex. Ainda mais importante: Crushing Hammer na energia do Kangaskhan. Isso dá tempo para montar mais Drakloaks.",
+"@mesa Início contra Basic Box (indo 1º) | Rival ativo: Mega Kangaskhan ex + Grass Energy | Rival banco: Teal Mask Ogerpon ex, Lillie's Clefairy ex, Latias ex | Ativo: Budew | Banco: Dreepy, Dreepy, Munkidori | Itchy Pollen trava Energy Switch e Ultra Ball; Crushing Hammer na energia do Kangaskhan dá tempo para mais Drakloaks.",
       "Se eles pegarem 2 prêmios antes do seu primeiro Phantom Dive, o jogo complica (6-4): você precisa de dois KOs grandes, a Clefairy é fácil de montar e às vezes o Raging Bolt também mata o Pult. Se você der Phantom Dive com o placar em 6-6 ou 6-5, a situação é muito melhor.",
       "O autor está começando a acreditar que é um erro dar Phantom Dive no Kangaskhan ex: você não pega prêmio e eles removem o Kangaskhan com Chien-Pao. Só faz sentido depois de dois Itchy Pollen no Kangaskhan e com Risky Ruins em jogo (10 + 10 + 200 + 20 + 60 = 300).",
       "Ele prefere usar Boss para nocautear a Clefairy com Dragapult — mas aí precisa de energia suficiente no Dragapult para não gastar o Supporter com Crispin. Por isso ele gosta de muita energia na lista.",

@@ -20,7 +20,8 @@ GUIA("g25", {
       "- **Ele não precisa sobreviver.** Muitas vezes deixe-o ser nocauteado se já cumpriu o papel: é o seu muro do início, que compra recursos, ameaça com um ataque forte e, principalmente, compra os turnos para montar o Crustle.",
       "- Entregar 3 prêmios parece um problema, mas se o oponente gastou tempo e recursos para matá-lo e você já tem vários Crustle prontos, é exatamente o que você quer. Contra muitos decks de ex, o oponente de repente não consegue mais causar dano no seu novo ativo.",
       "- Não desperdice recursos salvando um Kangaskhan danificado. O trabalho dele não é pegar os 6 prêmios, e sim criar tempo e recursos para o Crustle virar o Pokémon dominante. O Rapid-fire Combo ainda serve para um prêmio cedo ou para forçar uma resposta.",
-      "**Dwebble / Crustle:** o Crustle tem a habilidade **Mysterious Rock Inn** (não recebe dano de ataques de Pokémon ex) e ataca por 120. É a peça central do plano."
+      "**Dwebble / Crustle:** o Crustle tem a habilidade **Mysterious Rock Inn** (não recebe dano de ataques de Pokémon ex) e ataca por 120. É a peça central do plano.",
+"@cartas A muralha | Dwebble, Crustle, Mega Kangaskhan ex, Growing Grass Energy, Hero's Cape, Jumbo Ice Cream | Crustle não recebe dano de Pokémon ex. Cada Growing Grass +20 HP (230 com quatro, 330 com Hero's Cape); Jumbo Ice Cream cura 80."
     ], ["Mega Kangaskhan ex", "Dwebble", "Crustle"]],
 
     ["Os Supporters", [
@@ -66,7 +67,8 @@ GUIA("g25", {
       "- Um dos maiores erros é atacar agressivo demais: se não dá KO, normalmente não vale atacar só por 120 (o Basic Box usa Pokémon danificados e move dano). KO limpo, faça; senão, cure e mantenha o Crustle.",
       "- **Boss's Orders** é especialmente importante: escolha quais Pokémon remover — os difíceis de repor ou que dão utilidade importante. Reduza as opções aos poucos.",
       "- **Eri:** eles acumulam Itens; tire até dois importantes (inclusive o ACE SPEC, se ainda estiver na mão). Use com máximo valor.",
-      "- **Hero's Cape e Growing Grass Energy:** eles precisam de uma forma específica de lidar com o Crustle; aumentar o HP e curar repetidamente (Jumbo Ice Cream) dificulta muito."
+      "- **Hero's Cape e Growing Grass Energy:** eles precisam de uma forma específica de lidar com o Crustle; aumentar o HP e curar repetidamente (Jumbo Ice Cream) dificulta muito.",
+"@mesa Contra Basic Box | Rival ativo: Raging Bolt ex | Rival banco: Teal Mask Ogerpon ex, Mega Kangaskhan ex, Chien-Pao | Ativo: Crustle + Growing Grass Energy | Banco: Crustle, Dwebble, Mega Kangaskhan ex | Os atacantes ex deles não causam dano ao Crustle — eles precisam de um 1 prêmio para passar pela muralha."
     ], ["Mega Kangaskhan ex", "Teal Mask Ogerpon ex", "Lillie's Clefairy ex", "Crustle", "Boss's Orders", "Eri", "Hero's Cape", "Growing Grass Energy", "Jumbo Ice Cream"]],
 
     ["vs Alakazam e N's Zoroark", [

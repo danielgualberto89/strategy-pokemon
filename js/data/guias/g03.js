@@ -43,7 +43,8 @@ GUIA("g03", {
       "Perdeu o jogo 1 por abrir com 7 Pokémon na mão (raríssimo) — desistiu no T2. No jogo 2 o Spiritomb venceu graças aos 80 cedo no Mega Kangaskhan. Como o Slowking precisa bancar 2 ou 3 alvos de vários prêmios, mesmo atrás no prize race você monta um turno de vários prêmios com Spiritomb ou Matcha Spin. Jogue seguro e não se comprometa demais.",
       "**R5 vs Dragapult/Hammer (2-0).** Hammers mais equilibrados (2 de 5). Mesma estratégia da R2.",
       "- Se o oponente atacar com Drakloak (e não com Dragapult) para matar seu Banette depois de um hit do Budew, cuidado: isso te força a um jogo de 4 KOs — uma chance a mais de ele disruptar sua mão. Tudo bem pegar o KO: no fim você nem precisa recolocar a Clefairy, pois só falta um prêmio depois do KO no Dragapult, e Boss vira out para puxar Drakloak, Meowth ou outro liability.",
-      "- Ter Poltchageist em campo é bom: é pivô, não morre para Phantom Dive nem para Adrena-Brain, e se você terminar num prize map ímpar depois de puxar um Budew para matar um Drakloak, Matcha Spin pega o último prêmio sem Boss."
+      "- Ter Poltchageist em campo é bom: é pivô, não morre para Phantom Dive nem para Adrena-Brain, e se você terminar num prize map ímpar depois de puxar um Budew para matar um Drakloak, Matcha Spin pega o último prêmio sem Boss.",
+"@mesa Tabuleiro do Hide n' Sneak (build Spiritomb) | Ativo: Dhelmise + Telepathic Psychic Energy | Banco: Banette, Poltchageist, Shuppet, Spiritomb | Dhelmise bate 170 com 4 sneakers no descarte; Banette (Puppet Pull) busca; Spiritomb fecha o jogo."
     ], ["Slowking", "Shaymin", "Kyurem", "Dhelmise", "Legacy Energy", "Spiritomb", "Mega Kangaskhan ex", "Sinistcha", "Drakloak", "Banette", "Lillie's Clefairy ex", "Poltchageist", "Boss's Orders"]],
 
     ["Rodada 6: Slowking na transmissão (jogo 1)", [

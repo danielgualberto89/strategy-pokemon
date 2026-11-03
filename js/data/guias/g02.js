@@ -28,7 +28,8 @@ GUIA("g02", {
       "- **Special Red Card:** disrupção e controle de mão, com função parecida com Unfair Stamp, encaixada no plano deste deck.",
       "- **Enamorus:** útil contra Dragapult quando você está atrás no prize race e o oponente tem só 2 prêmios; pega KOs em Clefairy ou Meowth; e facilita muito o matchup contra Crustle.",
       "- **Iron Leaves ex:** talvez Switch fosse melhor em alguns casos, mas como a lista só tem 2 Teal Mask, Iron Leaves cobre Zoroark e Cynthia's Garchomp e pode matar Clefairy ou Meowth, especialmente junto com Iron Crown ex.",
-      "- **4 Area Zero Underdepths:** uma das cartas mais importantes — aumenta o banco quando há Pokémon de tipos diferentes em jogo. Quatro cópias dão consistência e permitem repor se o oponente remover."
+      "- **4 Area Zero Underdepths:** uma das cartas mais importantes — aumenta o banco quando há Pokémon de tipos diferentes em jogo. Quatro cópias dão consistência e permitem repor se o oponente remover.",
+"@mesa Mesa do Basic Box com Area Zero (8 no Banco) | Ativo: Mega Kangaskhan ex | Banco: Teal Mask Ogerpon ex, Wellspring Mask Ogerpon ex, Raging Bolt ex, Latias ex, Lillie's Clefairy ex, Meowth ex, Fezandipiti ex, Chien-Pao | Kangaskhan Ativo compra 2 (Run Errand); Chien-Pao pode descartar do Banco os Pokémon danificados (com Area Zero)."
     ], ["Mega Kangaskhan ex", "Chien-Pao", "Area Zero Underdepths", "Iron Crown ex", "Wellspring Mask Ogerpon ex", "Lillie's Clefairy ex", "Ciphermaniac's Codebreaking", "Energy Switch", "Prime Catcher", "Special Red Card", "Iron Leaves ex", "Raging Bolt ex"]],
 
     ["Dicas gerais (os 10 princípios)", [
@@ -85,7 +86,8 @@ GUIA("g02", {
       "- **Meowth ex e Clefairy:** Meowth desenvolve o board, mas é prêmio fácil no banco; Full Moon Rondo fica forte com bancos grandes.",
       "- **Prime Catcher:** sua melhor ferramenta de controle do trade — não use só para um prêmio fácil se o oponente responde melhor.",
       "- **Special Red Card** (a lista não usa Unfair Stamp): só com o oponente em 3 prêmios; é apoio, não fundação.",
-      "Prize map 2-2-2 é um bom ponto de partida, mas reavalie após cada KO. Quem administra melhor atacantes e energia restantes tende a vencer o late game. Não pense só no próximo prêmio — pense na resposta do oponente."
+      "Prize map 2-2-2 é um bom ponto de partida, mas reavalie após cada KO. Quem administra melhor atacantes e energia restantes tende a vencer o late game. Não pense só no próximo prêmio — pense na resposta do oponente.",
+"@premios Mirror: o ponto de partida | 2-2-2 | Teal Mask Ogerpon ex, Raging Bolt ex, Lillie's Clefairy ex | Reavalie depois de cada KO e tenha sempre o próximo atacante pronto."
     ], ["Mega Kangaskhan ex", "Raging Bolt ex", "Teal Mask Ogerpon ex", "Latias ex", "Fezandipiti ex", "Meowth ex", "Lillie's Clefairy ex", "Prime Catcher", "Special Red Card", "Chien-Pao"]],
 
     ["vs Zoroark", [
@@ -113,7 +115,8 @@ GUIA("g02", {
       "**Plano 1:** Twin Shotels em dois Pokémon do banco, normalmente Goldeen e Dipplin. Mão fraca do oponente → priorize Goldeen; se ele tem recursos para evoluir → Dipplin, reduzindo atacantes. Nem sempre é preciso KO imediato, mas se precisa de prêmios para manter a vantagem, KO antes de spread sem continuação. Não há prize map fixo.",
       "**Plano 2 (com o oponente em 3 prêmios ou menos):** Prime Catcher → Thwackey no ativo → Special Red Card → Iron Crown ex. Traz o Thwackey e atrapalha a mão; o Iron Crown segue pressionando o banco já danificado. Ciphermaniac's Codebreaking ajuda a montar o turno. Não force se o oponente se recupera fácil.",
       "**Plano 3:** sem Iron Crown cedo, Kangaskhan compra com Run Errand enquanto você monta; Teal Mask mantém pressão enquanto busca o Iron Crown.",
-      "**Wellspring Mask:** pode ficar fora do banco até ter energia para atacar (surpresa) ou ir para o banco cedo para carregar — o oponente talvez responda baixando Shaymin, o que já o obriga a gastar uma vaga."
+      "**Wellspring Mask:** pode ficar fora do banco até ter energia para atacar (surpresa) ou ir para o banco cedo para carregar — o oponente talvez responda baixando Shaymin, o que já o obriga a gastar uma vaga.",
+"@cartas Contra Festival Lead | Iron Crown ex, Wellspring Mask Ogerpon ex, Special Red Card, Prime Catcher | Iron Crown ex nos Goldeen/Dipplin; Red Card + Prime Catcher quando eles estiverem com 3 prêmios ou menos."
     ], ["Iron Crown ex", "Goldeen", "Dipplin", "Thwackey", "Prime Catcher", "Special Red Card", "Ciphermaniac's Codebreaking", "Mega Kangaskhan ex", "Teal Mask Ogerpon ex", "Wellspring Mask Ogerpon ex", "Shaymin"]],
 
     ["vs Dhelmise / Hide 'n' Sneak", [

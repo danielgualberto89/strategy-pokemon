@@ -18,7 +18,8 @@ GUIA("g19", {
       "Um princípio central é desenvolver o board no início apesar do item lock. Você precisa montar do jeito mais consistente possível em um único turno, porque deve esperar levar Itchy Pollen antes do seu segundo turno em qualquer situação.",
       "Indo 1º, sua abertura tende a ser pior porque você não pode usar Supporters como Crispin e Lillie's Determination — na prática, cerca de 9 outs a menos. Não é comum a mão inicial bastar para pelo menos dois Dreepy, Budew e um Drakloak/Lillie's para o turno seguinte.",
       "Muitas mãos ruins ainda têm uma Ultra Ball: indo 2º, ela busca Meowth ex para pegar Lillie's, uma chance extra de achar Poffins/Poké Pads antes do item lock. Muitas vezes quem vai 1º não monta e é 'Itchy Pollen-ado para fora do jogo'.",
-      "A vantagem de ir 1º (evoluir primeiro) importa pouco: como veremos, ser o primeiro a usar Phantom Dive costuma ser ruim, então não há pressa em fazer o Dragapult."
+      "A vantagem de ir 1º (evoluir primeiro) importa pouco: como veremos, ser o primeiro a usar Phantom Dive costuma ser ruim, então não há pressa em fazer o Dragapult.",
+"@mesa Mirror indo 2º: a guerra de Budew | Rival ativo: Budew | Rival banco: Dreepy, Dreepy, Munkidori | Ativo: Budew | Banco: Dreepy, Dreepy, Drakloak | Ir 2º dá o primeiro Apoiador e o primeiro Itchy Pollen depois do Apoiador deles."
     ], ["Lillie's Determination", "Crispin", "Dreepy", "Budew", "Drakloak", "Ultra Ball", "Meowth ex", "Buddy-Buddy Poffin", "Poké Pad"]],
 
     ["Pass, pass, pass — e o risk premium", [

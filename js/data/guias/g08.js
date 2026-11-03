@@ -22,7 +22,8 @@ GUIA("g08", {
       "- SEMPRE queira ir 1º: o Proton monta rápido e pode ser usado indo 1º; o deck acha Proton no T1 com bastante consistência.",
       "- Guarde Arianas e Archers quando possível: são sua compra principal e ajudam a chegar no dano contra Pokémon grandes.",
       "- Ao descartar Supporters, priorize tirar Protons e Petrels indesejados — evita mãos mortas, principalmente contra disrupção.",
-      "- Guarde as Ignition Energy para o Porygon2: com muitos Supporters TR no descarte, o Porygon vira um atacante secundário de muito dano."
+      "- Guarde as Ignition Energy para o Porygon2: com muitos Supporters TR no descarte, o Porygon vira um atacante secundário de muito dano.",
+"@mesa Tabuleiro do Honchkrow | Ativo: Team Rocket's Honchkrow + Team Rocket's Energy | Banco: Team Rocket's Honchkrow, Team Rocket's Murkrow, Team Rocket's Porygon2, Team Rocket's Articuno | Quanto mais Apoiadores da Equipe Rocket no descarte, mais dano. Ignition Energy fica para o Porygon2."
     ], ["Team Rocket's Honchkrow", "Team Rocket's Proton", "Team Rocket's Murkrow", "Team Rocket's Porygon", "Team Rocket's Ariana", "Team Rocket's Archer", "Team Rocket's Petrel", "Ignition Energy", "Team Rocket's Porygon2"]],
 
     ["Devo jogar este deck? Prós e contras", [
@@ -58,7 +59,8 @@ GUIA("g08", {
       "- **3 Night Stretcher:** recuperar Murkrow e Honchkrow é crucial, principalmente nos matchups de 1 prêmio em que você precisa manter Murkrows no banco para evoluir.",
       "- **1 Miracle Headset (ACE SPEC):** quase não era jogado; dá mais dano ao Honchkrow e é uma boa recuperação quando você sofre disrupção de mão.",
       "**Estádios — 4 TR Factory:** para chegar nos números e achar energia é preciso comprar. Algumas cópias ficam mortas, mas o oponente vai trocar seus estádios e você ganha a guerra de estádios. O problema é contra Rocket Box e o mirror (que viram 'spam de Archer').",
-      "**Energias — 4 TR Energy, 4 Ignition Energy:** use as TR Energy nos Honchkrow quando der; se gastar as Ignition, o Porygon2 não ataca. O Murkrow usa Torment com uma TR Energy. Jogue 4 Ignition: listas com 3 temem 'sobrecarga de energia', mas sem energia na mão você não ataca, e há prizing e matchups de 1 prêmio. Lembre: a Ignition se descarta no fim do turno e conta como 1 energia mesmo num básico (só conta como 3 em evoluídos) — importante para recuar."
+      "**Energias — 4 TR Energy, 4 Ignition Energy:** use as TR Energy nos Honchkrow quando der; se gastar as Ignition, o Porygon2 não ataca. O Murkrow usa Torment com uma TR Energy. Jogue 4 Ignition: listas com 3 temem 'sobrecarga de energia', mas sem energia na mão você não ataca, e há prizing e matchups de 1 prêmio. Lembre: a Ignition se descarta no fim do turno e conta como 1 energia mesmo num básico (só conta como 3 em evoluídos) — importante para recuar.",
+"@cartas Os Apoiadores que viram dano | Team Rocket's Proton, Team Rocket's Archer, Team Rocket's Petrel, Team Rocket's Ariana, Team Rocket's Giovanni | 4 cópias de cada: alimentam o descarte e o ataque do Honchkrow."
     ], ["Team Rocket's Murkrow", "Team Rocket's Honchkrow", "Team Rocket's Porygon", "Team Rocket's Porygon2", "Team Rocket's Articuno", "Team Rocket's Mimikyu", "Team Rocket's Proton", "Team Rocket's Archer", "Team Rocket's Petrel", "Team Rocket's Ariana", "Team Rocket's Giovanni", "Team Rocket's Transceiver", "Poké Pad", "Ultra Ball", "Roto-Stick", "Night Stretcher", "Miracle Headset", "Team Rocket's Factory", "Team Rocket's Energy", "Ignition Energy"]],
 
     ["Dicas para ir 2º", [

@@ -27,7 +27,8 @@ GUIA("g06", {
       "- Slowking: a peça central — várias cópias, porque perder o único Slowking muda tudo.",
       "- Pokémon de ataque: Kyurem (spread) e Metagross (alvo único); outros conforme o formato.",
       "- Controle do topo: Academy at Night, Ciphermaniac's Codebreaking e o motor de busca. Energia, recuperação e troca sustentam o sistema durante os 6 prêmios.",
-      "Cada parte tem propósito: não adicione cartas só porque são fortes isoladamente; pergunte se ajudam a chegar consistentemente à posição em que o Slowking usa o ataque certo na hora certa."
+      "Cada parte tem propósito: não adicione cartas só porque são fortes isoladamente; pergunte se ajudam a chegar consistentemente à posição em que o Slowking usa o ataque certo na hora certa.",
+"@mesa O esqueleto do Slowking | Ativo: Mega Kangaskhan ex | Banco: Slowking, Slowking, Slowpoke, Dudunsparce, Latias ex | O Kangaskhan compra por baixo sem mexer no topo; Academy at Night coloca no topo o Pokémon cujo ataque o Slowking vai copiar."
     ], ["Slowking", "Mega Kangaskhan ex", "Kyurem", "Metagross", "Academy at Night", "Ciphermaniac's Codebreaking"]],
 
     ["Carta a carta", [
@@ -86,7 +87,8 @@ GUIA("g06", {
       "**Jogando atrás:** seja mais agressivo com recursos (sem jogar tudo no board). Um Trifrost pode criar várias oportunidades de prêmio e iniciar a virada; o Metagross faz isso removendo um Pokémon grande. Pergunte **'qual ataque me dá mais chance de pegar vários prêmios nos próximos dois turnos?'**",
       "**Meio de jogo — pense no fim.** Conte recursos, atacantes restantes, o que está nos prêmios e quantos Slowking ainda tem. Faça um plano: 'se eu usar Kyurem aqui, crio dois KOs futuros e fecho com Metagross'. Seus ataques devem se conectar.",
       "**Fim de jogo — cada recurso importa.** Não desperdice recuperação (pode precisar trazer o último atacante), não banque Rule Box desnecessário (rota de 3 prêmios para o oponente), não use a última cópia de algo importante sem saber se fecha o jogo. Quanto mais perto do fim, menos as cartas são intercambiáveis.",
-      "**Regra de ouro:** antes de toda ação importante: o que estou tentando fazer? Do que preciso para isso? O que posso fazer sem gastar o recurso de que vou precisar depois? Não faça a jogada mais forte do turno — faça a que te dá a posição mais forte para o resto do jogo."
+      "**Regra de ouro:** antes de toda ação importante: o que estou tentando fazer? Do que preciso para isso? O que posso fazer sem gastar o recurso de que vou precisar depois? Não faça a jogada mais forte do turno — faça a que te dá a posição mais forte para o resto do jogo.",
+"@cartas O arsenal do topo do baralho | Kyurem, Metagross, Lillie's Clefairy ex, Mew ex | Kyurem: Trifrost (spread). Metagross: KO grande em alvo único."
     ], ["Slowking", "Slowpoke", "Mega Kangaskhan ex", "Kyurem", "Metagross", "Academy at Night", "Ciphermaniac's Codebreaking"]],
 
     ["Atualização pós-Mundial 2026", [

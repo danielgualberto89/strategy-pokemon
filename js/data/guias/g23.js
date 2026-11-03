@@ -31,9 +31,11 @@ GUIA("g23", {
       "- Indo 1º, você vai levar Itchy Pollen praticamente com certeza: tenha acesso a um Kadabra — ele bate 30 e nocauteia o Budew, devolvendo o ritmo a você. Listas de Dragapult normalmente não jogam Rare Candy, então esse KO cedo os deixa bem atrás.",
       "- No meio de jogo, espere Special Red Card / Unfair Stamp: guarde as compras do Dudunsparce e não se exponha demais.",
       "- **Prize map:** Budew (1) → Drakloak (1) → Dragapult (2) → Meowth/Fezandipiti (2).",
+"@premios Contra Dragapult | 1-1-2-2 | Budew, Drakloak, Dragapult ex, Fezandipiti ex",
       "**Mega Greninja ex — levemente favorável. Vá 1º (2º também não é terrível).** Muito parecido com o Dragapult, mas eles têm um Pokémon de 3 prêmios (Mega Greninja ex) e o perigoso Greninja ex TWM. O Battle Cage impede o Mortal Shuriken no seu banco e o Shaymin protege do Greninja ex TWM.",
       "- Eles quase sempre montam primeiro o Greninja ex TWM (Shinobi Blade busca qualquer carta para o board perfeito). Você não joga disrupção de mão — deixe-os pegar o que quiserem. Quando montarem o Mega, dê um golpe grande nele e pegue 3 prêmios: esse trade é difícil de acompanhar.",
-      "- **Prize map:** Budew (1) → Mega Greninja ex (3) → Meowth/Fezandipiti ex (2)."
+      "- **Prize map:** Budew (1) → Mega Greninja ex (3) → Meowth/Fezandipiti ex (2).",
+"@premios Contra Mega Greninja | 1-3-2 | Budew, Mega Greninja ex, Meowth ex"
     ], ["Dragapult ex", "Meowth ex", "Fezandipiti ex", "Boss's Orders", "Battle Cage", "Munkidori", "Psyduck", "Budew", "Kadabra", "Rare Candy", "Special Red Card", "Unfair Stamp", "Dudunsparce", "Drakloak", "Mega Greninja ex", "Shaymin"]],
 
     ["vs Raging Bolt / Slop Box, Meganium e Beedrill", [
@@ -48,7 +50,8 @@ GUIA("g23", {
       "- Com Hydrapple fica bem mais fácil: nocautear um Teal Mask com várias energias dói muito. Normalmente deixe o Meganium em paz, senão você precisa de 4 KOs em vez de 3. Vá atrás dos grandes.",
       "- **Prize map:** Teal Mask / Arboliva (2) → Teal Mask (2) → Meowth / Fezandipiti (2).",
       "**Beedrill ex — favorável, a menos que joguem Arboliva ex. Sempre vá 1º.** Rápido, bate alto e tem muito HP, mas é 'pônei de um truque só' — exceto com Arboliva; proteja o banco. Jogue no tempo deles: deixe-os colocar o máximo de abelhas antes de começar os KOs. Eles quase não disruptam (talvez Special Red Card), então construa a mão para derrubar as abelhas em um golpe.",
-      "- **Prize map:** Beedrill / Arboliva (2) → Beedrill (2) → Meowth / Fezandipiti (2)."
+      "- **Prize map:** Beedrill / Arboliva (2) → Beedrill (2) → Meowth / Fezandipiti (2).",
+"@premios Contra Beedrill | 2-2-2 | Arboliva ex, Beedrill, Fezandipiti ex"
     ], ["Raging Bolt ex", "Wellspring Mask Ogerpon ex", "Shaymin", "Mega Kangaskhan ex", "Meowth ex", "Lucky Helmet", "Teal Mask Ogerpon ex", "Fezandipiti ex", "Latias ex", "Meganium", "Arboliva ex", "Hydrapple ex", "Budew", "Beedrill ex", "Special Red Card"]],
 
     ["vs N's Zoroark, Mega Lopunny e Mega Lucario", [
@@ -58,12 +61,14 @@ GUIA("g23", {
       "- O Watchtower é chato, mas você o troca quando quiser. Se o N's Castle estiver em jogo, não gaste seu Cage nele — guarde para o Watchtower.",
       "- Os atacantes do Zoroark não são muitos, mas ambos fazem OHKO em você: mantenha o prize trade e use a recuperação com responsabilidade. O Genesect é surpreendentemente bom aqui (impede o Stamp deles).",
       "- **Prize map:** Zoroark ex (2) → Zoroark ex (2) → Fezandipiti / Pecharunt ex (2).",
+"@premios Contra N's Zoroark | 2-2-2 | N's Zoroark ex, N's Zoroark ex, Pecharunt ex",
       "**Mega Lopunny ex — desfavorável. Vá 2º.** Muito difícil: você joga só 2 Enhanced Hammer e eles 4 Mist Energy, fáceis de achar com 4 Hilda. Só há um jeito: dois Hammers bem cronometrados quando você tem certeza do OHKO — senão eles usam Wally e ligam outra Mist. Um bom jogador nunca coloca um Pokémon de 3 prêmios em jogo sem ter uma Mist para ligar. Se eles prizarem 3 Mist, dá para roubar uma vitória.",
       "- **Prize map:** Mega Lopunny / Mega Froslass (3) → Mega Lopunny / Mega Froslass (3) → 'chorar no canto quando prizar um Enhanced Hammer (opcional)'.",
       "**Mega Lucario ex — levemente favorável. Sempre vá 2º** por causa do Solrock: eles pressionam cedo e pegam os primeiros KOs enquanto você monta. Felizmente o Lucario vale 3 prêmios. Cuidado com a Rocky Fighting Energy (como a Mist, atrapalha) — eles jogam só 2.",
       "- Algumas builds usam Hero's Cape: chegar a 22 cartas na mão não é impossível, mas o Genesect em jogo impede que usem o Cape e facilita os 3 prêmios.",
       "- De todos os decks do guia, é o que mais joga disrupção (vários Judge e Special Red Card): tenha Dudunsparces para sair do aperto.",
-      "- **Prize map:** Solrock (1) → Mega Lucario ex (3) → Meowth ex (2)."
+      "- **Prize map:** Solrock (1) → Mega Lucario ex (3) → Meowth ex (2).",
+"@premios Contra Mega Lucario | 1-3-2 | Solrock, Mega Lucario ex, Meowth ex"
     ], ["N's Zoroark ex", "N's Darmanitan", "Yveltal", "Pecharunt ex", "Lucky Helmet", "Xerosic's Machinations", "Team Rocket's Watchtower", "N's Castle", "Battle Cage", "Genesect", "Fezandipiti ex", "Mega Lopunny ex", "Enhanced Hammer", "Mist Energy", "Hilda", "Wally's Compassion", "Mega Lucario ex", "Solrock", "Rocky Fighting Energy", "Hero's Cape", "Judge", "Special Red Card", "Dudunsparce", "Meowth ex"]],
 
     ["A lista campeã de Indianápolis e encerramento", [
