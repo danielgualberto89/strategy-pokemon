@@ -2,7 +2,7 @@
 
 Sistema em português para aprender a jogar os decks competitivos de Pokémon TCG e criar estratégias para decks novos.
 
-A base de conhecimento vem da leitura dos **30 primeiros guias gratuitos** da página de guias de Pokémon TCG do Metafy (03/11/2026) e dos documentos oficiais de regras (Rulebook set/2026, Tournament Handbook, Errata ago/2026, Alternative Play Handbook). O texto oficial das cartas vem da API pública [TCGdex](https://tcgdex.dev/pt-br).
+A base de conhecimento vem da leitura dos **30 primeiros guias gratuitos** da página de guias de Pokémon TCG do Metafy (03/11/2026), de **todos os 43 guias de deck do site japonês [Pokemite](https://pokemite.com/deck/)** (traduzidos) e de **23 análises do [Pokecahack](https://pokecahack.com/category/deck/)** com **658 listas premiadas da City League** (temporada 1 de 2027, listas do site oficial pokemon-card.com) e dos documentos oficiais de regras (Rulebook set/2026, Tournament Handbook, Errata ago/2026, Alternative Play Handbook). O texto oficial das cartas vem da API pública [TCGdex](https://tcgdex.dev/pt-br).
 
 ## Como usar
 
@@ -20,8 +20,10 @@ Depois acesse `http://localhost:8000`.
 
 | Aba | O que faz |
 |---|---|
-| **Decks** | 22 arquétipos: como funcionam, peças-chave, lista de referência (19 com a aba **Mesa**, a lista em imagens), plano turno a turno, 1º ou 2º, prize maps, dicas, erros comuns, matchups e link para o guia original. |
-| **Guias completos** | Os 30 guias reescritos em português, capítulo por capítulo (mais de 330 capítulos), com as cartas citadas em imagem e **ilustrações de mesa** (Ativo/Banco seu e do oponente), **mãos de exemplo** e **mapas de prêmios** desenhados com as cartas. Guias que eram só imagem (Venusaur) foram transcritos; os de vídeo trazem a lista e o resumo do que os outros guias dizem. |
+| **Decks** | Mais de 50 arquétipos (22 do Metafy + os novos do Pokemite): como funcionam, peças-chave, lista de referência (19 com a aba **Mesa**, a lista em imagens), plano turno a turno, 1º ou 2º, prize maps, dicas, erros comuns, matchups e link para o guia original. |
+| **Guias completos** | 96 guias (30 do Metafy + 43 do Pokemite + 23 análises do Pokecahack, com taxa de uso das cartas e lista típica calculadas a partir das listas premiadas) reescritos em português, com os **nomes das cartas em português e em negrito** (nome oficial do TCGdex; passe o mouse para ver o original), capítulo por capítulo (mais de 330 capítulos), com as cartas citadas em imagem e **ilustrações de mesa** (Ativo/Banco seu e do oponente), **mãos de exemplo** e **mapas de prêmios** desenhados com as cartas. Guias que eram só imagem (Venusaur) foram transcritos; os de vídeo trazem a lista e o resumo do que os outros guias dizem. |
+| **Meta JP** | Ranking dos decks pelos resultados premiados da City League (dados do Pokecahack), **estratégia por deck** (plano de jogo, decisões, cuidados e como jogar contra o meta), a lista típica e as cartas mais usadas no meta. |
+| **Copiar para o TCG Live** | Botão com ícone em toda lista (aba Mesa, capítulo de lista dos guias, Meta JP e Laboratório): copia com sigla e número de cada carta, pronta para Decks → Importar no Pokémon TCG Live; avisa as cartas que ainda não existem no jogo (exclusivas do Japão). |
 | **Matchups** | Escolha seu deck e o do oponente: o plano do seu guia e o que o guia do oponente recomenda contra você. |
 | **Laboratório** | Cole qualquer lista (formato TCG Live/Limitless). O motor valida as regras (60 cartas, 4 cópias, 1 ACE SPEC, básico), consulta o TCGdex (texto, HP, tipo, legalidade no Standard e reimpressões), identifica o arquétipo mais próximo, mede busca/compra/gust/aceleração/recuperação contra as listas dos guias e gera plano de jogo, 1º/2º, prize map, matchups estimados contra o meta e techs. Também gera **esqueletos de 60 cartas** para criar um deck do zero (Stage 2, Stage 1, Big Basics ou um prêmio). |
 | **Coach IA** | Monta um prompt com a base dos guias + a análise + sua pergunta. Você pode copiar e colar no claude.ai ou responder direto com sua chave da API da Anthropic (fica só no seu navegador). |

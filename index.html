@@ -8,15 +8,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Chakra+Petch:wght@500;600;700&family=Russo+One&family=JetBrains+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="css/style.css">
+<script>try{var t=localStorage.getItem("tema"),f=localStorage.getItem("fonte");if(t==="dark")document.documentElement.dataset.theme="dark";if(f)document.documentElement.dataset.fonte=f;}catch(e){}</script>
 </head>
 <body>
 <header class="topo">
   <div class="topo-in">
-    <div class="marca"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="4" width="16" height="22" rx="3" transform="rotate(12 17 15)" fill="var(--felt)"/><rect x="6" y="6" width="16" height="22" rx="3" fill="var(--accent)"/><path d="M14 12l2.2 4.4 4.8.7-3.5 3.4.8 4.8-4.3-2.3-4.3 2.3.8-4.8-3.5-3.4 4.8-.7z" fill="var(--accent-fg)"/></svg><h1>Coach de Decks TCG</h1><span>Estratégias dos 30 guias gratuitos do Metafy + regras oficiais 2026, em português</span></div>
+    <div class="marca"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="4" width="16" height="22" rx="3" transform="rotate(12 17 15)" fill="var(--felt)"/><rect x="6" y="6" width="16" height="22" rx="3" fill="var(--accent)"/><path d="M14 12l2.2 4.4 4.8.7-3.5 3.4.8 4.8-4.3-2.3-4.3 2.3.8-4.8-3.5-3.4 4.8-.7z" fill="var(--accent-fg)"/></svg><h1>Coach de Decks TCG</h1><span>Guias do Metafy, Pokemite e Pokecahack + meta da City League + regras 2026, em português</span><div class="ajustes" role="group" aria-label="Leitura"><button type="button" id="fonte-menos" aria-label="Diminuir o texto" title="Diminuir o texto">A−</button><button type="button" id="fonte-mais" aria-label="Aumentar o texto" title="Aumentar o texto">A+</button><button type="button" id="tema" aria-label="Tema escuro" title="Alternar tema claro/escuro">☾</button></div></div>
     <nav class="abas" id="abas" aria-label="Seções">
       <a href="#inicio">Início</a>
       <a href="#decks">Decks</a>
       <a href="#guias">Guias completos</a>
+      <a href="#meta">Meta JP</a>
       <a href="#matchup">Matchups</a>
       <a href="#laboratorio">Laboratório</a>
       <a href="#coach">Coach IA</a>
@@ -28,12 +30,15 @@
 </header>
 <main id="app"></main>
 <footer>
-  Conteúdo resumido e traduzido de guias gratuitos publicados no Metafy (links em cada deck) e dos documentos oficiais de regras enviados pelo usuário. Texto das cartas: API pública TCGdex. Ferramenta de estudo sem afiliação com The Pokémon Company, Nintendo, Metafy ou TCGdex.
+  Conteúdo resumido e traduzido de guias gratuitos publicados no Metafy e nos sites japoneses Pokemite e Pokecahack (links em cada deck; listas de torneio do site oficial pokemon-card.com) e dos documentos oficiais de regras enviados pelo usuário. Texto das cartas: API pública TCGdex. Ferramenta de estudo sem afiliação com The Pokémon Company, Nintendo, Metafy ou TCGdex.
 </footer>
 <script src="js/data/cards.js"></script>
 <script src="js/data/decks.js"></script>
 <script src="js/data/conceitos.js"></script>
 <script src="js/data/imagens.js"></script>
+<script src="js/data/nomes-pt.js"></script>
+<script src="js/data/meta-jp.js"></script>
+<script src="js/data/codigos-tcglive.js"></script>
 <script src="js/data/guias/index.js"></script>
 <!-- guias completos -->
 <script src="js/data/guias/g01.js"></script>
@@ -66,6 +71,72 @@
 <script src="js/data/guias/g28.js"></script>
 <script src="js/data/guias/g29.js"></script>
 <script src="js/data/guias/g30.js"></script>
+<script src="js/data/guias/g31.js"></script>
+<script src="js/data/guias/g32.js"></script>
+<script src="js/data/guias/g33.js"></script>
+<script src="js/data/guias/g34.js"></script>
+<script src="js/data/guias/g35.js"></script>
+<script src="js/data/guias/g36.js"></script>
+<script src="js/data/guias/g37.js"></script>
+<script src="js/data/guias/g38.js"></script>
+<script src="js/data/guias/g39.js"></script>
+<script src="js/data/guias/g40.js"></script>
+<script src="js/data/guias/g41.js"></script>
+<script src="js/data/guias/g42.js"></script>
+<script src="js/data/guias/g43.js"></script>
+<script src="js/data/guias/g44.js"></script>
+<script src="js/data/guias/g45.js"></script>
+<script src="js/data/guias/g46.js"></script>
+<script src="js/data/guias/g47.js"></script>
+<script src="js/data/guias/g48.js"></script>
+<script src="js/data/guias/g49.js"></script>
+<script src="js/data/guias/g50.js"></script>
+<script src="js/data/guias/g51.js"></script>
+<script src="js/data/guias/g52.js"></script>
+<script src="js/data/guias/g53.js"></script>
+<script src="js/data/guias/g54.js"></script>
+<script src="js/data/guias/g55.js"></script>
+<script src="js/data/guias/g56.js"></script>
+<script src="js/data/guias/g57.js"></script>
+<script src="js/data/guias/g58.js"></script>
+<script src="js/data/guias/g59.js"></script>
+<script src="js/data/guias/g60.js"></script>
+<script src="js/data/guias/g61.js"></script>
+<script src="js/data/guias/g62.js"></script>
+<script src="js/data/guias/g63.js"></script>
+<script src="js/data/guias/g64.js"></script>
+<script src="js/data/guias/g65.js"></script>
+<script src="js/data/guias/g66.js"></script>
+<script src="js/data/guias/g67.js"></script>
+<script src="js/data/guias/g68.js"></script>
+<script src="js/data/guias/g69.js"></script>
+<script src="js/data/guias/g70.js"></script>
+<script src="js/data/guias/g71.js"></script>
+<script src="js/data/guias/g72.js"></script>
+<script src="js/data/guias/g73.js"></script>
+<script src="js/data/guias/g74.js"></script>
+<script src="js/data/guias/g75.js"></script>
+<script src="js/data/guias/g76.js"></script>
+<script src="js/data/guias/g77.js"></script>
+<script src="js/data/guias/g78.js"></script>
+<script src="js/data/guias/g79.js"></script>
+<script src="js/data/guias/g80.js"></script>
+<script src="js/data/guias/g81.js"></script>
+<script src="js/data/guias/g82.js"></script>
+<script src="js/data/guias/g83.js"></script>
+<script src="js/data/guias/g84.js"></script>
+<script src="js/data/guias/g85.js"></script>
+<script src="js/data/guias/g86.js"></script>
+<script src="js/data/guias/g87.js"></script>
+<script src="js/data/guias/g88.js"></script>
+<script src="js/data/guias/g89.js"></script>
+<script src="js/data/guias/g90.js"></script>
+<script src="js/data/guias/g91.js"></script>
+<script src="js/data/guias/g92.js"></script>
+<script src="js/data/guias/g93.js"></script>
+<script src="js/data/guias/g94.js"></script>
+<script src="js/data/guias/g95.js"></script>
+<script src="js/data/guias/g96.js"></script>
 <script src="js/engine.js"></script>
 <script src="js/tcgdex.js"></script>
 <script src="js/ai.js"></script>

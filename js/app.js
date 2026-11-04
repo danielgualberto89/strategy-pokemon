@@ -5,6 +5,26 @@
   const app = $("#app");
   const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  /* Nomes das cartas em português (TCGdex) e destaque em negrito nos textos dos guias. */
+  const NPT = window.NOMES_PT || {};
+  const ptNome = n => NPT[String(n).toLowerCase()] || n;
+  let reCartas = null;
+  function regexCartas() {
+    if (reCartas) return reCartas;
+    const nomes = new Set();
+    Object.values(window.CARDS || {}).forEach(c => c && c.nome && nomes.add(c.nome));
+    Object.values(window.GUIAS || {}).forEach(g => g.caps.forEach(c => (c[2] || []).forEach(n => nomes.add(n))));
+    const lista = [...nomes].filter(n => n.length >= 4).sort((a, b) => b.length - a.length)
+      .map(n => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    reCartas = new RegExp("(?<![\\wÀ-ÿ'])(" + lista.join("|") + ")(?![\\wÀ-ÿ])", "g");
+    return reCartas;
+  }
+  // markdown com nomes de cartas: troca o nome inglês pelo oficial em português, em negrito
+  const mdc = s => {
+    const achados = [];
+    const t = String(s == null ? "" : s).replace(regexCartas(), m => { achados.push(m); return "\u0001" + (achados.length - 1) + "\u0002"; });
+    return md(t).replace(/\u0001(\d+)\u0002/g, (_, i) => { const en = achados[+i], pt = ptNome(en); return `<strong class="nome-carta" title="${esc(en)}">${esc(pt)}</strong>`; });
+  };
   const ROT = { 2: "Muito favorável", 1: "Favorável", 0: "Equilibrado", "-1": "Desfavorável", "-2": "Muito desfavorável" };
   const chipR = r => `<span class="chip r${r}">${r > 0 ? "+" : ""}${r} · ${ROT[r]}</span>`;
   const STATUS = { meta: "Meta atual", rogue: "Rogue / nicho", "formato-anterior": "Formato anterior" };
@@ -15,6 +35,50 @@
     try { await navigator.clipboard.writeText(texto); if (btn) { const t = btn.textContent; btn.textContent = "Copiado"; setTimeout(() => btn.textContent = t, 1500); } }
     catch (e) { const ta = document.createElement("textarea"); ta.value = texto; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (_) { /* sem cópia */ } ta.remove(); if (btn) btn.textContent = "Selecione e copie manualmente"; }
   }
+
+  /* ---------------- Copiar lista no formato do Pokémon TCG Live ---------------- */
+  const TCGL = window.CODIGOS_TCGL || {};
+  const CORES_BASICAS = { G: "grass", R: "fire", W: "water", L: "lightning", P: "psychic", F: "fighting", D: "darkness", M: "metal" };
+  function paraTCGLive(texto) {
+    const out = [], sem = [];
+    for (const bruto of String(texto).split("\n")) {
+      const l = bruto.trim();
+      const h = l.match(/^(Pok[ée]mon|Trainer|Energy)s?:\s*(\d+)/i);
+      if (h) { if (out.length) out.push(""); out.push(`${/^pok/i.test(h[1]) ? "Pokémon" : h[1][0].toUpperCase() + h[1].slice(1).toLowerCase()}: ${h[2]}`); continue; }
+      const m = l.match(/^(\d+)\s+(.+)$/);
+      if (!m) continue;
+      let [, q, nome] = m;
+      if (/\s[A-Z0-9-]{2,6}\s\d+[a-z]?$/.test(nome)) { out.push(`${q} ${nome}`); continue; }
+      const base = nome.replace(/\s*\([^)]*[\u3040-\u30ff\u4e00-\u9fff][^)]*\)\s*$/, "").trim();
+      const bas = base.match(/^Basic \{([A-Z])\} Energy$/i);
+      const chave = (bas ? `${CORES_BASICAS[bas[1].toUpperCase()]} energy` : base).toLowerCase();
+      const cod = TCGL[chave];
+      if (cod) out.push(`${q} ${bas ? CORES_BASICAS[bas[1].toUpperCase()].replace(/^./, c => c.toUpperCase()) + " Energy" : base} ${cod}`);
+      else { out.push(`${q} ${base}`); sem.push(base); }
+    }
+    return { texto: out.join("\n"), sem };
+  }
+  const ICONE_COPIAR = '<svg class="ic" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+  const listasCopiar = [];
+  function botaoCopiar(texto, rotulo = "Copiar para o TCG Live") {
+    const id = listasCopiar.push(texto) - 1;
+    return `<span class="copiar-tcgl"><button type="button" class="btn btn-copiar" data-copiar="${id}" title="Copia a lista com sigla e número de cada carta, pronta para Importar deck no Pokémon TCG Live">${ICONE_COPIAR}<span>${esc(rotulo)}</span></button><span class="nota copiar-status" role="status"></span></span>`;
+  }
+  async function copiarTCGLive(texto, btn) {
+    const { texto: t, sem } = paraTCGLive(texto);
+    const st = btn.parentElement.querySelector(".copiar-status");
+    try { await navigator.clipboard.writeText(t); }
+    catch (e) { const ta = document.createElement("textarea"); ta.value = t; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch (_) { /* sem cópia */ } ta.remove(); }
+    const rot = btn.querySelector("span"), antes = rot.textContent;
+    rot.textContent = "Copiado!"; setTimeout(() => { rot.textContent = antes; }, 1800);
+    if (st) st.innerHTML = sem.length
+      ? `Copiado. No TCG Live: Decks → Importar → colar. <strong>Atenção:</strong> ${sem.length} carta(s) sem código no TCG Live (podem ser exclusivas do Japão ou ainda não lançadas no jogo): ${sem.map(esc).join(", ")}.`
+      : "Copiado. No TCG Live: Decks → Importar → colar.";
+  }
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-copiar]");
+    if (b) { const id = b.dataset.copiar; copiarTCGLive(id === "lab" ? ($("#lab-txt") || {}).value || "" : listasCopiar[+id], b); }
+  });
 
   /* ---------------- Início ---------------- */
   function vInicio() {
@@ -61,17 +125,23 @@
   const IMG = window.IMAGENS || {};
   function urlCarta(nome, chaveLista) {
     const r = (chaveLista && IMG[chaveLista]) || IMG[String(nome).toLowerCase()];
-    return r ? r.img : null;
+    if (!r) return null;
+    // imagem hospedada no próprio site (img/cartas); a do TCGdex fica como reserva
+    return r.img.startsWith("data:") ? r.img : (r.loc || r.img);
+  }
+  function urlReserva(nome, chaveLista) {
+    const r = (chaveLista && IMG[chaveLista]) || IMG[String(nome).toLowerCase()];
+    return r && r.loc && !r.img.startsWith("data:") ? r.img : "";
   }
   function htmlCarta(nome, opt = {}) {
     const u = urlCarta(nome, opt.chave);
     const st = opt.estilo ? ` style="${opt.estilo}"` : "";
-    return `<button type="button" class="carta" data-zoom="${esc(nome)}"${opt.chave ? ` data-chave="${esc(opt.chave)}"` : ""}${st} aria-label="Ampliar ${esc(nome)}">${u ? `<img loading="lazy" decoding="async" src="${u}" alt="${esc(nome)}">` : `<span class="sem-img">${esc(nome)}</span>`}${opt.qtd ? `<span class="qtd">${opt.qtd}</span>` : ""}</button>`;
+    return `<button type="button" class="carta" data-zoom="${esc(nome)}"${opt.chave ? ` data-chave="${esc(opt.chave)}"` : ""}${st} aria-label="Ampliar ${esc(nome)}">${u ? `<img loading="lazy" decoding="async" src="${u}" alt="${esc(nome)}"${urlReserva(nome, opt.chave) ? ` onerror="this.onerror=null;this.src='${urlReserva(nome, opt.chave)}'"` : ""}>` : `<span class="sem-img">${esc(nome)}</span>`}${opt.qtd ? `<span class="qtd">${opt.qtd}</span>` : ""}</button>`;
   }
   function tira(nomes) {
     const uniq = [...new Set(nomes)].filter(n => urlCarta(n));
     if (!uniq.length) return "";
-    return `<div class="bloco"><span class="rotulo">Cartas citadas</span><div class="tira">${uniq.map(n => `<figure>${htmlCarta(n)}<figcaption>${esc(n)}</figcaption></figure>`).join("")}</div></div>`;
+    return `<div class="bloco"><span class="rotulo">Cartas citadas</span><div class="tira">${uniq.map(n => `<figure>${htmlCarta(n)}<figcaption>${esc(ptNome(n))}</figcaption></figure>`).join("")}</div></div>`;
   }
   function leque(nomes) {
     const l = [...new Set(nomes)].filter(n => urlCarta(n)).slice(0, 5);
@@ -93,9 +163,11 @@
     if (!b) return;
     const u = urlCarta(b.dataset.zoom, b.dataset.chave);
     if (!u) return;
-    dlg.querySelector("img").src = u.startsWith("data:") ? u : u.replace("/low.webp", "/high.webp");
+    const zi = dlg.querySelector("img"), alta = (urlReserva(b.dataset.zoom, b.dataset.chave) || u).replace("/low.webp", "/high.webp");
+    zi.onerror = () => { zi.onerror = null; zi.src = u; };
+    zi.src = u.startsWith("data:") || !/^https?:/.test(alta) ? u : alta;
     dlg.querySelector("img").alt = b.dataset.zoom;
-    dlg.querySelector(".leg").textContent = b.dataset.zoom;
+    dlg.querySelector(".leg").textContent = ptNome(b.dataset.zoom) === b.dataset.zoom ? b.dataset.zoom : `${ptNome(b.dataset.zoom)} (${b.dataset.zoom})`;
     if (dlg.showModal) dlg.showModal();
   });
 
@@ -132,7 +204,7 @@
     if (d.lista) $("#b-analisar").addEventListener("click", () => { store.set("lab-lista", d.lista.texto); location.hash = "laboratorio"; });
     const alvo = $("#aba-conteudo");
     if (atual === "geral") alvo.innerHTML = abaGeral(d);
-    else if (atual === "mesa") { alvo.innerHTML = `<div class="bloco"><div class="barra" style="justify-content:space-between"><div><h3>${esc(d.lista.titulo)}</h3><p class="nota">Toque numa carta para ampliar. Imagens: TCGdex.</p></div><button class="btn" id="b-copiar">Copiar lista</button></div>${mesa(d.lista.texto)}<details class="cartao"><summary>Lista em texto (para importar no TCG Live)</summary><pre class="decklist">${esc(d.lista.texto)}</pre></details></div>`; $("#b-copiar").addEventListener("click", e => copiar(d.lista.texto, e.target)); }
+    else if (atual === "mesa") { alvo.innerHTML = `<div class="bloco"><div class="barra" style="justify-content:space-between"><div><h3>${esc(d.lista.titulo)}</h3><p class="nota">Toque numa carta para ampliar. Imagens: TCGdex.</p></div>${botaoCopiar(d.lista.texto)}</div>${mesa(d.lista.texto)}<details class="cartao"><summary>Lista em texto (formato do TCG Live)</summary><pre class="decklist">${esc(paraTCGLive(d.lista.texto).texto)}</pre></details></div>`; }
     else if (atual === "matchups") alvo.innerHTML = abaMatchups(d);
     else leitorGuia(alvo, window.GUIAS[atual.slice(5)]);
   }
@@ -155,11 +227,12 @@
 
   function corpoCap(pars) {
     let h = "", lista = [];
-    const fecha = () => { if (lista.length) { h += `<ul>${lista.map(x => `<li>${md(x)}</li>`).join("")}</ul>`; lista = []; } };
+    const fecha = () => { if (lista.length) { h += `<ul>${lista.map(x => `<li>${mdc(x)}</li>`).join("")}</ul>`; lista = []; } };
     for (const p of pars) {
       if (p.startsWith("- ")) lista.push(p.slice(2));
       else if (/^@(mesa|mao|premios|cartas) /.test(p)) { fecha(); h += ilustracao(p); }
-      else { fecha(); h += `<p>${md(p)}</p>`; }
+      else if (/^@copiar /.test(p)) { fecha(); const g = window.GUIAS[p.slice(8).trim()]; if (g && g.lista) h += `<div class="barra">${botaoCopiar(g.lista.texto)}</div>`; }
+      else { fecha(); h += `<p>${mdc(p)}</p>`; }
     }
     fecha(); return h;
   }
@@ -173,7 +246,7 @@
     const seg = p.slice(tipo.length + 2).split(" | ").map(x => x.trim());
     const titulo = seg.shift();
     const lista = x => x.split(/,\s*/).filter(Boolean);
-    const cartasRow = (nomes, cls = "") => `<div class="ilu-linha ${cls}">${nomes.map(n => { const m = n.match(/^(.*?)\s*\+\s*(.+)$/); const base = m ? m[1] : n; return `<figure>${htmlCarta(base)}${m ? `<span class="anexo">+ ${esc(m[2])}</span>` : ""}<figcaption>${esc(base)}</figcaption></figure>`; }).join("")}</div>`;
+    const cartasRow = (nomes, cls = "") => `<div class="ilu-linha ${cls}">${nomes.map(n => { const m = n.match(/^(.*?)\s*\+\s*(.+)$/); const base = m ? m[1] : n; return `<figure>${htmlCarta(base)}${m ? `<span class="anexo">+ ${esc(ptNome(m[2]))}</span>` : ""}<figcaption>${esc(ptNome(base))}</figcaption></figure>`; }).join("")}</div>`;
     let corpo = "", notas = [];
     if (tipo === "mesa") {
       const campo = {}; for (const s of seg) { const m = s.match(/^(Ativo|Banco|Rival ativo|Rival banco):\s*(.*)$/i); if (m) campo[m[1].toLowerCase()] = lista(m[2]); else notas.push(s); }
@@ -182,10 +255,10 @@
     } else if (tipo === "premios") {
       const linha = seg.shift() || "", alvos = lista(seg.shift() || ""); notas = seg;
       const passos = linha.split("-");
-      corpo = `<div class="ilu-premios">${passos.map((q, i) => `<div class="ilu-passo"><span class="ilu-q">${esc(q)}</span>${alvos[i] ? cartasRow([alvos[i]]) : ""}<span class="mini">${i + 1}º KO</span></div>`).join('<span class="ilu-seta" aria-hidden="true">→</span>')}</div>`;
+      corpo = `<div class="ilu-etapas">${passos.map((q, i) => `<div class="ilu-passo"><span class="ilu-q">${esc(q)}</span>${alvos[i] ? cartasRow([alvos[i]]) : ""}<span class="mini">${i + 1}º KO</span></div>`).join('<span class="ilu-seta" aria-hidden="true">→</span>')}</div>`;
     } else { corpo = cartasRow(lista(seg.shift() || ""), tipo === "mao" ? "ilu-mao" : ""); notas = seg; }
     const icone = { mesa: "Mesa", mao: "Mão", premios: "Mapa de prêmios", cartas: "Cartas" }[tipo];
-    return `<figure class="ilu ilu-${tipo}"><figcaption><span class="chip">${icone}</span> ${md(titulo)}</figcaption>${corpo}${notas.length ? `<p class="nota">${notas.map(md).join(" ")}</p>` : ""}</figure>`;
+    return `<figure class="ilu ilu-${tipo}"><figcaption><span class="chip">${icone}</span> ${mdc(titulo)}</figcaption>${corpo}${notas.length ? `<p class="nota">${notas.map(mdc).join(" ")}</p>` : ""}</figure>`;
   }
 
   function leitorGuia(alvo, g, idx = 0) {
@@ -205,15 +278,69 @@
     alvo.querySelector("#sel-cap").addEventListener("change", e => ir(+e.target.value));
   }
 
+  /* ---------------- Preferências de leitura (tema e tamanho do texto) ---------------- */
+  (function ajustesLeitura() {
+    const raiz = document.documentElement;
+    const salvar = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
+    const bTema = document.getElementById("tema"), bMais = document.getElementById("fonte-mais"), bMenos = document.getElementById("fonte-menos");
+    if (!bTema) return;
+    const pintar = () => { const esc = raiz.dataset.theme === "dark"; bTema.textContent = esc ? "☀" : "☾"; bTema.setAttribute("aria-label", esc ? "Tema claro" : "Tema escuro"); };
+    bTema.addEventListener("click", () => { if (raiz.dataset.theme === "dark") { delete raiz.dataset.theme; salvar("tema", null); } else { raiz.dataset.theme = "dark"; salvar("tema", "dark"); } pintar(); });
+    const fonte = d => { const n = Math.max(-1, Math.min(2, (+raiz.dataset.fonte || 0) + d)); if (n) raiz.dataset.fonte = n; else delete raiz.dataset.fonte; salvar("fonte", n ? String(n) : null); bMenos.disabled = n <= -1; bMais.disabled = n >= 2; };
+    bMais.addEventListener("click", () => fonte(1)); bMenos.addEventListener("click", () => fonte(-1));
+    fonte(0); pintar();
+  })();
+
   /* ---------------- Biblioteca de guias ---------------- */
   function vGuias() {
     const gs = Object.values(window.GUIAS || {}).sort((a, b) => a.id.localeCompare(b.id));
     const porDeck = id => gs.filter(g => g.deck === id);
-    app.innerHTML = `<section class="vista"><div class="bloco"><h2>Guias completos</h2><p class="lead">Cada guia reescrito em português, capítulo por capítulo, com as cartas citadas em imagem. ${gs.length} guias, ordenados como no Metafy. Os que eram só vídeo trazem a lista e um resumo do que os outros guias dizem.</p></div>
+    app.innerHTML = `<section class="vista"><div class="bloco"><h2>Guias completos</h2><p class="lead">Cada guia reescrito em português, capítulo por capítulo, com as cartas citadas em imagem. ${gs.length} guias: os 30 gratuitos do Metafy (g01–g30) todos os 43 decks do Pokemite (Japão) traduzidos (g31–g73) e 23 análises do Pokecahack com os resultados da City League e a análise das listas premiadas (g74–g96; veja também a aba <a href="#meta">Meta JP</a>). Os que eram só vídeo trazem a lista e um resumo do que a página mostra. Nomes de cartas em <strong class="nome-carta">negrito</strong> estão em português (passe o mouse para ver o original).</p></div>
       <div class="grade">${gs.map(g => { const d = DECKS.find(x => x.id === g.deck); return `<a class="cartao" href="${d ? `#deck-${g.deck}~guia-${g.id}` : `#guia-${g.id}`}"><span class="rotulo">${esc(d ? d.nome : (g.deck === "expanded" ? "Formato Expanded" : g.deck))}</span><h3>${esc(g.titulo)}</h3><p class="nota">por ${esc(g.autor)} · ${g.caps.length} capítulos · ${esc(g.formato)}</p>${tira(g.caps.flatMap(c => c[2] || []).slice(0, 4)).replace('<span class="rotulo">Cartas citadas</span>', "")}</a>`; }).join("")}</div></section>`;
   }
 
   /* ---------------- Matchup ---------------- */
+  /* ---------------- Meta japonês (City League, dados do Pokecahack) ---------------- */
+  function vMeta() {
+    const M = window.META_JP;
+    if (!M) { app.innerHTML = `<section class="vista"><p>Sem dados de meta.</p></section>`; return; }
+    const max = Math.max(...M.decks.map(d => d.n));
+    const linha = d => {
+      const deck = DECKS.find(x => x.id === d.deck);
+      const pct = 100 * d.n / M.total, rot = pct < 1 ? "<1%" : Math.round(pct) + "%";
+      const href = deck ? `#deck-${d.deck}~guia-${d.guia}` : `#guia-${d.guia}`;
+      const dica = `${d.nome}: ${d.n} resultado(s) — ${d.vit} título(s), ${d.seg} vice(s); ${rot} do total`;
+      return `<a class="meta-linha" href="${href}" title="${esc(dica)}"><span class="meta-nome">${esc(d.nome)}</span>
+        <span class="meta-barra" aria-hidden="true"><span style="width:${(100 * d.n / max).toFixed(1)}%"></span></span>
+        <span class="meta-num"><strong>${d.n}</strong> <span class="nota">${rot} · ${d.vit} tít. · ${d.seg} vices</span></span></a>`;
+    };
+    const estrategia = (d, i) => {
+      const deck = DECKS.find(x => x.id === d.deck);
+      const href = deck ? `#deck-${d.deck}~guia-${d.guia}` : `#guia-${d.guia}`;
+      const lista = xs => `<ul>${xs.map(x => `<li>${mdc(x)}</li>`).join("")}</ul>`;
+      return `<details class="cartao meta-deck"${i === 0 ? " open" : ""}><summary><span class="meta-deck-nome">${esc(d.nome)}</span><span class="nota">${d.n} resultado(s) · ${d.vit} título(s)</span></summary>
+        <p class="meta-ideia">${mdc(d.resumo)}</p>
+        <div class="meta-colunas">
+          <div><h4>Plano de jogo</h4>${lista(d.plano)}</div>
+          <div><h4>Decisões que ganham jogos</h4>${lista(d.dicas.slice(0, 4))}<h4>Cuidados</h4>${lista(d.cuidados.slice(0, 4))}</div>
+        </div>
+        <h4>Contra o meta</h4><ul>${d.contra.map(([o, x]) => `<li><strong>${esc(o)}:</strong> ${mdc(x)}</li>`).join("")}</ul>
+        <div class="barra">${botaoCopiar(d.lista, "Copiar lista típica para o TCG Live")}<a class="btn" href="${href}">Ler a análise completa →</a></div>
+      </details>`;
+    };
+    const topo = M.topCartas.slice(0, 18);
+    app.innerHTML = `<section class="vista">
+      <div class="bloco"><h2>Meta japonês — City League</h2>
+        <p class="lead">${M.total} resultados premiados (campeões e vices) de ${esc(M.periodo)}, com ${M.listas} listas completas, publicados pelo <a href="${M.url}" target="_blank" rel="noopener">Pokecahack</a>. Clique num deck para ler a análise: resultados, as cartas que quase todas as listas usam, onde elas variam e uma lista típica.</p>
+        <p class="nota">Conta só os resultados com lista divulgada que o site reuniu — é um termômetro do meta, não a porcentagem exata de jogadores.</p></div>
+      <div class="cartao meta-grafico"><span class="rotulo">Resultados premiados por deck</span>${M.decks.map(linha).join("")}</div>
+      <div class="bloco"><h3>Estratégia por deck</h3><p class="nota">Plano de jogo, os cuidados que mais decidem partidas e como jogar contra os decks mais premiados. Abra um deck para ver tudo; a análise completa tem também as cartas-chave e a taxa de uso de cada carta.</p>
+        <div class="meta-estrategias">${M.decks.filter(d => d.resumo).map(estrategia).join("")}</div></div>
+      <div class="bloco"><h3>Cartas mais usadas no meta</h3><p class="nota">Porcentagem das ${M.listas} listas premiadas que levam a carta (energias básicas fora).</p>
+        <div class="grade-cartas-meta">${topo.map(c => `<figure>${htmlCarta(c.nome)}<figcaption><strong>${c.pct}%</strong> ${esc(ptNome(c.nome))}</figcaption></figure>`).join("")}</div></div>
+    </section>`;
+  }
+
   function vMatchup() {
     const ids = DECKS.map(d => d.id).concat(Object.keys(ARQUETIPOS_EXTRA));
     const opt = ids.map(id => `<option value="${id}">${esc(nomeDeck(id))}</option>`).join("");
@@ -247,7 +374,7 @@
       <div class="bloco"><h2>Laboratório de estratégia</h2><p class="lead">Cole uma lista no formato do Pokémon TCG Live ou Limitless (uma carta por linha: “4 Dreepy TWM 128”). O motor valida o deck, compara com os arquétipos dos guias e monta a estratégia. Com “Buscar cartas no TCGdex” ele lê o texto oficial de cada carta e entende cartas que não aparecem nos guias.</p></div>
       <div class="grade-2">
         <div class="bloco"><label for="lab-txt">Sua lista</label><textarea id="lab-txt" spellcheck="false">${esc(exemplo)}</textarea>
-          <div class="barra"><button class="btn pri" id="lab-go">Analisar</button><label style="display:flex;gap:6px;align-items:center;font-weight:400"><input type="checkbox" id="lab-dex" ${store.get("lab-dex", "1") === "1" ? "checked" : ""}> Buscar cartas no TCGdex (online)</label></div>
+          <div class="barra"><button class="btn pri" id="lab-go">Analisar</button><span class="copiar-tcgl"><button type="button" class="btn btn-copiar" data-copiar="lab" title="Copia a lista da caixa com sigla e número, pronta para o TCG Live">${ICONE_COPIAR}<span>Copiar para o TCG Live</span></button><span class="nota copiar-status" role="status"></span></span><label style="display:flex;gap:6px;align-items:center;font-weight:400"><input type="checkbox" id="lab-dex" ${store.get("lab-dex", "1") === "1" ? "checked" : ""}> Buscar cartas no TCGdex (online)</label></div>
           <p class="nota" id="lab-status">A lista acima é um exemplo (Alakazam do guia da Project Artemis). Troque pela sua.</p></div>
         <div class="cartao"><span class="rotulo">Criar um deck do zero</span><p class="nota">Gera um esqueleto de 60 cartas com as proporções que os guias usam. Depois ajuste e analise.</p>
           <label for="esq-tipo">Estrutura <select id="esq-tipo">${Object.entries(Engine.ESQUELETOS).map(([k, v]) => `<option value="${k}">${esc(v.nome)}</option>`).join("")}</select></label>
@@ -399,7 +526,7 @@
     document.querySelectorAll("#abas a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (h.startsWith("deck-") ? "decks" : h.startsWith("guia-") ? "guias" : h) ? "page" : "false"));
     if (h.startsWith("deck-")) { const [id, aba] = h.slice(5).split("~"); window.scrollTo(0, 0); return vDeck(id, aba); }
     if (h.startsWith("guia-") && window.GUIAS[h.slice(5)]) { window.scrollTo(0, 0); app.innerHTML = `<section class="vista"><p><a href="#guias">← Todos os guias</a></p><div id="aba-conteudo"></div></section>`; return leitorGuia($("#aba-conteudo"), window.GUIAS[h.slice(5)]); }
-    ({ guias: vGuias, inicio: vInicio, decks: vDecks, matchup: vMatchup, laboratorio: vLab, coach: vCoach, conceitos: vConceitos, regras: vRegras, cartas: vCartas }[h] || vInicio)();
+    ({ guias: vGuias, meta: vMeta, inicio: vInicio, decks: vDecks, matchup: vMatchup, laboratorio: vLab, coach: vCoach, conceitos: vConceitos, regras: vRegras, cartas: vCartas }[h] || vInicio)();
   }
   window.addEventListener("hashchange", rota);
   rota();
